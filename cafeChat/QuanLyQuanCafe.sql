@@ -149,6 +149,16 @@ BEGIN
 END
 EXEC TaiKhoan_Load
 
+-- Load Tai Khoan theo nv_id
+CREATE PROC TaiKhoan_Load_nv_id
+@nv_id VARCHAR(10),
+@tk_matkhau VARCHAR(20)
+AS
+BEGIN
+	SELECT * FROM TaiKhoan AS tk WHERE tk.nv_id = @nv_id AND tk.tk_matkhau = @tk_matkhau
+END
+EXEC TaiKhoan_Load_nv_id '2', '12345'
+
 -- Them Tai Khoan
 CREATE PROC TaiKhoan_Them
 @nv_id VARCHAR(10),
@@ -197,3 +207,14 @@ BEGIN
 END
 
 EXEC TaiKhoan_Xoa '1'
+
+-- ============ NHAN VIEN =============
+-- Load NhanVien
+CREATE PROC NhanVien_Load
+AS
+BEGIN
+	SELECT * FROM NhanVien AS nv
+END
+EXEC NhanVien_Load
+
+-- Load NhanVien theo 

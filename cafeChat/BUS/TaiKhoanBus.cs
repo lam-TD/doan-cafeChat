@@ -19,6 +19,15 @@ namespace BUS
             DataTable dt = conn.getTable(query);
             return dt;
         }
+        public static bool TaiKhoan_Login(string tk, string mk)
+        {
+            string query = "EXEC TaiKhoan_Load_nv_id '"+ tk +"', '"+ mk +"'";
+            DataTable dt = conn.getTable(query);
+            if (dt.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
 
         public static bool TaiKhoan_Them(TaiKhoanDTO tk, int type)
         {
