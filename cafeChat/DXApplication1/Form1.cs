@@ -15,5 +15,13 @@ namespace DXApplication1
         {
             InitializeComponent();
         }
+
+        private void btnQLTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiTaiKhoan ucTK = new ucControl.ucQuanLiTaiKhoan();
+            ucTK.Dock = DockStyle.Fill;
+            tableLayoutMain.Controls.Clear();
+            tableLayoutMain.Controls.Add(ucTK,1,0);
+        }
     }
 }
