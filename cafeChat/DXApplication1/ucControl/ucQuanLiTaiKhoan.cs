@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using BUS;
 
 namespace DXApplication1.ucControl
 {
@@ -16,11 +17,18 @@ namespace DXApplication1.ucControl
         public ucQuanLiTaiKhoan()
         {
             InitializeComponent();
+            load_TaiKhoan();
         }
 
         void load_TaiKhoan()
         {
-            string query = "";
+            gridTk.DataSource =  TaiKhoanBus.Load_TaiKhoan();
+        }
+
+        private void btnThemTk_Click(object sender, EventArgs e)
+        {
+            frmTaiKhoan_Them tk = new frmTaiKhoan_Them();
+            tk.ShowDialog();
         }
     }
 }

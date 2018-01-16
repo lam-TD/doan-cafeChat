@@ -11,6 +11,7 @@ create table NhanVien
 	nv_ten nvarchar(100) not null default N'Chưa nhập tên',
 	nv_diachi nvarchar(200),
 	nv_sdt varchar(11),
+	nv_taikhoan INT DEFAULT 0,
 	nv_trangthai int default 0
 )
 go
@@ -139,5 +140,60 @@ insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '2000
 
 -- Tao proc
 
--- load TaiKhoan
-create
+-- ================TAI KHOAN================= --
+-- Load TaiKhoan
+CREATE PROC TaiKhoan_Load
+AS
+BEGIN
+	SELECT * FROM TaiKhoan AS tk
+END
+EXEC TaiKhoan_Load
+
+-- Them Tai Khoan
+CREATE PROC TaiKhoan_Them
+@nv_id VARCHAR(10),
+@tk_matkhau VARCHAR(20),
+@tk_quyen INT
+AS
+BEGIN
+	INSERT INTO TaiKhoan
+	(
+		nv_id,
+		tk_matkhau,
+		tk_quyen
+	)
+	VALUES
+	(
+		@nv_id,
+		@tk_matkhau,
+		@tk_quyen
+	)
+END
+EXEC TaiKhoan_Them '1','12345',1
+
+-- Sua Thai Khoan
+CREATE PROC TaiKhoan_Sua
+@nv_id VARCHAR(10),
+@tk_matkhau VARCHAR(20),
+@tk_quyen INT
+AS
+BEGIN
+	UPDATE TaiKhoan
+	SET
+		tk_matkhau = @tk_matkhau,
+		tk_quyen = @tk_quyen
+	WHERE
+		nv_id = @nv_id
+END
+
+EXEC TaiKhoan_Sua '1','12345789',1
+
+-- Xoa Tai Khoan
+CREATE PROC TaiKhoan_Xoa
+@nv_id VARCHAR(10)
+AS
+BEGIN
+	DELETE FROM TaiKhoan WHERE nv_id = @nv_id
+END
+
+EXEC TaiKhoan_Xoa '1'

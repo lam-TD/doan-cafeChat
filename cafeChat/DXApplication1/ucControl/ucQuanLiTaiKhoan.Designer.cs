@@ -34,15 +34,15 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridTk = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCapnhatTk = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemTk = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -114,66 +114,6 @@
             this.gridView1.GridControl = this.gridTk;
             this.gridView1.Name = "gridView1";
             // 
-            // btnCapnhatTk
-            // 
-            this.btnCapnhatTk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapnhatTk.ImageOptions.Image")));
-            this.btnCapnhatTk.Location = new System.Drawing.Point(343, 12);
-            this.btnCapnhatTk.Name = "btnCapnhatTk";
-            this.btnCapnhatTk.Size = new System.Drawing.Size(328, 22);
-            this.btnCapnhatTk.StyleController = this.layoutControl1;
-            this.btnCapnhatTk.TabIndex = 5;
-            this.btnCapnhatTk.Text = "Cập nhật";
-            // 
-            // btnThemTk
-            // 
-            this.btnThemTk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemTk.ImageOptions.Image")));
-            this.btnThemTk.Location = new System.Drawing.Point(12, 12);
-            this.btnThemTk.Name = "btnThemTk";
-            this.btnThemTk.Size = new System.Drawing.Size(327, 22);
-            this.btnThemTk.StyleController = this.layoutControl1;
-            this.btnThemTk.TabIndex = 4;
-            this.btnThemTk.Text = "Thêm mới";
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem2,
-            this.layoutControlItem3});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(683, 362);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.btnThemTk;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(331, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.btnCapnhatTk;
-            this.layoutControlItem2.Location = new System.Drawing.Point(331, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(332, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.groupControl1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(663, 316);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
             // gridColumn1
             // 
             this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
@@ -215,6 +155,67 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            // 
+            // btnCapnhatTk
+            // 
+            this.btnCapnhatTk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapnhatTk.ImageOptions.Image")));
+            this.btnCapnhatTk.Location = new System.Drawing.Point(343, 12);
+            this.btnCapnhatTk.Name = "btnCapnhatTk";
+            this.btnCapnhatTk.Size = new System.Drawing.Size(328, 22);
+            this.btnCapnhatTk.StyleController = this.layoutControl1;
+            this.btnCapnhatTk.TabIndex = 5;
+            this.btnCapnhatTk.Text = "Cập nhật";
+            // 
+            // btnThemTk
+            // 
+            this.btnThemTk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemTk.ImageOptions.Image")));
+            this.btnThemTk.Location = new System.Drawing.Point(12, 12);
+            this.btnThemTk.Name = "btnThemTk";
+            this.btnThemTk.Size = new System.Drawing.Size(327, 22);
+            this.btnThemTk.StyleController = this.layoutControl1;
+            this.btnThemTk.TabIndex = 4;
+            this.btnThemTk.Text = "Thêm mới";
+            this.btnThemTk.Click += new System.EventHandler(this.btnThemTk_Click);
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(683, 362);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.btnThemTk;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(331, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.btnCapnhatTk;
+            this.layoutControlItem2.Location = new System.Drawing.Point(331, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(332, 26);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.groupControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(663, 316);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // ucQuanLiTaiKhoan
             // 

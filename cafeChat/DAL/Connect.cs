@@ -17,7 +17,7 @@ namespace DAL
             conn.Open();
         }
 
-        public DataTable loadData(string sql) //load du lieu tra ve la mot table
+        public DataTable getTable(string sql) //load du lieu tra ve la mot table
         {
             SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
@@ -25,7 +25,7 @@ namespace DAL
             return dt;
         }
 
-        public bool Excute(string sql) // kiem tra truy van
+        public bool ExcuteQuery(string sql) // kiem tra truy van
         {
             SqlCommand cmd = new SqlCommand(sql, conn);
             try

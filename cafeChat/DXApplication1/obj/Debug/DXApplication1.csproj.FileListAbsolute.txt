@@ -150,3 +150,4 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DT
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\BUS.pdb
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DAL.pdb
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DTO.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.frmTaiKhoan_Them.resources
