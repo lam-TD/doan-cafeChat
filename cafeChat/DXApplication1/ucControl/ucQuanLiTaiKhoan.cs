@@ -17,5 +17,10 @@ namespace DXApplication1.ucControl
         {
             InitializeComponent();
         }
+
+        void load_TaiKhoan()
+        {
+            string query = "";
+        }
     }
 }

@@ -136,3 +136,8 @@ insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id) 
 --Them Chi Tiet Hoa Don
 insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '20000', '1', '1');
 insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '200000', '2', '1');
+
+-- Tao proc
+
+-- load TaiKhoan
+create

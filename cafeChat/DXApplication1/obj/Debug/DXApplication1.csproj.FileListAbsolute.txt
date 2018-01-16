@@ -144,3 +144,9 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DX
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiNhanVien.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiSanPham.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FrmThuNgan.resources
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\BUS.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DAL.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DTO.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\BUS.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DAL.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DTO.pdb
