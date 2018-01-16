@@ -106,6 +106,7 @@
             this.cbQuyen.Name = "cbQuyen";
             this.cbQuyen.Size = new System.Drawing.Size(187, 21);
             this.cbQuyen.TabIndex = 8;
+            this.cbQuyen.SelectedIndexChanged += new System.EventHandler(this.cbQuyen_SelectedIndexChanged);
             // 
             // cbMaNv
             // 

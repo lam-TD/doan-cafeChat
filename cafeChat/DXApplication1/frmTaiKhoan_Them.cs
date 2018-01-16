@@ -73,5 +73,10 @@ namespace DXApplication1
             else
                 XtraMessageBox.Show("Vui lòng điền đầy đủ thông tin!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void cbQuyen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
