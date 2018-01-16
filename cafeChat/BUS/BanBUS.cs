@@ -13,11 +13,26 @@ namespace BUS
     {
         private static Connect conn = new Connect();
 
-        public static DataTable Load_TaiKhoan()
+        public static DataTable Ban_Load()
         {
-            string query = "EXEC TaiKhoan_Load";
-            DataTable dt = conn.getTable(query);
+            DataTable dt = conn.getTable("EXEC Ban_Load");
             return dt;
+        }
+
+        public static List<BanDTO> Ban_List()
+        {
+            DataTable dt = Ban_Load();
+            List<BanDTO> listBan = new List<BanDTO>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                BanDTO ban = new BanDTO();
+                ban.Ban_id = dt.Rows[i]["ban_id"].ToString();
+                ban.Ban_ten = dt.Rows[i]["ban_ten"].ToString();
+                ban.Ban_trangthai = dt.Rows[i]["ban_trangthai"].ToString();
+                ban.Kv_id = int.Parse(dt.Rows[i]["kv_id"].ToString());
+                listBan.Add(ban);
+            }
+            return listBan;
         }
     }
 }

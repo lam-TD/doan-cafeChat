@@ -438,8 +438,8 @@ END
 EXEC DanhMuc_Xoa 1
 
 -- ========== BAN ==========
--- Load Ban
-CREATE PROC Ban_Load
+-- Load Ban theo trang thai
+CREATE PROC Ban_Load_TrangThai
 @trangthai NVARCHAR(20)
 AS
 BEGIN
@@ -450,11 +450,24 @@ BEGIN
 		kv_id
 	FROM
 		Ban
-	WHERE ban_trangthai = @trangthai
+	WHERE ban_trangthai = @trangthai AND ban_xoa = 0
 END
 EXEC Ban_Load N'Trống'
 
-
+-- Load tat ca Ban trừ bàn bị xóa -- ban_xoa = 1(đã xóa) -- 
+CREATE PROC Ban_Load
+AS
+BEGIN
+	SELECT
+		ban_id,
+		ban_ten,
+		ban_trangthai,
+		kv_id
+	FROM
+		Ban
+	WHERE ban_xoa = 0
+END
+EXEC Ban_Load
 
 
 --================= HAM XU LY DAC BIET
