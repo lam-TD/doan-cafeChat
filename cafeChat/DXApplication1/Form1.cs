@@ -15,28 +15,30 @@ namespace DXApplication1
             InitializeComponent();
         }
 
+        void load_ucControl(UserControl uc, string caption, int col, int row)
+        {
+            uc.Dock = DockStyle.Fill;
+            lbcaption.Text = caption;
+            tableLayoutMain.Controls.Clear();
+            tableLayoutMain.Controls.Add(lbcaption, 1, 0);
+            tableLayoutMain.Controls.Add(uc, col, row);
+        }
         private void btnQLTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ucControl.ucQuanLiTaiKhoan ucTK = new ucControl.ucQuanLiTaiKhoan();
-            ucTK.Dock = DockStyle.Fill;
-            tableLayoutMain.Controls.Clear();
-            tableLayoutMain.Controls.Add(ucTK,1,0);
+            load_ucControl(ucTK, "Quản lý tài khoản", 1, 1);
         }
 
         private void btnQLSanPham_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ucControl.ucQuanLiSanPham ucSP = new ucControl.ucQuanLiSanPham();
-            ucSP.Dock = DockStyle.Fill;
-            tableLayoutMain.Controls.Clear();
-            tableLayoutMain.Controls.Add(ucSP, 1, 0);
+            load_ucControl(ucSP, "Quản lý sản phẩm", 1, 1);
         }
 
         private void btnQLNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ucControl.ucQuanLiNhanVien ucNV = new ucControl.ucQuanLiNhanVien();
-            ucNV.Dock = DockStyle.Fill;
-            tableLayoutMain.Controls.Clear();
-            tableLayoutMain.Controls.Add(ucNV, 1, 0);
+            load_ucControl(ucNV, "Quản lý nhân viên", 1, 1);
         }
     }
 }

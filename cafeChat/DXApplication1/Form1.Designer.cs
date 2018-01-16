@@ -56,7 +56,11 @@
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbcaption = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            this.tableLayoutMain.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -279,13 +283,38 @@
             this.tableLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutMain.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutMain.Location = new System.Drawing.Point(0, 141);
             this.tableLayoutMain.Name = "tableLayoutMain";
-            this.tableLayoutMain.RowCount = 1;
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutMain.RowCount = 2;
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutMain.Size = new System.Drawing.Size(891, 372);
             this.tableLayoutMain.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbcaption);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(92, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(706, 31);
+            this.panel1.TabIndex = 0;
+            // 
+            // lbcaption
+            // 
+            this.lbcaption.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lbcaption.Appearance.Options.UseFont = true;
+            this.lbcaption.Appearance.Options.UseTextOptions = true;
+            this.lbcaption.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbcaption.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbcaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbcaption.Location = new System.Drawing.Point(0, 0);
+            this.lbcaption.Name = "lbcaption";
+            this.lbcaption.Size = new System.Drawing.Size(706, 31);
+            this.lbcaption.TabIndex = 0;
+            this.lbcaption.Text = "Quản lý tài khoản";
             // 
             // Form1
             // 
@@ -299,6 +328,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffe Chất";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            this.tableLayoutMain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,6 +364,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutMain;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.LabelControl lbcaption;
     }
 }
 
