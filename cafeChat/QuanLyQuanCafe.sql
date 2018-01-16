@@ -470,6 +470,15 @@ END
 EXEC Ban_Load
 
 
+
+
+
+
+
+
+
+
+
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP
 CREATE PROC Ban_TimIDKeTiep
