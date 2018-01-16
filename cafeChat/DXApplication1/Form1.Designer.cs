@@ -123,6 +123,7 @@
             this.btnThuNgan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThuNgan.ImageOptions.Image")));
             this.btnThuNgan.Name = "btnThuNgan";
             this.btnThuNgan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnThuNgan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThuNgan_ItemClick);
             // 
             // barButtonItem5
             // 

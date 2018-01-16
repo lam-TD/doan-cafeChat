@@ -40,5 +40,11 @@ namespace DXApplication1
             ucControl.ucQuanLiNhanVien ucNV = new ucControl.ucQuanLiNhanVien();
             load_ucControl(ucNV, "Quản lý nhân viên", 1, 1);
         }
+
+        private void btnThuNgan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FrmThuNgan frmTn = new FrmThuNgan();
+            frmTn.ShowDialog();
+        }
     }
 }
