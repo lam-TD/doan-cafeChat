@@ -180,6 +180,7 @@
             this.btnQLDanhMuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLDanhMuc.ImageOptions.Image")));
             this.btnQLDanhMuc.Name = "btnQLDanhMuc";
             this.btnQLDanhMuc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnQLDanhMuc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLDanhMuc_ItemClick);
             // 
             // btnQLBan
             // 
@@ -197,6 +198,7 @@
             this.btnQLKhuVuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLKhuVuc.ImageOptions.Image")));
             this.btnQLKhuVuc.Name = "btnQLKhuVuc";
             this.btnQLKhuVuc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnQLKhuVuc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLKhuVuc_ItemClick);
             // 
             // ribbonPage2
             // 

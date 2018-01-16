@@ -52,5 +52,17 @@ namespace DXApplication1
             ucControl.ucQuanLiBan ucBan = new ucControl.ucQuanLiBan();
             load_ucControl(ucBan, "Quản lý bàn", 1, 1);
         }
+
+        private void btnQLKhuVuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiKhuVuc ucKV = new ucControl.ucQuanLiKhuVuc();
+            load_ucControl(ucKV, "Quản lý khu vực", 1, 1);
+        }
+
+        private void btnQLDanhMuc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiDanhMuc ucDM = new ucControl.ucQuanLiDanhMuc();
+            load_ucControl(ucDM, "Quản lý danh mục", 1, 1);
+        }
     }
 }

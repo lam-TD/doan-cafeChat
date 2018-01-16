@@ -1,6 +1,6 @@
 ﻿namespace DXApplication1.ucControl
 {
-    partial class ucQuanLiBan
+    partial class ucQuanLiKhuVuc
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucQuanLiBan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucQuanLiKhuVuc));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnCapNhatBan = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThemBan = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCapNhatKV = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemKV = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,14 +87,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(862, 368);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutPanel1.TabIndex = 3;
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.comboBox2);
             this.layoutControl1.Controls.Add(this.comboBox1);
-            this.layoutControl1.Controls.Add(this.btnCapNhatBan);
-            this.layoutControl1.Controls.Add(this.btnThemBan);
+            this.layoutControl1.Controls.Add(this.btnCapNhatKV);
+            this.layoutControl1.Controls.Add(this.btnThemKV);
             this.layoutControl1.Controls.Add(this.groupControl1);
             this.layoutControl1.Controls.Add(this.textEdit2);
             this.layoutControl1.Controls.Add(this.textEdit1);
@@ -123,25 +123,25 @@
             this.comboBox1.Size = new System.Drawing.Size(264, 21);
             this.comboBox1.TabIndex = 11;
             // 
-            // btnCapNhatBan
+            // btnCapNhatKV
             // 
-            this.btnCapNhatBan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatBan.ImageOptions.Image")));
-            this.btnCapNhatBan.Location = new System.Drawing.Point(503, 92);
-            this.btnCapNhatBan.Name = "btnCapNhatBan";
-            this.btnCapNhatBan.Size = new System.Drawing.Size(156, 22);
-            this.btnCapNhatBan.StyleController = this.layoutControl1;
-            this.btnCapNhatBan.TabIndex = 10;
-            this.btnCapNhatBan.Text = "Cập nhật";
+            this.btnCapNhatKV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhatBan.ImageOptions.Image")));
+            this.btnCapNhatKV.Location = new System.Drawing.Point(503, 92);
+            this.btnCapNhatKV.Name = "btnCapNhatKV";
+            this.btnCapNhatKV.Size = new System.Drawing.Size(156, 22);
+            this.btnCapNhatKV.StyleController = this.layoutControl1;
+            this.btnCapNhatKV.TabIndex = 10;
+            this.btnCapNhatKV.Text = "Cập nhật";
             // 
-            // btnThemBan
+            // btnThemKV
             // 
-            this.btnThemBan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemBan.ImageOptions.Image")));
-            this.btnThemBan.Location = new System.Drawing.Point(343, 92);
-            this.btnThemBan.Name = "btnThemBan";
-            this.btnThemBan.Size = new System.Drawing.Size(156, 22);
-            this.btnThemBan.StyleController = this.layoutControl1;
-            this.btnThemBan.TabIndex = 9;
-            this.btnThemBan.Text = "Thêm";
+            this.btnThemKV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemBan.ImageOptions.Image")));
+            this.btnThemKV.Location = new System.Drawing.Point(343, 92);
+            this.btnThemKV.Name = "btnThemKV";
+            this.btnThemKV.Size = new System.Drawing.Size(156, 22);
+            this.btnThemKV.StyleController = this.layoutControl1;
+            this.btnThemKV.TabIndex = 9;
+            this.btnThemKV.Text = "Thêm";
             // 
             // groupControl1
             // 
@@ -249,7 +249,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(319, 25);
-            this.layoutControlItem1.Text = "Mã bàn";
+            this.layoutControlItem1.Text = "Mã khu";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(49, 13);
             // 
             // layoutControlItem3
@@ -272,7 +272,7 @@
             // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.btnThemBan;
+            this.layoutControlItem6.Control = this.btnThemKV;
             this.layoutControlItem6.Location = new System.Drawing.Point(319, 50);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(160, 26);
@@ -281,7 +281,7 @@
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.Control = this.btnCapNhatBan;
+            this.layoutControlItem7.Control = this.btnCapNhatKV;
             this.layoutControlItem7.Location = new System.Drawing.Point(479, 50);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(160, 26);
@@ -306,12 +306,12 @@
             this.layoutControlItem4.Text = "Trạng thái";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(49, 13);
             // 
-            // ucQuanLiBan
+            // ucQuanLiKhuVuc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ucQuanLiBan";
+            this.Name = "ucQuanLiKhuVuc";
             this.Size = new System.Drawing.Size(862, 368);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -341,8 +341,8 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private DevExpress.XtraEditors.SimpleButton btnCapNhatBan;
-        private DevExpress.XtraEditors.SimpleButton btnThemBan;
+        private DevExpress.XtraEditors.SimpleButton btnCapNhatKV;
+        private DevExpress.XtraEditors.SimpleButton btnThemKV;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;

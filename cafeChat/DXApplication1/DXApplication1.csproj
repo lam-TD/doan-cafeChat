@@ -95,11 +95,23 @@
     <Compile Include="ucControl\ucQuanLiCaTruc.Designer.cs">
       <DependentUpon>ucQuanLiCaTruc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucControl\ucQuanLiDanhMuc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControl\ucQuanLiDanhMuc.Designer.cs">
+      <DependentUpon>ucQuanLiDanhMuc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControl\ucQuanLiHoaDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucControl\ucQuanLiHoaDon.Designer.cs">
       <DependentUpon>ucQuanLiHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucControl\ucQuanLiKhuVuc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControl\ucQuanLiKhuVuc.Designer.cs">
+      <DependentUpon>ucQuanLiKhuVuc.cs</DependentUpon>
     </Compile>
     <Compile Include="ucControl\ucQuanLiNhanVien.cs">
       <SubType>UserControl</SubType>
@@ -144,8 +156,14 @@
     <EmbeddedResource Include="ucControl\ucQuanLiCaTruc.resx">
       <DependentUpon>ucQuanLiCaTruc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControl\ucQuanLiDanhMuc.resx">
+      <DependentUpon>ucQuanLiDanhMuc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiHoaDon.resx">
       <DependentUpon>ucQuanLiHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControl\ucQuanLiKhuVuc.resx">
+      <DependentUpon>ucQuanLiKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiNhanVien.resx">
       <DependentUpon>ucQuanLiNhanVien.cs</DependentUpon>

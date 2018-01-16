@@ -40,7 +40,8 @@ create table DanhMuc
 (
 	dm_id INT IDENTITY(1,1) primary KEY,
 	dm_ten nvarchar(100) not null default N'Chưa đặt tên',
-	dm_trangthai int default 0
+	dm_trangthai int default 0,
+	dm_ghichu NVARCHAR(200)
 )
 go
 
@@ -60,7 +61,8 @@ create table KhuVuc
 (
 	kv_id int primary key,
 	kv_ten nvarchar(100) not null,
-	kv_trangthai nvarchar(100) default N'Đang sử dụng'
+	kv_trangthai nvarchar(100) default N'Đang sử dụng',
+	kv_ghichu NVARCHAR(200)
 )
 GO
 
@@ -375,7 +377,8 @@ BEGIN
 	SELECT
 		dm.dm_id,
 		dm.dm_ten,
-		dm.dm_trangthai
+		dm.dm_trangthai,
+		dm.dm_ghichu
 	FROM
 		DanhMuc AS dm
 	WHERE dm.dm_trangthai = 1
@@ -385,18 +388,21 @@ EXEC DanhMuc_Load
 -- Them Danh Muc
 CREATE PROC DanhMuc_Them
 @dm_ten NVARCHAR(100),
-@dm_trangthai INT
+@dm_trangthai INT,
+@dm_ghichu NVARCHAR(200)
 AS
 BEGIN
 	INSERT INTO DanhMuc
 	(
 		dm_ten,
-		dm_trangthai
+		dm_trangthai,
+		dm_ghichu
 	)
 	VALUES
 	(
 		@dm_ten,
-		@dm_trangthai
+		@dm_trangthai,
+		@dm_ghichu
 	)
 END
 EXEC DanhMuc_Them N'Sinh Tố',1
@@ -405,13 +411,15 @@ EXEC DanhMuc_Them N'Sinh Tố',1
 CREATE PROC DanhMuc_Sua
 @dm_id INT,
 @dm_ten NVARCHAR(100),
-@dm_trangthai INT
+@dm_trangthai INT,
+@dm_ghichu NVARCHAR(200)
 AS
 BEGIN
 	UPDATE DanhMuc
 	SET
-		dm_ten = @dm_ten,
-		dm_trangthai = @dm_trangthai
+		dm_ten		 = @dm_ten,
+		dm_trangthai = @dm_trangthai,
+		dm_ghichu	 = @dm_ghichu
 	WHERE dm_id = @dm_id
 END
 EXEC DanhMuc_Sua 1,N'Sinh Tố',1
@@ -428,3 +436,4 @@ BEGIN
 END
 
 EXEC DanhMuc_Xoa 1
+
