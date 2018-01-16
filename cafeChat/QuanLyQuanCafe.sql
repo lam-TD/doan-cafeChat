@@ -111,16 +111,16 @@ insert into NhanVien(nv_id, nv_ten, nv_diachi, nv_sdt, nv_trangthai) values ( '1
 insert into NhanVien(nv_id, nv_ten, nv_diachi, nv_sdt, nv_trangthai) values ( '2', N'Nguyễn Văn b', 'hihi', '123456', '0');
 
 -- Them Tai Khoan
-insert into TaiKhoan values('1','12345',1);
-insert into TaiKhoan values('2','12345',0);
+insert into TaiKhoan values('1','12345',1,1);
+insert into TaiKhoan values('2','12345',0,1);
 
 -- Them Ca Truc
 insert into CaTruc(ct_id, ct_ngaytruc, ct_buoitruc, nv_id) values ('1', '1-1-2018', N'Sáng', '2');
 insert into CaTruc(ct_id, ct_ngaytruc, ct_buoitruc, nv_id) values ('2', '1-1-2018', N'Tối', '1');
 
 -- Them Danh Muc
-insert into DanhMuc(dm_id, dm_ten, dm_trangthai) values ('1', N'Giải Khát',1);
-insert into DanhMuc(dm_id, dm_ten, dm_trangthai) values ('2', N'Sinh tố',1);
+insert into DanhMuc(dm_ten, dm_trangthai,dm_ghichu) values ( N'Giải Khát',1,'dâdad');
+insert into DanhMuc(dm_ten, dm_trangthai, dm_ghichu) values (N'Sinh tố',1,'zddad');
 
 --Them Thuc Uong
 insert into ThucUong(tu_id, tu_ten, tu_gia, dm_id, tu_trangthai) values ('1',N'Pepsi','20000', '1',1);
