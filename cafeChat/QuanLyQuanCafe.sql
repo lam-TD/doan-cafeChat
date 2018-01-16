@@ -59,7 +59,7 @@ go
 
 create table KhuVuc
 (
-	kv_id int primary key,
+	kv_id VARCHAR(10) primary key,
 	kv_ten nvarchar(100) not null,
 	kv_trangthai nvarchar(100) default N'Đang sử dụng',
 	kv_ghichu NVARCHAR(200)
@@ -68,7 +68,7 @@ GO
 
 create table Ban
 (
-	ban_id int primary key,
+	ban_id VARCHAR(10) primary key,
 	ban_ten nvarchar(100) not null default N'Bàn trống',
 	ban_trangthai nvarchar(100) not null default N'Trống',
 	kv_id int not null
@@ -79,7 +79,7 @@ GO
 
 create table HoaDon
 (
-	hd_id int primary key,
+	hd_id VARCHAR(10) primary key,
 	hd_ngaylap datetime not null default getdate(),
 	hd_trangthai int not null default 0,
 	hd_tongtien int not null,
@@ -95,7 +95,7 @@ create table CTHD
 (
 	cthd_soluong int not null default 0,
 	cthd_thanhtien int not null, 
-	hd_id int not null,
+	hd_id VARCHAR(10) not null,
 	tu_id int not null
 
 	primary key(hd_id, tu_id),
@@ -437,3 +437,39 @@ END
 
 EXEC DanhMuc_Xoa 1
 
+-- ========== BAN ==========
+-- Load Ban
+CREATE PROC Ban_Load
+@trangthai NVARCHAR(20)
+AS
+BEGIN
+	SELECT
+		ban_id,
+		ban_ten,
+		ban_trangthai,
+		kv_id
+	FROM
+		Ban
+	WHERE ban_trangthai = @trangthai
+END
+EXEC Ban_Load N'Trống'
+
+
+
+
+--================= HAM XU LY DAC BIET
+-- TIM MA BAN KE TIEP
+CREATE PROC Ban_TimIDKeTiep
+AS
+BEGIN
+	DECLARE @ban_id VARCHAR(10) = 'B00001'
+	DECLARE @Idx INT
+	SET @Idx = 1
+	WHILE EXISTS (SELECT ban_id FROM Ban WHERE ban_id = @ban_id)
+	BEGIN
+		SET @Idx = @Idx + 1
+		SET @ban_id = 'B' + REPLICATE('0', 5 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+	END
+	PRINT @ban_id
+END
+EXEC Ban_TimIDKeTiep
