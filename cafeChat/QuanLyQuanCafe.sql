@@ -12,7 +12,7 @@ create table NhanVien
 	nv_diachi nvarchar(200),
 	nv_sdt varchar(11),
 	nv_taikhoan INT DEFAULT 0,
-	nv_trangthai int default 0
+	nv_trangthai NVARCHAR(20) default '0'
 )
 go
 
@@ -20,7 +20,8 @@ create table TaiKhoan
 (
 	nv_id varchar(10) not null,
 	tk_matkhau varchar(20) not null,
-	tk_quyen int not null default 0
+	tk_quyen int not null default 0,
+	tk_trangthai INT DEFAULT 1,
 	foreign key (nv_id) references NhanVien(nv_id)
 )
 
@@ -37,7 +38,7 @@ go
 
 create table DanhMuc
 (
-	dm_id int primary key,
+	dm_id INT IDENTITY(1,1) primary KEY,
 	dm_ten nvarchar(100) not null default N'Chưa đặt tên',
 	dm_trangthai int default 0
 )
@@ -145,7 +146,7 @@ insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '2000
 CREATE PROC TaiKhoan_Load
 AS
 BEGIN
-	SELECT * FROM TaiKhoan AS tk
+	SELECT * FROM TaiKhoan AS tk WHERE tk.tk_trangthai = 1
 END
 EXEC TaiKhoan_Load
 
@@ -155,7 +156,7 @@ CREATE PROC TaiKhoan_Load_nv_id
 @tk_matkhau VARCHAR(20)
 AS
 BEGIN
-	SELECT * FROM TaiKhoan AS tk WHERE tk.nv_id = @nv_id AND tk.tk_matkhau = @tk_matkhau
+	SELECT * FROM TaiKhoan AS tk WHERE tk.nv_id = @nv_id AND tk.tk_matkhau = @tk_matkhau AND tk.tk_trangthai = 1
 END
 EXEC TaiKhoan_Load_nv_id '2', '12345'
 
@@ -163,47 +164,55 @@ EXEC TaiKhoan_Load_nv_id '2', '12345'
 CREATE PROC TaiKhoan_Them
 @nv_id VARCHAR(10),
 @tk_matkhau VARCHAR(20),
-@tk_quyen INT
+@tk_quyen INT,
+@tk_trangthai INT
 AS
 BEGIN
 	INSERT INTO TaiKhoan
 	(
 		nv_id,
 		tk_matkhau,
-		tk_quyen
+		tk_quyen,
+		tk_trangthai
 	)
 	VALUES
 	(
 		@nv_id,
 		@tk_matkhau,
-		@tk_quyen
+		@tk_quyen,
+		@tk_trangthai
 	)
 END
-EXEC TaiKhoan_Them '1','12345',1
+EXEC TaiKhoan_Them '1','12345',1,1
 
 -- Sua Thai Khoan
 CREATE PROC TaiKhoan_Sua
 @nv_id VARCHAR(10),
 @tk_matkhau VARCHAR(20),
-@tk_quyen INT
+@tk_quyen INT,
+@tk_trangthai int
 AS
 BEGIN
 	UPDATE TaiKhoan
 	SET
 		tk_matkhau = @tk_matkhau,
-		tk_quyen = @tk_quyen
+		tk_quyen = @tk_quyen,
+		tk_trangthai = @tk_trangthai
 	WHERE
 		nv_id = @nv_id
 END
 
-EXEC TaiKhoan_Sua '1','12345789',1
+EXEC TaiKhoan_Sua '1','12345789',1,1
 
 -- Xoa Tai Khoan
 CREATE PROC TaiKhoan_Xoa
 @nv_id VARCHAR(10)
 AS
 BEGIN
-	DELETE FROM TaiKhoan WHERE nv_id = @nv_id
+	UPDATE TaiKhoan
+	SET
+		tk_trangthai = 0
+	WHERE nv_id = @nv_id
 END
 
 EXEC TaiKhoan_Xoa '1'
@@ -213,8 +222,209 @@ EXEC TaiKhoan_Xoa '1'
 CREATE PROC NhanVien_Load
 AS
 BEGIN
-	SELECT * FROM NhanVien AS nv
+	SELECT * FROM NhanVien AS nv WHERE nv.nv_trangthai = N'Đang làm việc'
 END
 EXEC NhanVien_Load
 
--- Load NhanVien theo 
+-- Them Nhan Vien
+CREATE PROC NhanVien_Them
+@nv_id VARCHAR(10),
+@nv_ten NVARCHAR(100),
+@nv_diachi NVARCHAR(200),
+@nv_sdt VARCHAR(11),
+@nv_taikhoan INT,
+@nv_trangthai NVARCHAR(20) 
+AS 
+BEGIN
+	INSERT INTO NhanVien
+	(
+		nv_id,
+		nv_ten,
+		nv_diachi,
+		nv_sdt,
+		nv_taikhoan,
+		nv_trangthai
+	)
+	VALUES
+	(
+		@nv_id,
+		@nv_ten,
+		@nv_diachi,
+		@nv_sdt,
+		@nv_taikhoan,
+		@nv_trangthai
+	)
+END
+
+EXEC NhanVien_Them 'nv001', N'Trần Văn Trụi',N'Hậu Giang','534535', 0,N'Đang làm việc'
+
+-- Cap Nhat Nhan Vien
+CREATE PROC NhanVien_Sua
+@nv_id VARCHAR(10),
+@nv_ten NVARCHAR(100),
+@nv_diachi NVARCHAR(200),
+@nv_sdt VARCHAR(11),
+@nv_taikhoan INT,
+@nv_trangthai NVARCHAR(20) 
+AS 
+BEGIN
+	UPDATE NhanVien
+	SET
+		nv_ten = @nv_ten,
+		nv_diachi = @nv_diachi,
+		nv_sdt = @nv_sdt,
+		nv_taikhoan = @nv_taikhoan,
+		nv_trangthai = @nv_trangthai
+	WHERE
+		nv_id = @nv_id
+END
+EXEC NhanVien_Sua 'nv001',N'Trần Văn Chịch',N'Cần Thơ','535535',0,N'Đang làm việc'
+
+-- Xoa Nhan Vien
+CREATE PROC NhanVien_Xoa
+@nv_id VARCHAR(10)
+AS
+BEGIN
+	UPDATE NhanVien
+	SET
+		nv_trangthai = N'Nghỉ'
+	WHERE nv_id = @nv_id
+END
+EXEC NhanVien_Xoa 'nv001'
+
+-- ========== THUC UONG ==========
+-- Load Thuc Uong
+CREATE PROC ThucUong_Load
+AS
+BEGIN
+	SELECT
+		tu.tu_id,
+		tu.tu_ten,
+		tu.tu_gia,
+		tu.tu_trangthai,
+		tu.dm_id
+	FROM
+		ThucUong AS tu
+	WHERE tu.tu_trangthai = 1
+END
+EXEC ThucUong_Load
+
+-- Them Thuc Uong
+CREATE PROC ThucUong_Them
+@tu_id INT,
+@tu_ten NVARCHAR(100),
+@tu_gia INT,
+@tu_trangthai INT,
+@dm_id INT
+AS
+BEGIN
+	INSERT INTO ThucUong
+	(
+		tu_id,
+		tu_ten,
+		tu_gia,
+		tu_trangthai,
+		dm_id
+	)
+	VALUES
+	(
+		@tu_id,
+		@tu_ten,
+		@tu_gia,
+		@tu_trangthai,
+		@dm_id
+	)
+END
+EXEC ThucUong_Them 3,N'Trà đường',12000,1,1
+
+-- Cap nhat Thuc Uong
+CREATE PROC ThucUong_Sua
+@tu_id INT,
+@tu_ten NVARCHAR(100),
+@tu_gia INT,
+@tu_trangthai INT,
+@dm_id INT
+AS
+BEGIN
+	UPDATE ThucUong
+	SET
+		tu_ten = @tu_ten,
+		tu_gia = @tu_gia,
+		tu_trangthai = @tu_trangthai,
+		dm_id = @dm_id
+	WHERE tu_id = @tu_id
+END
+EXEC ThucUong_Sua 3,N'Trà đường',12000,1,1
+
+-- Xoa Thuc Uong
+CREATE PROC ThucUong_Xoa
+@tu_id INT
+AS
+BEGIN
+	UPDATE ThucUong
+	SET
+		tu_trangthai = 0
+	WHERE tu_id = @tu_id
+END
+
+-- ========== DANH MUC ==========
+-- Load Danh Muc
+CREATE PROC DanhMuc_Load
+AS
+BEGIN
+	SELECT
+		dm.dm_id,
+		dm.dm_ten,
+		dm.dm_trangthai
+	FROM
+		DanhMuc AS dm
+	WHERE dm.dm_trangthai = 1
+END
+EXEC DanhMuc_Load
+
+-- Them Danh Muc
+CREATE PROC DanhMuc_Them
+@dm_ten NVARCHAR(100),
+@dm_trangthai INT
+AS
+BEGIN
+	INSERT INTO DanhMuc
+	(
+		dm_ten,
+		dm_trangthai
+	)
+	VALUES
+	(
+		@dm_ten,
+		@dm_trangthai
+	)
+END
+EXEC DanhMuc_Them N'Sinh Tố',1
+
+-- Cap Nhat Danh Muc
+CREATE PROC DanhMuc_Sua
+@dm_id INT,
+@dm_ten NVARCHAR(100),
+@dm_trangthai INT
+AS
+BEGIN
+	UPDATE DanhMuc
+	SET
+		dm_ten = @dm_ten,
+		dm_trangthai = @dm_trangthai
+	WHERE dm_id = @dm_id
+END
+EXEC DanhMuc_Sua 1,N'Sinh Tố',1
+
+-- Xoa Danh Muc
+CREATE PROC DanhMuc_Xoa
+@dm_id INT
+AS
+BEGIN
+	UPDATE DanhMuc
+	SET
+		dm_trangthai = 0
+	WHERE dm_id = @dm_id
+END
+
+EXEC DanhMuc_Xoa 1
