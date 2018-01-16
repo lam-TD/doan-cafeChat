@@ -1,13 +1,13 @@
-﻿create database CafeChat
+﻿create database CafeDataBase
 go
 
-use CafeChat
+use CafeDataBase
 go
 
 
 create table NhanVien
 (
-	nv_id int primary key,
+	nv_id varchar(10) primary key,
 	nv_ten nvarchar(100) not null default N'Chưa nhập tên',
 	nv_diachi nvarchar(200),
 	nv_sdt varchar(11),
@@ -17,9 +17,8 @@ go
 
 create table TaiKhoan
 (
-	tk_taikhoan varchar(20) not null primary key,
+	nv_id varchar(10) not null,
 	tk_matkhau varchar(20) not null,
-	nv_id int not null,
 	tk_quyen int not null default 0
 	foreign key (nv_id) references NhanVien(nv_id)
 )
@@ -29,7 +28,7 @@ create table CaTruc
 	ct_id int primary key,
 	ct_ngaytruc datetime not null,
 	ct_buoitruc nvarchar(100) not null,
-	nv_id int not null,
+	nv_id varchar(10) not null,
 	foreign key (nv_id) references NhanVien(nv_id)
 )
 go
@@ -81,7 +80,7 @@ create table HoaDon
 	hd_trangthai int not null default 0,
 	hd_tongtien int not null,
 	ban_id int not null,
-	nv_id int not null
+	nv_id varchar(10) not null
 
 	foreign key (ban_id) references Ban(ban_id),
 	foreign key (nv_id) references NhanVien(nv_id)
@@ -108,8 +107,8 @@ insert into NhanVien(nv_id, nv_ten, nv_diachi, nv_sdt, nv_trangthai) values ( '1
 insert into NhanVien(nv_id, nv_ten, nv_diachi, nv_sdt, nv_trangthai) values ( '2', N'Nguyễn Văn b', 'hihi', '123456', '0');
 
 -- Them Tai Khoan
-insert into TaiKhoan values('admin','12345',1,1);
-insert into TaiKhoan values('nhanvien1','12345',1,0);
+insert into TaiKhoan values('1','12345',1);
+insert into TaiKhoan values('2','12345',0);
 
 -- Them Ca Truc
 insert into CaTruc(ct_id, ct_ngaytruc, ct_buoitruc, nv_id) values ('1', '1-1-2018', N'Sáng', '2');
