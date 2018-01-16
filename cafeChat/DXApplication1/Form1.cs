@@ -30,5 +30,13 @@ namespace DXApplication1
             tableLayoutMain.Controls.Clear();
             tableLayoutMain.Controls.Add(ucSP, 1, 0);
         }
+
+        private void btnQLNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiNhanVien ucNV = new ucControl.ucQuanLiNhanVien();
+            ucNV.Dock = DockStyle.Fill;
+            tableLayoutMain.Controls.Clear();
+            tableLayoutMain.Controls.Add(ucNV, 1, 0);
+        }
     }
 }

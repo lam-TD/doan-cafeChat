@@ -116,7 +116,7 @@
             // 
             this.btnThuNgan.Caption = "Thu ngân";
             this.btnThuNgan.Id = 4;
-            this.btnThuNgan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
+            this.btnThuNgan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThuNgan.ImageOptions.Image")));
             this.btnThuNgan.Name = "btnThuNgan";
             this.btnThuNgan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -130,7 +130,7 @@
             // 
             this.btnQLHoaDon.Caption = "Danh sách hóa đơn";
             this.btnQLHoaDon.Id = 6;
-            this.btnQLHoaDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
+            this.btnQLHoaDon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLHoaDon.ImageOptions.Image")));
             this.btnQLHoaDon.Name = "btnQLHoaDon";
             this.btnQLHoaDon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -138,7 +138,7 @@
             // 
             this.btnQLThongKe.Caption = "Thống kê ";
             this.btnQLThongKe.Id = 7;
-            this.btnQLThongKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.btnQLThongKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLThongKe.ImageOptions.Image")));
             this.btnQLThongKe.Name = "btnQLThongKe";
             this.btnQLThongKe.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -146,15 +146,16 @@
             // 
             this.btnQLNhanVien.Caption = "Danh sách nhân viên";
             this.btnQLNhanVien.Id = 8;
-            this.btnQLNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
+            this.btnQLNhanVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLNhanVien.ImageOptions.Image")));
             this.btnQLNhanVien.Name = "btnQLNhanVien";
             this.btnQLNhanVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnQLNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLNhanVien_ItemClick);
             // 
             // btnQLCaTruc
             // 
             this.btnQLCaTruc.Caption = "Ca trực";
             this.btnQLCaTruc.Id = 9;
-            this.btnQLCaTruc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
+            this.btnQLCaTruc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLCaTruc.ImageOptions.Image")));
             this.btnQLCaTruc.Name = "btnQLCaTruc";
             this.btnQLCaTruc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -162,7 +163,7 @@
             // 
             this.btnQLSanPham.Caption = "Danh sách sản phẩm";
             this.btnQLSanPham.Id = 10;
-            this.btnQLSanPham.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.Image")));
+            this.btnQLSanPham.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLSanPham.ImageOptions.Image")));
             this.btnQLSanPham.Name = "btnQLSanPham";
             this.btnQLSanPham.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnQLSanPham.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLSanPham_ItemClick);
@@ -171,7 +172,7 @@
             // 
             this.btnQLDanhMuc.Caption = "Danh mục sản phẩm";
             this.btnQLDanhMuc.Id = 11;
-            this.btnQLDanhMuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.Image")));
+            this.btnQLDanhMuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLDanhMuc.ImageOptions.Image")));
             this.btnQLDanhMuc.Name = "btnQLDanhMuc";
             this.btnQLDanhMuc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -179,7 +180,7 @@
             // 
             this.btnQLBan.Caption = "Danh sách bàn";
             this.btnQLBan.Id = 12;
-            this.btnQLBan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem12.ImageOptions.Image")));
+            this.btnQLBan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLBan.ImageOptions.Image")));
             this.btnQLBan.Name = "btnQLBan";
             this.btnQLBan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -187,7 +188,7 @@
             // 
             this.btnQLKhuVuc.Caption = "Khu vực";
             this.btnQLKhuVuc.Id = 13;
-            this.btnQLKhuVuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.Image")));
+            this.btnQLKhuVuc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLKhuVuc.ImageOptions.Image")));
             this.btnQLKhuVuc.Name = "btnQLKhuVuc";
             this.btnQLKhuVuc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
