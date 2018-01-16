@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 namespace DXApplication1
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
@@ -22,6 +21,14 @@ namespace DXApplication1
             ucTK.Dock = DockStyle.Fill;
             tableLayoutMain.Controls.Clear();
             tableLayoutMain.Controls.Add(ucTK,1,0);
+        }
+
+        private void btnQLSanPham_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiSanPham ucSP = new ucControl.ucQuanLiSanPham();
+            ucSP.Dock = DockStyle.Fill;
+            tableLayoutMain.Controls.Clear();
+            tableLayoutMain.Controls.Add(ucSP, 1, 0);
         }
     }
 }

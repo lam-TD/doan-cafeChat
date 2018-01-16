@@ -109,6 +109,15 @@
     <EmbeddedResource Include="ucControl\ucQuanLiCaTruc.resx">
       <DependentUpon>ucQuanLiCaTruc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucControl\ucQuanLiHoaDon.resx">
+      <DependentUpon>ucQuanLiHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControl\ucQuanLiNhanVien.resx">
+      <DependentUpon>ucQuanLiNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucControl\ucQuanLiSanPham.resx">
+      <DependentUpon>ucQuanLiSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiTaiKhoan.resx">
       <DependentUpon>ucQuanLiTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
