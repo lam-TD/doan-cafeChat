@@ -46,5 +46,11 @@ namespace DXApplication1
             FrmThuNgan frmTn = new FrmThuNgan();
             frmTn.ShowDialog();
         }
+
+        private void btnQLBan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ucControl.ucQuanLiBan ucBan = new ucControl.ucQuanLiBan();
+            load_ucControl(ucBan, "Quản lý bàn", 1, 1);
+        }
     }
 }

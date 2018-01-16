@@ -151,3 +151,4 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\BU
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DAL.pdb
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\DTO.pdb
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.frmTaiKhoan_Them.resources
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiBan.resources

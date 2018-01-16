@@ -188,6 +188,7 @@
             this.btnQLBan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQLBan.ImageOptions.Image")));
             this.btnQLBan.Name = "btnQLBan";
             this.btnQLBan.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnQLBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLBan_ItemClick);
             // 
             // btnQLKhuVuc
             // 

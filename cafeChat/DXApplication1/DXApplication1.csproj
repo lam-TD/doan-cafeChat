@@ -83,6 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucControl\ucQuanLiBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControl\ucQuanLiBan.Designer.cs">
+      <DependentUpon>ucQuanLiBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControl\ucQuanLiCaTruc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ucControl\ucQuanLiBan.resx">
+      <DependentUpon>ucQuanLiBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiCaTruc.resx">
       <DependentUpon>ucQuanLiCaTruc.cs</DependentUpon>
     </EmbeddedResource>
