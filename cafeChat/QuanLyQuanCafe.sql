@@ -469,12 +469,37 @@ BEGIN
 END
 EXEC Ban_Load
 
+-- Load Ban theo Khu Vuc
+CREATE PROC Ban_Load_KhuVuc
+@kv_id INT
+AS
+BEGIN
+	SELECT
+		b.ban_id,
+		b.ban_ten,
+		b.ban_trangthai,
+		b.kv_id
+	FROM
+		Ban AS b
+	WHERE b.kv_id = @kv_id AND ban_xoa = 0
+END
+EXEC Ban_Load_KhuVuc 1
 
-
-
-
-
-
+-- ========== KHU VUC ==========
+-- Load Khu Vuc
+CREATE PROC KhucVuc_Load
+AS
+BEGIN
+	SELECT
+		kv.kv_id,
+		kv.kv_ten,
+		kv.kv_trangthai,
+		kv.kv_ghichu
+	FROM
+		KhuVuc AS kv
+	WHERE kv.kv_trangthai = N'Đang sử dụng'
+END
+EXEC KhucVuc_Load
 
 
 
