@@ -82,6 +82,8 @@ create table HoaDon
 	hd_id VARCHAR(10) primary key,
 	hd_ngaylap datetime not null default getdate(),
 	hd_trangthai int not null default 0,
+	hd_phuthu INT,
+	hd_giamgia INT,
 	hd_tongtien int not null,
 	ban_id int not null,
 	nv_id varchar(10) not null
@@ -134,9 +136,8 @@ insert into KhuVuc(kv_id, kv_ten, kv_trangthai) values (2, N'Tầng 1', N'Đang 
 insert into Ban(ban_id, ban_ten, ban_trangthai, kv_id) values ('1', 'Bàn 1', '1', '1');
 insert into Ban(ban_id, ban_ten, ban_trangthai, kv_id) values ('2', 'Bàn 2', '1', '1');
 -- Them Hoa Don
-insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id) values ('1', '1-1-2018', '20000', '0', 1, '1');
-insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id) values ('2', '1-2-2018', '200000', '0', 2, '1');
-
+insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id, hd_phuthu, hd_giamgia) values ('13', '1-1-2018', '20000', '0', 1, '1',1234,12345);
+insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id, hd_phuthu, hd_giamgia) values ('13', '1-1-2018', '20000', '0', 1, '1',34567,76543);
 --Them Chi Tiet Hoa Don
 insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '20000', '1', '1');
 insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '200000', '2', '1');
@@ -310,6 +311,23 @@ BEGIN
 	WHERE tu.tu_trangthai = 1
 END
 EXEC ThucUong_Load
+
+-- Load Thuc Uong theo ID danh muc
+CREATE PROC ThucUong_Load_IDDanhMuc
+@dm_id INT
+AS
+BEGIN
+	SELECT
+		tu.tu_id,
+		tu.tu_ten,
+		tu.tu_gia,
+		tu.tu_trangthai,
+		tu.dm_id
+	FROM
+		ThucUong AS tu
+	WHERE tu.tu_trangthai = 1 AND tu.dm_id = @dm_id
+END
+EXEC ThucUong_Load_IDDanhMuc 1
 
 -- Them Thuc Uong
 CREATE PROC ThucUong_Them
@@ -520,3 +538,44 @@ BEGIN
 	PRINT @ban_id
 END
 EXEC Ban_TimIDKeTiep
+
+CREATE PROC TimIDKeTiep
+@table VARCHAR(100)
+AS
+BEGIN
+	--DECLARE @ban_id VARCHAR(10) = 'B00001'
+	DECLARE @Idx INT
+	SET @Idx = 1
+	IF	@table = 'b'
+	BEGIN
+		DECLARE @id VARCHAR(10) = 'B01'
+		WHILE EXISTS (SELECT ban_id FROM Ban WHERE ban_id = @id)
+		BEGIN
+			SET @Idx = @Idx + 1
+			SET @id = 'B' + REPLICATE('0', 2 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+		END
+		PRINT @id
+	END
+	ELSE IF @table = 'hd'
+	BEGIN
+		DECLARE @id2 VARCHAR(10) = 'HD00001'
+		WHILE EXISTS (SELECT hd_id FROM HoaDon WHERE hd_id = @id2)
+		BEGIN
+			SET @Idx = @Idx + 1
+			SET @id2 = 'HD' + REPLICATE('0', 5 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+		END
+		PRINT @id2
+	END
+	ELSE IF	@table = 'nv'
+	BEGIN
+		DECLARE @id3 VARCHAR(10) = 'NV0001'
+		WHILE EXISTS (SELECT nv_id FROM NhanVien WHERE nv_id = @id3)
+		BEGIN
+			SET @Idx = @Idx + 1
+			SET @id2 = 'NV' + REPLICATE('0', 4 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+		END
+		PRINT @id3
+	END
+END
+
+EXEC TimIDKeTiep 'nv'
