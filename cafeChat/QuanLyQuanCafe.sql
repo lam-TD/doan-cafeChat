@@ -577,4 +577,18 @@ BEGIN
 		END  
 END
 
-EXEC TimIDKeTiep 'nv'
+EXEC TimIDKeTiep 'b'
+
+CREATE PROC LayIDKeTiep
+AS
+BEGIN
+	SELECT
+		ts.ban_id,
+		ts.hd_id,
+		ts.nv_id,
+		ts.id
+	FROM
+		ThamSo AS ts WHERE id = 1
+END
+
+EXEC LayIDKeTiep
