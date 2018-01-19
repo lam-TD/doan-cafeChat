@@ -38,5 +38,32 @@ namespace DAL
                 return false;
             }
         }
+
+        public string TimIDKeTiep(string type)
+        {
+            //-- b tim id ke tiep cua table Ban
+            //-- hd tim id ke tiep cua table HoaDon
+            //-- nv tim id ke tiep cua table NhanVien
+            if (ExcuteQuery("EXEC TimIDKeTiep '" + type + "'"))
+            {
+                string id = "";
+                DataTable dt = getTable("EXEC LayIDKeTiep");
+                switch (type)
+                {
+                    case "b":
+                        id = dt.Rows[0]["ban_id"].ToString();
+                        break;
+                    case "hd":
+                        id = dt.Rows[0]["hd_id"].ToString();
+                        break;
+                    case "nv":
+                        id = dt.Rows[0]["nv_id"].ToString();
+                        break;
+                }
+                return id;
+            }
+            else
+                return "null";
+        }
     }
 }

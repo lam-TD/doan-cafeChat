@@ -539,43 +539,42 @@ BEGIN
 END
 EXEC Ban_TimIDKeTiep
 
-CREATE PROC TimIDKeTiep
-@table VARCHAR(100)
-AS
+CREATE PROC [dbo].[TimIDKeTiep] -- b tim id ke tiep cua table Ban
+@table VARCHAR(100)				-- hd tim id ke tiep cua table HoaDon
+AS								-- nv tim id ke tiep cua table NhanVien
 BEGIN
-	--DECLARE @ban_id VARCHAR(10) = 'B00001'
 	DECLARE @Idx INT
 	SET @Idx = 1
 	IF	@table = 'b'
-	BEGIN
-		DECLARE @id VARCHAR(10) = 'B01'
-		WHILE EXISTS (SELECT ban_id FROM Ban WHERE ban_id = @id)
 		BEGIN
-			SET @Idx = @Idx + 1
-			SET @id = 'B' + REPLICATE('0', 2 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+			DECLARE @id VARCHAR(10) = 'B01'
+			WHILE EXISTS (SELECT ban_id FROM Ban WHERE ban_id = @id)
+			BEGIN
+				SET @Idx = @Idx + 1
+				SET @id = 'B' + REPLICATE('0', 2 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+			END
+			UPDATE ThamSo SET ban_id = @id WHERE id = 1
 		END
-		PRINT @id
-	END
 	ELSE IF @table = 'hd'
-	BEGIN
-		DECLARE @id2 VARCHAR(10) = 'HD00001'
-		WHILE EXISTS (SELECT hd_id FROM HoaDon WHERE hd_id = @id2)
 		BEGIN
-			SET @Idx = @Idx + 1
-			SET @id2 = 'HD' + REPLICATE('0', 5 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+			DECLARE @id2 VARCHAR(10) = 'HD00001'
+			WHILE EXISTS (SELECT hd_id FROM HoaDon WHERE hd_id = @id2)
+			BEGIN
+				SET @Idx = @Idx + 1
+				SET @id2 = 'HD' + REPLICATE('0', 5 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+			END
+			UPDATE ThamSo SET hd_id = @id2 WHERE id = 1
 		END
-		PRINT @id2
-	END
-	ELSE IF	@table = 'nv'
-	BEGIN
-		DECLARE @id3 VARCHAR(10) = 'NV0001'
-		WHILE EXISTS (SELECT nv_id FROM NhanVien WHERE nv_id = @id3)
+	ELSE IF @table = 'nv'
 		BEGIN
-			SET @Idx = @Idx + 1
-			SET @id2 = 'NV' + REPLICATE('0', 4 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
-		END
-		PRINT @id3
-	END
+			DECLARE @id3 VARCHAR(10) = 'NV0001'
+			WHILE EXISTS (SELECT nv_id FROM NhanVien WHERE nv_id = @id3)
+			BEGIN
+				SET @Idx = @Idx + 1
+				SET @id2 = 'NV' + REPLICATE('0', 4 - LEN(CAST(@Idx AS VARCHAR ))) + CAST(@Idx AS VARCHAR)
+			END
+			UPDATE ThamSo SET nv_id = @id3 WHERE id = 1
+		END  
 END
 
 EXEC TimIDKeTiep 'nv'

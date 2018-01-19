@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BanDTO.cs" />
     <Compile Include="DanhMucDTO.cs" />
+    <Compile Include="HoaDonDTO.cs" />
     <Compile Include="KhuVucDTO.cs" />
     <Compile Include="NhanVienDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />

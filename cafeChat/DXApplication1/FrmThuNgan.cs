@@ -80,7 +80,7 @@ namespace DXApplication1
 
             if (e.Button == MouseButtons.Left)
             {
-                //gridControl_bill_tbid.DataSource = BUS_Bill.loadBill_tbid(int.Parse(bt.Tag.ToString()));
+                cbBan.Text = bt.Text;
                 txtghichu.Text = bt.Text;
             }
             else
@@ -147,6 +147,13 @@ namespace DXApplication1
 
         }
 
+        void cbBan_Load()
+        {
+            cbBan.DataSource = BanBUS.Ban_Load();
+            cbBan.DisplayMember = "ban_ten";
+            cbBan.ValueMember = "ban_id";
+            cbBan.SelectedIndex = -1;
+        }
 
         #endregion END XU LY
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -164,11 +171,17 @@ namespace DXApplication1
             Tao_Ban();
             treelist_ThemDanhMuc();
             listview_ThucUong_Load(1,0);
+            cbBan_Load();
         }
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             listview_ThucUong_Load(2, int.Parse(e.Node.Tag.ToString()));
+        }
+
+        private void cbBan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //dádadd
         }
     }
 }
