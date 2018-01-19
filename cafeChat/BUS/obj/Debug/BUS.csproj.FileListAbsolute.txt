@@ -1,0 +1,9 @@
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\BUS.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\BUS.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\DAL.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\DTO.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\DAL.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\bin\Debug\DTO.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\obj\Debug\BUS.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\BUS\obj\Debug\BUS.pdb

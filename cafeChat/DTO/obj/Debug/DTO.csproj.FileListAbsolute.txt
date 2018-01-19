@@ -1,0 +1,5 @@
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DTO\bin\Debug\DTO.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DTO\bin\Debug\DTO.pdb
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DTO\obj\Debug\DTO.dll
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DTO\obj\Debug\DTO.pdb
