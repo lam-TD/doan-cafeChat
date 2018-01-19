@@ -81,6 +81,7 @@ namespace DXApplication1
             if (e.Button == MouseButtons.Left)
             {
                 //gridControl_bill_tbid.DataSource = BUS_Bill.loadBill_tbid(int.Parse(bt.Tag.ToString()));
+                txtghichu.Text = bt.Text;
             }
             else
                 if (e.Button == MouseButtons.Right)
@@ -89,6 +90,18 @@ namespace DXApplication1
                 }
         }
 
+        void treelist_ThemDanhMuc()
+        {
+            List<DanhMucDTO> dm = DanhMucBUS.DanhMuc_List();
+            foreach (DanhMucDTO item in dm)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = item.Dm_ten;
+                node.Tag = item.Dm_id.ToString();
+                //node.ImageIndex = 
+                treedanhmuc.Nodes.Add(node);
+            }
+        }
         #endregion
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -103,6 +116,7 @@ namespace DXApplication1
         private void FrmThuNgan_Load(object sender, EventArgs e)
         {
             Tao_Ban();
+            treelist_ThemDanhMuc();
         }
     }
 }
