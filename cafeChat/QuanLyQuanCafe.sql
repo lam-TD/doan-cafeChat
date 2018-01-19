@@ -47,7 +47,7 @@ go
 
 create table ThucUong
 (
-	tu_id int primary key,
+	tu_id INT IDENTITY(1,1) primary key,
 	tu_ten nvarchar(100) not null default N'Chưa đặt tên',
 	tu_gia int not null default 0,
 	tu_trangthai int default 1,

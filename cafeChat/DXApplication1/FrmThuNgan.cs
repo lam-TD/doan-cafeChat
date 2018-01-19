@@ -98,11 +98,57 @@ namespace DXApplication1
                 TreeNode node = new TreeNode();
                 node.Text = item.Dm_ten;
                 node.Tag = item.Dm_id.ToString();
-                //node.ImageIndex = 
                 treedanhmuc.Nodes.Add(node);
             }
         }
-        #endregion
+
+        void CauHinh_ListViewThucUong()
+        {
+            listViewThucUong.View = View.Details; // hiểm thị detail cho listview
+            listViewThucUong.FullRowSelect = true;
+            listViewThucUong.GridLines = true;
+
+            ColumnHeader header1 = new ColumnHeader(); // cấu hình cột cho listview
+            header1.Text = "Tên thức uống";
+            header1.Width = 100;
+            header1.TextAlign = HorizontalAlignment.Center;
+
+            ColumnHeader header2 = new ColumnHeader();
+            header2.Text = "Đơn giá";
+            header2.Width = 98;
+            header2.TextAlign = HorizontalAlignment.Center;
+
+            ColumnHeader header3 = new ColumnHeader();
+            header3.Text = "ID";
+            header3.Width = 30;
+            header3.TextAlign = HorizontalAlignment.Center;
+
+            listViewThucUong.Columns.Add(header1);
+            listViewThucUong.Columns.Add(header2);
+            listViewThucUong.Columns.Add(header3);
+        }
+        void listview_ThucUong_Load(int type, int iddanhmuc) // load tất cả thức uống hoặc theo id danh mục 1-tất cả || 2-id danh mục
+        {
+            listViewThucUong.Clear();
+            CauHinh_ListViewThucUong();
+            DataTable dt = new DataTable();
+            if (type == 1)
+                dt = ThucUongBUS.ThucUong_Load();
+            else
+                dt = ThucUongBUS.ThucUong_Load_IDDanhMuc(iddanhmuc);
+            int i = 0;
+            foreach (DataRow itemTU in dt.Rows)
+            {
+                listViewThucUong.Items.Add(itemTU["tu_ten"].ToString());
+                listViewThucUong.Items[i].SubItems.Add(itemTU["tu_gia"].ToString());
+                listViewThucUong.Items[i].SubItems.Add(itemTU["tu_id"].ToString());
+                i++;
+            }
+
+        }
+
+
+        #endregion END XU LY
         private void simpleButton1_Click(object sender, EventArgs e)
         {
 
@@ -117,6 +163,12 @@ namespace DXApplication1
         {
             Tao_Ban();
             treelist_ThemDanhMuc();
+            listview_ThucUong_Load(1,0);
+        }
+
+        private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            listview_ThucUong_Load(2, int.Parse(e.Node.Tag.ToString()));
         }
     }
 }
