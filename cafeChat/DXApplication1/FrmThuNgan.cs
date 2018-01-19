@@ -23,7 +23,7 @@ namespace DXApplication1
 
         #region XU LY
 
-        void Tao_Ban2()
+        void Tao_Ban()
         {
             DataTable dt = KhuVucBUS.KhuVuc_Load();
             GroupBox grkhuvucCu = new GroupBox() { Width = 0, Location = new Point(0, 0) }; // lưu vị trí của groupbox cũ
@@ -43,7 +43,7 @@ namespace DXApplication1
                 FlowLayoutPanel flowKhuVuc = new FlowLayoutPanel(); // tạo FlowLayoutPanel add vào grKhuVuc
                 flowKhuVuc.Dock = DockStyle.Fill;
                 flowKhuVuc.AutoScroll = true;
-                grkhuvuc.Controls.Add(flowKhuVuc);
+                grkhuvuc.Controls.Add(flowKhuVuc); // add button vao flow
 
                 // tao danh sach ban theo khu vuc
                 List<BanDTO> ban = new List<BanDTO>();
@@ -67,87 +67,28 @@ namespace DXApplication1
                     else
                         btn.BackColor = Color.Pink;
                     flowKhuVuc.Controls.Add(btn);
+                    btn.MouseDown += new MouseEventHandler(bt_MouseDown); // tạo sự kiện click cho các button
                 }
                 flowLayoutBan.Controls.Add(grkhuvuc);
             }
         }
 
-
-        void Tao_Ban()
+        private void bt_MouseDown(object sender, MouseEventArgs e)// sự kiện click button khi tạo bảng table
         {
-            
-            DataTable dt = KhuVucBUS.KhuVuc_Load();
-            GroupBox grKhuVuc = new GroupBox();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                int makv = int.Parse(dt.Rows[i]["kv_id"].ToString());
-                string tenkv = dt.Rows[i]["kv_ten"].ToString();
-                // Tao Danh sach ban
-                List<BanDTO> tb = new List<BanDTO>();
-                tb = BanBUS.Ban_List_KhuVuc(makv);
-                Button oldbtn = new Button() { Width = 0, Location = new Point(0, 0) };
-                GroupBox oldgr = new GroupBox() { Width = 0, Location = new Point(0, 0) };
-                foreach (BanDTO tb_child in tb)
-                {
-                    Button btn = new Button()
-                    {
-                        Width = 80,
-                        Height = 80,
-                        Location = new Point(oldbtn.Location.X + oldbtn.Width, oldbtn.Location.Y),
-                        Text = tb_child.Ban_ten,
-                        Tag = tb_child.Ban_id
-                    };
-                    // gán màu cho bàn theo trạng thái Trống - xanh, Có khách - Đỏ, Đặt trước - Hồng
-                    if (tb_child.Ban_trangthai == "Trống")
-                        btn.BackColor = Color.Blue;
-                    else if (tb_child.Ban_trangthai == "Có khách")
-                        btn.BackColor = Color.Red;
-                    else
-                        btn.BackColor = Color.Pink;
+            Button bt = (Button)sender; //lấy button đang được click
+            //tagtext = ((Button)sender).Text;
 
-                    //btn.MouseDown += new MouseEventHandler(bt_MouseDown); // tạo sự kiện click cho các button
-                    grKhuVuc = new GroupBox()
-                    {
-                        Width = 400,
-                        Height = 400,
-                        Location = new Point(oldgr.Location.X + oldgr.Width, oldgr.Location.Y),
-                        Text = tenkv
-                    };
-                    grKhuVuc.Controls.Add(btn);
-                    oldbtn = btn;
-                    oldgr = grKhuVuc;
-                }
-                flowLayoutBan.Controls.Add(grKhuVuc);
-            }//end tao danh sach ban
-        }
-        public void create_table()
-        {
-            Button oldbtn = new Button() { Width = 0, Location = new Point(0, 0) };
-            List<BanDTO> tb = new List<BanDTO>();
-            tb = BanBUS.Ban_List();
-            foreach (BanDTO tb_child in tb)
+            if (e.Button == MouseButtons.Left)
             {
-                Button btn = new Button()
-                {
-                    Width = 80,
-                    Height = 80,
-                    Location = new Point(oldbtn.Location.X + oldbtn.Width, oldbtn.Location.Y),
-                    Text = tb_child.Ban_ten,
-                    Tag = tb_child.Ban_id
-                };
-                // gán màu cho bàn theo trạng thái Trống - xanh, Có khách - Đỏ, Đặt trước - Hồng
-                if (tb_child.Ban_trangthai == "Trống")
-                    btn.BackColor = Color.Blue;
-                else if (tb_child.Ban_trangthai == "Có khách")
-                    btn.BackColor = Color.Red;
-                else
-                    btn.BackColor = Color.Pink;
-
-                //btn.MouseDown += new MouseEventHandler(bt_MouseDown); // tạo sự kiện click cho các button
-                flowLayoutBan.Controls.Add(btn);
-                oldbtn = btn;
+                //gridControl_bill_tbid.DataSource = BUS_Bill.loadBill_tbid(int.Parse(bt.Tag.ToString()));
             }
-        } // end create_table
+            else
+                if (e.Button == MouseButtons.Right)
+                {
+                    //contextMenuStrip_Table.Show(bt, e.Location);
+                }
+        }
+
         #endregion
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -161,9 +102,7 @@ namespace DXApplication1
 
         private void FrmThuNgan_Load(object sender, EventArgs e)
         {
-            //create_table();
-            //Tao_Ban();
-            Tao_Ban2();
+            Tao_Ban();
         }
     }
 }
