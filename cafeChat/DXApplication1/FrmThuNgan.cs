@@ -23,6 +23,56 @@ namespace DXApplication1
 
         #region XU LY
 
+        void Tao_Ban2()
+        {
+            DataTable dt = KhuVucBUS.KhuVuc_Load();
+            GroupBox grkhuvucCu = new GroupBox() { Width = 0, Location = new Point(0, 0) }; // lưu vị trí của groupbox cũ
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int makv = int.Parse(dt.Rows[i]["kv_id"].ToString());
+                string tenkv = dt.Rows[i]["kv_ten"].ToString();
+                GroupBox grkhuvuc = new GroupBox() // tạo groupbox(khu vực) chứa các button(bàn)
+                {
+                    Width = 450,
+                    Height = 300,
+                    Location = new Point(grkhuvucCu.Location.X + grkhuvucCu.Width, grkhuvucCu.Location.Y),
+                    Text = tenkv,
+                    Tag = makv,
+                };
+
+                FlowLayoutPanel flowKhuVuc = new FlowLayoutPanel(); // tạo FlowLayoutPanel add vào grKhuVuc
+                flowKhuVuc.Dock = DockStyle.Fill;
+                flowKhuVuc.AutoScroll = true;
+                grkhuvuc.Controls.Add(flowKhuVuc);
+
+                // tao danh sach ban theo khu vuc
+                List<BanDTO> ban = new List<BanDTO>();
+                ban = BanBUS.Ban_List_KhuVuc(makv);
+                Button oldbtn = new Button() { Width = 0, Location = new Point(0, 0) };
+                foreach (BanDTO item in ban)
+                {
+                    Button btn = new Button()
+                    {
+                        Width = 80,
+                        Height = 80,
+                        Location = new Point(oldbtn.Location.X + oldbtn.Width, oldbtn.Location.Y),
+                        Text = item.Ban_ten,
+                        Tag = item.Ban_id
+                    };
+                    // gán màu cho bàn theo trạng thái Trống - xanh, Có khách - Đỏ, Đặt trước - Hồng
+                    if (item.Ban_trangthai == "Trống")
+                        btn.BackColor = Color.Blue;
+                    else if (item.Ban_trangthai == "Có khách")
+                        btn.BackColor = Color.Red;
+                    else
+                        btn.BackColor = Color.Pink;
+                    flowKhuVuc.Controls.Add(btn);
+                }
+                flowLayoutBan.Controls.Add(grkhuvuc);
+            }
+        }
+
+
         void Tao_Ban()
         {
             
@@ -111,8 +161,9 @@ namespace DXApplication1
 
         private void FrmThuNgan_Load(object sender, EventArgs e)
         {
-            create_table();
+            //create_table();
             //Tao_Ban();
+            Tao_Ban2();
         }
     }
 }
