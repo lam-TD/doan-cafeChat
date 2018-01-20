@@ -545,6 +545,22 @@ BEGIN
 END
 EXEC HoaDon_Load_IDBan_TrangThaiHD 'B01'
 
+-- ========== CHI TIET HOA DON ==========
+-- Load CTHD theo ma Hoa Don
+CREATE PROC CTHD_Load_IDHoaDon
+@hd_ma VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		c.cthd_soluong,
+		c.cthd_thanhtien,
+		c.hd_id,
+		c.tu_id
+	FROM
+		CTHD AS c
+	WHERE c.hd_id = @hd_ma
+END
+EXEC CTHD_Load_IDHoaDon 'HD00001'
 
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP

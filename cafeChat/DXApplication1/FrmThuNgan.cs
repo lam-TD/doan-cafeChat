@@ -158,28 +158,28 @@ namespace DXApplication1
 
         void CauHinh_ListViewCTHD()
         {
-            listViewChiTietHD.View = View.Details;
-            listViewChiTietHD.FullRowSelect = true;
-            listViewChiTietHD.GridLines = true;
+            //listViewChiTietHD.View = View.Details;
+            //listViewChiTietHD.FullRowSelect = true;
+            //listViewChiTietHD.GridLines = true;
 
-            ColumnHeader header1 = new ColumnHeader(); // cấu hình cột cho listview
-            header1.Text = "Tên thức uống";
-            header1.Width = 130;
-            header1.TextAlign = HorizontalAlignment.Center;
+            //ColumnHeader header1 = new ColumnHeader(); // cấu hình cột cho listview
+            //header1.Text = "Tên thức uống";
+            //header1.Width = 130;
+            //header1.TextAlign = HorizontalAlignment.Center;
 
-            ColumnHeader header2 = new ColumnHeader();
-            header2.Text = "SL";
-            header2.Width = 50;
-            header2.TextAlign = HorizontalAlignment.Center;
+            //ColumnHeader header2 = new ColumnHeader();
+            //header2.Text = "SL";
+            //header2.Width = 50;
+            //header2.TextAlign = HorizontalAlignment.Center;
 
-            ColumnHeader header3 = new ColumnHeader();
-            header3.Text = "Thành tiền";
-            header3.Width = 130;
-            header3.TextAlign = HorizontalAlignment.Center;
+            //ColumnHeader header3 = new ColumnHeader();
+            //header3.Text = "Thành tiền";
+            //header3.Width = 130;
+            //header3.TextAlign = HorizontalAlignment.Center;
 
-            listViewChiTietHD.Columns.Add(header1);
-            listViewChiTietHD.Columns.Add(header2);
-            listViewChiTietHD.Columns.Add(header3);
+            //listViewChiTietHD.Columns.Add(header1);
+            //listViewChiTietHD.Columns.Add(header2);
+            //listViewChiTietHD.Columns.Add(header3);
         }
         void cbBan_Load()
         {
@@ -206,7 +206,7 @@ namespace DXApplication1
             treelist_ThemDanhMuc();
             listview_ThucUong_Load(1,0);
             cbBan_Load();
-            CauHinh_ListViewCTHD();
+            //CauHinh_ListViewCTHD();
         }
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
