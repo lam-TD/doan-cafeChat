@@ -5,19 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using System.Data;
+
 namespace BUS
 {
     public class HoaDonBUS
     {
         private static Connect conn = new Connect();
 
-        public static string HoaDon_XacDinh_BanCoHDHayChua(string trangthaiBan)
+        public static DataTable HoaDon_XacDinh_BanCoHDHayChua(string trangthaiBan, string maban)
         {
-            string mahd = "";
             if (trangthaiBan == "Trống")
-                mahd = conn.TimIDKeTiep("hd");
+            {
+                conn.ExcuteQuery("EXEC TimIDKeTiep 'hd'");
+                return conn.getTable("EXEC LayIDKeTiep");
+            }
             else
-
+                return conn.getTable("EXEC HoaDon_Load_IDBan_TrangThaiHD '" + maban + "'");
         }
     }
 }

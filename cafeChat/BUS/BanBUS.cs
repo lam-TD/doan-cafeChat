@@ -50,5 +50,11 @@ namespace BUS
             }
             return listBan;
         }
+
+        public static string Ban_KiemTra_TrangThai_TheoIDBan(string maban)
+        {
+            DataTable dt = conn.getTable("EXEC Ban_KiemTraTrangThai_TheoIdBan '" + maban + "'");
+            return dt.Rows[0]["ban_trangthai"].ToString();
+        }
     }
 }

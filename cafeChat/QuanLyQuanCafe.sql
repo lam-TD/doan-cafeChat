@@ -522,6 +522,30 @@ EXEC KhucVuc_Load
 
 
 
+
+
+-- =========== HOA DON ==========
+-- Load Hoa Don theo ma Ban và trang thai Hoa Don = 0
+CREATE PROC HoaDon_Load_IDBan_TrangThaiHD
+@ban_id VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		hd.hd_id,
+		hd.hd_ngaylap,
+		hd.hd_trangthai,
+		hd.hd_phuthu,
+		hd.hd_giamgia,
+		hd.hd_tongtien,
+		hd.ban_id,
+		hd.nv_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.ban_id = @ban_id AND hd.hd_trangthai = 0
+END
+EXEC HoaDon_Load_IDBan_TrangThaiHD 'B01'
+
+
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP
 CREATE PROC Ban_TimIDKeTiep

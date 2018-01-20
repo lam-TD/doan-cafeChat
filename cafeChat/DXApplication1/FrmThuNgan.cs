@@ -81,7 +81,16 @@ namespace DXApplication1
             if (e.Button == MouseButtons.Left)
             {
                 cbBan.Text = bt.Text;
-                txtghichu.Text = bt.Text;
+                try
+                {
+                    string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(bt.Tag.ToString());
+                    DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, bt.Tag.ToString());
+                    txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
+                }
+                catch (Exception)
+                {
+                    XtraMessageBox.Show("Lỗi rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
                 if (e.Button == MouseButtons.Right)
@@ -181,7 +190,28 @@ namespace DXApplication1
 
         private void cbBan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //dádadd
+            try
+            {
+                string maban = cbBan.SelectedValue.ToString();
+                try
+                {
+                    string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(maban);
+                    DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
+                    txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
+                    //txtthanhtien.Text = dt.Rows[0]["hd_id"].ToString();
+                    //txttongcong.Text = dt.Rows[0]["hd_tongtien"].ToString();
+                }
+                catch (Exception)
+                {
+                    //XtraMessageBox.Show("Lỗi rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            
         }
     }
 }

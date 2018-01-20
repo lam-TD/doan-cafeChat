@@ -72,7 +72,7 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtgiamgia = new DevExpress.XtraEditors.TextEdit();
             this.txtphuthu = new DevExpress.XtraEditors.TextEdit();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txttongcong = new System.Windows.Forms.TextBox();
             this.numgiamgia = new System.Windows.Forms.NumericUpDown();
             this.numphuthu = new System.Windows.Forms.NumericUpDown();
             this.txtthanhtien = new System.Windows.Forms.TextBox();
@@ -599,7 +599,7 @@
             // 
             this.layoutControl1.Controls.Add(this.txtgiamgia);
             this.layoutControl1.Controls.Add(this.txtphuthu);
-            this.layoutControl1.Controls.Add(this.textBox2);
+            this.layoutControl1.Controls.Add(this.txttongcong);
             this.layoutControl1.Controls.Add(this.numgiamgia);
             this.layoutControl1.Controls.Add(this.numphuthu);
             this.layoutControl1.Controls.Add(this.txtthanhtien);
@@ -639,12 +639,12 @@
             this.txtphuthu.StyleController = this.layoutControl1;
             this.txtphuthu.TabIndex = 23;
             // 
-            // textBox2
+            // txttongcong
             // 
-            this.textBox2.Location = new System.Drawing.Point(66, 441);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(262, 20);
-            this.textBox2.TabIndex = 22;
+            this.txttongcong.Location = new System.Drawing.Point(66, 441);
+            this.txttongcong.Name = "txttongcong";
+            this.txttongcong.Size = new System.Drawing.Size(262, 20);
+            this.txttongcong.TabIndex = 22;
             // 
             // numgiamgia
             // 
@@ -976,7 +976,7 @@
             // 
             // layoutControlItem17
             // 
-            this.layoutControlItem17.Control = this.textBox2;
+            this.layoutControlItem17.Control = this.txttongcong;
             this.layoutControlItem17.Location = new System.Drawing.Point(0, 429);
             this.layoutControlItem17.Name = "layoutControlItem17";
             this.layoutControlItem17.Size = new System.Drawing.Size(320, 24);
@@ -1130,7 +1130,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txttongcong;
         private System.Windows.Forms.NumericUpDown numgiamgia;
         private System.Windows.Forms.NumericUpDown numphuthu;
         private System.Windows.Forms.TextBox txtthanhtien;
