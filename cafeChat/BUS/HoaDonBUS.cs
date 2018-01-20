@@ -15,13 +15,13 @@ namespace BUS
 
         public static DataTable HoaDon_XacDinh_BanCoHDHayChua(string trangthaiBan, string maban)
         {
-            if (trangthaiBan == "Trống")
+            if (trangthaiBan == "Có khách")
+                return conn.getTable("EXEC HoaDon_Load_IDBan_TrangThaiHD '" + maban + "'");
+            else // trường hợp này là bàn đặt trước và bàn trống
             {
                 conn.ExcuteQuery("EXEC TimIDKeTiep 'hd'");
                 return conn.getTable("EXEC LayIDKeTiep");
             }
-            else
-                return conn.getTable("EXEC HoaDon_Load_IDBan_TrangThaiHD '" + maban + "'");
         }
     }
 }
