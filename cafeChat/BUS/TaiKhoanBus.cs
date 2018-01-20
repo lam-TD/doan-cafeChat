@@ -32,22 +32,30 @@ namespace BUS
         public static bool TaiKhoan_Them(TaiKhoanDTO tk, int type)
         {
             string query = "";
-            switch (type)
+            try
             {
-                case 1:
-                    query = "EXEC TaiKhoan_Them '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
-                    break;
-                case 2:
-                    query = "EXEC TaiKhoan_Sua '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
-                    break;
-                case 3:
-                    query = "EXEC TaiKhoan_Xoa '"+ tk.Nv_id +"'";
-                    break;
+                switch (type)
+                {
+                    case 1:
+                        query = "EXEC TaiKhoan_Them '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
+                        break;
+                    case 2:
+                        query = "EXEC TaiKhoan_Sua '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
+                        break;
+                    case 3:
+                        query = "EXEC TaiKhoan_Xoa '" + tk.Nv_id + "'";
+                        break;
+                }
+                if (conn.ExcuteQuery(query))
+                    return true;
+                else
+                    return false;
             }
-            if (conn.ExcuteQuery(query))
-                return true;
-            else
+            catch (Exception)
+            {
                 return false;
+            }
+            
         }
     }
 }

@@ -96,7 +96,6 @@ go
 create table CTHD
 (
 	cthd_soluong int not null default 0,
-	cthd_thanhtien int not null, 
 	hd_id VARCHAR(10) not null,
 	tu_id int not null
 
@@ -139,8 +138,8 @@ insert into Ban(ban_id, ban_ten, ban_trangthai, kv_id) values ('2', 'Bàn 2', '1
 insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id, hd_phuthu, hd_giamgia) values ('13', '1-1-2018', '20000', '0', 1, '1',1234,12345);
 insert into HoaDon(hd_id, hd_ngaylap, hd_tongtien, hd_trangthai, ban_id, nv_id, hd_phuthu, hd_giamgia) values ('13', '1-1-2018', '20000', '0', 1, '1',34567,76543);
 --Them Chi Tiet Hoa Don
-insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '20000', '1', '1');
-insert into CTHD( cthd_soluong, cthd_thanhtien, hd_id, tu_id) values ('1', '200000', '2', '1');
+insert into CTHD( cthd_soluong, hd_id, tu_id) values ('1', '1', '1');
+insert into CTHD( cthd_soluong, hd_id, tu_id) values ('1', '2', '1');
 
 -- Tao proc
 
@@ -545,6 +544,89 @@ BEGIN
 END
 EXEC HoaDon_Load_IDBan_TrangThaiHD 'B01'
 
+-- Them Hoa Don
+CREATE PROC HoaDon_Them
+		@hd_id VARCHAR(10),
+		@hd_ngaylap DATE,
+		@hd_trangthai INT,
+		@hd_phuthu INT,
+		@hd_giamgia INT,
+		@hd_tongtien FLOAT,
+		@ban_id VARCHAR(10),
+		@nv_id VARCHAR(10)
+AS
+BEGIN
+	INSERT INTO HoaDon
+	(
+		hd_id,
+		hd_ngaylap,
+		hd_trangthai,
+		hd_phuthu,
+		hd_giamgia,
+		hd_tongtien,
+		ban_id,
+		nv_id
+	)
+	VALUES
+	(
+		@hd_id,
+		@hd_ngaylap,
+		@hd_trangthai,
+		@hd_phuthu,
+		@hd_giamgia,
+		@hd_tongtien,
+		@ban_id,
+		@nv_id
+	)
+END
+EXEC HoaDon_Them 'HD00005','1-1-2018',1,10000,5000,200000,'B06','NV0001'
+
+-- Cap Nhat Hoa Don
+CREATE PROC HoaDon_Sua
+		@hd_id VARCHAR(10),
+		@hd_ngaylap DATE,
+		@hd_trangthai INT,
+		@hd_phuthu INT,
+		@hd_giamgia INT,
+		@hd_tongtien FLOAT,
+		@ban_id VARCHAR(10),
+		@nv_id VARCHAR(10)
+AS
+BEGIN
+	UPDATE HoaDon
+	SET
+		hd_ngaylap = @hd_ngaylap,
+		hd_trangthai = @hd_trangthai,
+		hd_phuthu = @hd_phuthu,
+		hd_giamgia = @hd_giamgia,
+		hd_tongtien = @hd_tongtien,
+		ban_id = @ban_id,
+		nv_id = @nv_id
+	WHERE hd_id = @hd_id
+END
+EXEC HoaDon_Sua 'HD00003','10-10-2018',0,10000,0,500000,'B09','NV0001'
+
+-- Xoa Hoa Don
+CREATE PROC HoaDon_Xoa
+@hd_ma VARCHAR(10)
+AS
+BEGIN
+	UPDATE HoaDon
+	SET
+		hd_trangthai = 1
+	WHERE hd_id = @hd_ma
+END
+EXEC HoaDon_Xoa 'HD00003'
+
+-- Huy Hoa Don khi hủy Bàn
+CREATE PROC HoaDon_HuyBan
+@hd_id VARCHAR(10)
+AS
+BEGIN
+	DELETE FROM HoaDon WHERE hd_id = @hd_id
+END
+EXEC HoaDon_HuyBan 'HD00003'
+
 -- ========== CHI TIET HOA DON ==========
 -- Load CTHD theo ma Hoa Don
 CREATE PROC CTHD_Load_IDHoaDon
@@ -561,6 +643,77 @@ BEGIN
 	WHERE c.hd_id = @hd_ma
 END
 EXEC CTHD_Load_IDHoaDon 'HD00001'
+
+-- Them CTHD
+CREATE PROC CTHD_Them
+		@cthd_soluong INT,
+		@hd_id VARCHAR(10),
+		@tu_id INT
+AS
+BEGIN
+	INSERT INTO CTHD
+	(
+		cthd_soluong,
+		hd_id,
+		tu_id
+	)
+	VALUES
+	(
+		@cthd_soluong,
+		@hd_id,
+		@tu_id
+	)
+END
+EXEC CTHD_Them 3,'HD00001',6
+
+-- Cap nhat CTHD
+CREATE PROC CTHD_Sua
+		@cthd_soluong INT,
+		@cthd_thanhtien FLOAT,
+		@hd_id VARCHAR(10),
+		@tu_id INT
+AS
+BEGIN
+	UPDATE CTHD
+	SET
+		cthd_soluong = @cthd_soluong,
+		cthd_thanhtien = @cthd_thanhtien
+	WHERE hd_id = @hd_id AND tu_id = @tu_id
+END
+EXEC CTHD_Sua 12,50000,'HD00003',1
+
+-- Xoa CTHD
+CREATE PROC CTHD_Xoa
+@hd_id VARCHAR(10),
+@tu_id INT
+AS
+BEGIN
+	DELETE FROM CTHD WHERE hd_id = @hd_id AND tu_id = @tu_id
+END
+EXEC CTHD_Xoa 'HD00003',1
+
+-- Xoa CTHD theo ID Hoa Don -- su dung cho viec Huy Ban
+CREATE PROC CTHD_HuyBan
+@hd_id VARCHAR(10)
+AS
+BEGIN
+	DELETE FROM CTHD WHERE hd_id = @hd_id
+END
+EXEC CTHD_HuyBan 'HD00003'
+
+-- Load CTHD kèm theo đơn giá và tính thành tiền
+CREATE PROC CTHD_Load_DonGia_TinhThanhTien
+@hd_id VARCHAR(10)
+AS
+BEGIN
+	SELECT c.tu_id,tu.tu_ten, c.cthd_soluong,tu.tu_gia, c.cthd_soluong * tu.tu_gia AS ThanhTien 
+	FROM CTHD AS c 
+	INNER JOIN ThucUong AS tu ON c.tu_id = tu.tu_id 
+	WHERE c.hd_id = @hd_id
+	GROUP BY c.tu_id,tu.tu_ten,c.cthd_soluong,tu.tu_gia
+END
+
+EXEC CTHD_Load_DonGia_TinhThanhTien 'HD00003'
 
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP

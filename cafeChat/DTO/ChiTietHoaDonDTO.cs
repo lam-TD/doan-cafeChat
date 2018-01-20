@@ -8,23 +8,9 @@ namespace DTO
 {
     public class ChiTietHoaDonDTO
     {
-        private int cthd_id;
         private string hd_ma;
         private int cthd_soluong;
         private int tu_id;
-
-        public int Cthd_id
-        {
-            get
-            {
-                return cthd_id;
-            }
-
-            set
-            {
-                cthd_id = value;
-            }
-        }
 
         public string Hd_ma
         {

@@ -86,6 +86,7 @@ namespace DXApplication1
                     string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(bt.Tag.ToString());
                     DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, bt.Tag.ToString());
                     txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
+                    gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
                 }
                 catch (Exception)
                 {
@@ -156,37 +157,17 @@ namespace DXApplication1
 
         }
 
-        void CauHinh_ListViewCTHD()
-        {
-            //listViewChiTietHD.View = View.Details;
-            //listViewChiTietHD.FullRowSelect = true;
-            //listViewChiTietHD.GridLines = true;
-
-            //ColumnHeader header1 = new ColumnHeader(); // cấu hình cột cho listview
-            //header1.Text = "Tên thức uống";
-            //header1.Width = 130;
-            //header1.TextAlign = HorizontalAlignment.Center;
-
-            //ColumnHeader header2 = new ColumnHeader();
-            //header2.Text = "SL";
-            //header2.Width = 50;
-            //header2.TextAlign = HorizontalAlignment.Center;
-
-            //ColumnHeader header3 = new ColumnHeader();
-            //header3.Text = "Thành tiền";
-            //header3.Width = 130;
-            //header3.TextAlign = HorizontalAlignment.Center;
-
-            //listViewChiTietHD.Columns.Add(header1);
-            //listViewChiTietHD.Columns.Add(header2);
-            //listViewChiTietHD.Columns.Add(header3);
-        }
         void cbBan_Load()
         {
             cbBan.DataSource = BanBUS.Ban_Load();
             cbBan.DisplayMember = "ban_ten";
             cbBan.ValueMember = "ban_id";
             cbBan.SelectedIndex = -1;
+        }
+
+        void gridCTHD_Load(string mahd)
+        {
+            gridCTHD.DataSource = ChiTietHoaDonBUS.CTHD_Load_DonGia_TinhThanhTien(mahd);
         }
 
         #endregion END XU LY
@@ -206,7 +187,6 @@ namespace DXApplication1
             treelist_ThemDanhMuc();
             listview_ThucUong_Load(1,0);
             cbBan_Load();
-            //CauHinh_ListViewCTHD();
         }
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -223,7 +203,8 @@ namespace DXApplication1
                 {
                     string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(maban);
                     DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
-                    txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
+                    txtmahd.Text = dt.Rows[0]["hd_id"].ToString(); // gán mã hóa đơn
+                    gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
                     //txtthanhtien.Text = dt.Rows[0]["hd_id"].ToString();
                     //txttongcong.Text = dt.Rows[0]["hd_tongtien"].ToString();
                 }
