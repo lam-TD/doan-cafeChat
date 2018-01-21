@@ -74,7 +74,7 @@ namespace BUS
                 double giam_gia = 0;
                 if (phuthu != "")
                     phu_thu = double.Parse(phuthu);
-                else if (giamgia != "")
+                if (giamgia != "")
                     giam_gia = double.Parse(giamgia);
                 double tong_tien = (thanh_tien + phu_thu) - giam_gia;
                 return tong_tien;

@@ -176,10 +176,29 @@ namespace DXApplication1
 
         void txtThanhTien_txtTongCong_Load() // tính tổng tiền gán vào txttongcong
         {
-            txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
-            txttongcong.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.HoaDon_TinhTongTien(txtthanhtien.Text, txtphuthu.Text, txtgiamgia.Text));
+            try
+            {
+                txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
+                txttongcong.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.HoaDon_TinhTongTien(txtthanhtien.Text, txtphuthu.Text, txtgiamgia.Text));
+            }
+            catch (Exception)
+            {
+                txtthanhtien.Text = "0";
+                txttongcong.Text = "0";
+            }
+            
         }
 
+        void txtPhuThu_txtGiamGia_Xet_Watermark()
+        {
+            txtphuthu.Text = "0";
+            this.txtphuthu.Leave += new System.EventHandler(this.txtphuthu_Leave);
+            this.txtphuthu.Enter += new System.EventHandler(this.txtphuthu_Enter);
+
+            txtgiamgia.Text = "0";
+            this.txtgiamgia.Leave += new System.EventHandler(this.txtgiamgia_Leave);
+            this.txtgiamgia.Enter += new System.EventHandler(this.txtgiamgia_Enter);
+        }
 
         #endregion END XU LY
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -198,6 +217,9 @@ namespace DXApplication1
             treelist_ThemDanhMuc();
             listview_ThucUong_Load(1,0);
             cbBan_Load();
+            dateTimePickerNgayLap.Value = DateTime.Now;
+            dateTimeGioLapHD.Value = DateTime.Now;
+            txtPhuThu_txtGiamGia_Xet_Watermark();      
         }
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -214,28 +236,9 @@ namespace DXApplication1
                 DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
                 txtmahd.Text = dt.Rows[0]["hd_id"].ToString(); // gán mã hóa đơn
                 gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
+                if (trangthaiBan == "Có khách")
+                    dateTimePickerNgayLap.Value = DateTime.Parse(dt.Rows[0]["hd_ngaylap"].ToString());
                 txttrangthaiban.Text = trangthaiBan;                                         
-                //txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
-                txtThanhTien_txtTongCong_Load();
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            
-        }
-
-        private void txtphuthu_Enter(object sender, EventArgs e)
-        {
-            txtThanhTien_txtTongCong_Load();
-        }
-
-        private void txtphuthu_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                double phuthu = double.Parse(txtphuthu.Text);
-                this.txtphuthu.Text = HoaDonBUS.DinhDangTienTienTe(phuthu);
                 txtThanhTien_txtTongCong_Load();
             }
             catch (Exception)
@@ -250,21 +253,12 @@ namespace DXApplication1
             txtThanhTien_txtTongCong_Load();
         }
 
-        private void txtphuthu_Click(object sender, EventArgs e)
-        {
-            //txtphuthu.Text = "0";
-        }
-
-        private void txtphuthu_Leave(object sender, EventArgs e)
-        {
-            if (txtphuthu.Text == "")
-                txtphuthu.Text = "0";
-        }
 
         private void listViewThucUong_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewThucUong.SelectedItems.Count == 0)
                 return;
+            numsoluong.Value = 1;
             ListViewItem item = listViewThucUong.SelectedItems[0];
             txtTenThucChon.Text = item.Text;
             MaThucUong = int.Parse(item.SubItems[2].Text); // lấy lã thức uống để thêm vào CTHD
@@ -318,7 +312,6 @@ namespace DXApplication1
                             cthd.Cthd_soluong = int.Parse(dt.Rows[0]["cthd_soluong"].ToString()) + int.Parse(numsoluong.Value.ToString());
                             if (!ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd,2))
                                 XtraMessageBox.Show("Lỗi không cập nhật được sô lượng Thức uống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                         }
                         else
                         {
@@ -330,12 +323,114 @@ namespace DXApplication1
                         break;
                 }
                 gridCTHD_Load(txtmahd.Text);
+                txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
                 txtThanhTien_txtTongCong_Load();
             }
             catch (Exception)
             {
                 XtraMessageBox.Show("Lỗi");
             }
+        }
+
+        private void txtgiamgia_Enter(object sender, EventArgs e)
+        {
+            if (txtgiamgia.Text == "0")
+                txtgiamgia.Text = "";
+        }
+
+        private void txtgiamgia_Leave(object sender, EventArgs e)
+        {
+            if (txtgiamgia.Text == "")
+                txtgiamgia.Text = "0";
+        }
+
+        private void txtphuthu_Leave(object sender, EventArgs e)
+        {
+            if (txtphuthu.Text == "")
+                txtphuthu.Text = "0";
+        }
+
+        private void txtphuthu_Enter(object sender, EventArgs e)
+        {
+            if (txtphuthu.Text == "0")
+                txtphuthu.Text = "";
+        }
+
+        private void txtphuthu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtgiamgia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btn_XoaChiTietHD_Click(object sender, EventArgs e)
+        {
+            ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+            cthd.Tu_id = int.Parse(gridViewCTHD.GetRowCellValue(gridViewCTHD.FocusedRowHandle, "tu_id").ToString());
+            cthd.Hd_ma = txtmahd.Text;
+            DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa thức uống vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (!ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 3))
+                {
+                    XtraMessageBox.Show("Lỗi","Thông báo");
+                }
+                gridCTHD_Load(txtmahd.Text);
+                txtThanhTien_txtTongCong_Load();
+            }
+            
+        }
+
+        private void gridViewCTHD_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            try
+            {
+                ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                cthd.Tu_id = int.Parse(gridViewCTHD.GetRowCellValue(e.RowHandle, "tu_id").ToString());
+                cthd.Hd_ma = txtmahd.Text;
+                cthd.Cthd_soluong = int.Parse(gridViewCTHD.GetRowCellValue(e.RowHandle, "cthd_soluong").ToString());
+                DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn sửa lại số lượng thức uống vừa chọn?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (!ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 2))
+                        XtraMessageBox.Show("Lỗi không cập nhật được số lượng mới!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                }
+                gridCTHD_Load(txtmahd.Text);
+                txtThanhTien_txtTongCong_Load();
+            }
+            catch (Exception)
+            {
+                XtraMessageBox.Show("Lỗi", "Thông báo");
+            }
+            
+        }
+
+        private void gridCTHD_ProcessGridKey(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void gridViewCTHD_InvalidRowException(object sender, DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventArgs e)
+        {
+            // Sự kiện này để người ta không chuyển qua dòng khác được khi có lỗi xảy ra nè
+            // Nó nhận giá trị e.Valid của gridView1_ValidateRow để ứng xử
+            // neu e,Valid =True thì nó cho chuyển qua dòng khác hoặc làm tác vụ khác
+            // và ngược lại
+            e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.NoAction;
+        }
+
+        private void txtphuthu_TextChanged_1(object sender, EventArgs e)
+        {
+            txtThanhTien_txtTongCong_Load();
         }
     }
 }
