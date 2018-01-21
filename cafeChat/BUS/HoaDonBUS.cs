@@ -54,5 +54,31 @@ namespace BUS
                 return false;
             }
         }
+
+        public static string DinhDangTienTienTe(double giatri)
+        {
+            return String.Format("{0:0,0}", giatri);
+        }
+
+        public static double HoaDon_TinhTongTien(string thanhtien, string phuthu, string giamgia)
+        {
+            try
+            {
+                double thanh_tien = double.Parse(thanhtien);
+                double phu_thu = 0;
+                double giam_gia = 0;
+                if (phuthu != "")
+                    phu_thu = double.Parse(phuthu);
+                else if (giamgia != "")
+                    giam_gia = double.Parse(giamgia);
+                double tong_tien = (thanh_tien + phu_thu) - giam_gia;
+                return tong_tien;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
+        }
     }
 }

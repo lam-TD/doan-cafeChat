@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DTO;
 using BUS;
+using DAL;
 namespace DXApplication1
 {
     public partial class FrmThuNgan : DevExpress.XtraEditors.XtraForm
@@ -18,11 +19,10 @@ namespace DXApplication1
         {
             InitializeComponent();
         }
-        
+
 
 
         #region XU LY
-
         void Tao_Ban()
         {
             DataTable dt = KhuVucBUS.KhuVuc_Load();
@@ -87,6 +87,7 @@ namespace DXApplication1
                     DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, bt.Tag.ToString());
                     txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
                     gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
+
                 }
                 catch (Exception)
                 {
@@ -170,6 +171,12 @@ namespace DXApplication1
             gridCTHD.DataSource = ChiTietHoaDonBUS.CTHD_Load_DonGia_TinhThanhTien(mahd);
         }
 
+        void txtTongCong_Load() // tính tổng tiền gán vào txttongcong
+        {
+            txttongcong.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.HoaDon_TinhTongTien(txtthanhtien.Text, txtphuthu.Text, txtgiamgia.Text));
+        }
+
+
         #endregion END XU LY
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -199,26 +206,55 @@ namespace DXApplication1
             try
             {
                 string maban = cbBan.SelectedValue.ToString();
-                try
-                {
-                    string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(maban);
-                    DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
-                    txtmahd.Text = dt.Rows[0]["hd_id"].ToString(); // gán mã hóa đơn
-                    gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
-                    //txtthanhtien.Text = dt.Rows[0]["hd_id"].ToString();
-                    //txttongcong.Text = dt.Rows[0]["hd_tongtien"].ToString();
-                }
-                catch (Exception)
-                {
-                    //XtraMessageBox.Show("Lỗi rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(maban);
+                DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
+                txtmahd.Text = dt.Rows[0]["hd_id"].ToString(); // gán mã hóa đơn
+                gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
+                                                            
+                txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
+                txtTongCong_Load();
             }
             catch (Exception)
             {
                 return;
             }
             
+        }
+
+        private void txtphuthu_Enter(object sender, EventArgs e)
+        {
+            txtTongCong_Load();
+        }
+
+        private void txtphuthu_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double phuthu = double.Parse(txtphuthu.Text);
+                this.txtphuthu.Text = HoaDonBUS.DinhDangTienTienTe(phuthu);
+                txtTongCong_Load();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            
+        }
+
+        private void txtgiamgia_TextChanged(object sender, EventArgs e)
+        {
+            txtTongCong_Load();
+        }
+
+        private void txtphuthu_Click(object sender, EventArgs e)
+        {
+            //txtphuthu.Text = "0";
+        }
+
+        private void txtphuthu_Leave(object sender, EventArgs e)
+        {
+            if (txtphuthu.Text == "")
+                txtphuthu.Text = "0";
         }
     }
 }
