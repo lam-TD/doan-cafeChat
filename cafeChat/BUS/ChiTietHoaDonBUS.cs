@@ -54,5 +54,10 @@ namespace BUS
                 return false;
             }
         }
+
+        public static DataTable CTHD_KiemTraThucUongCoTrongCTHD(int mathucuong, string mahd)
+        {
+            return conn.getTable("EXEC CTHD_KiemTraThucUongCoTrongCTHD " + mathucuong + ",'" + mahd + "'");
+        }
     }
 }

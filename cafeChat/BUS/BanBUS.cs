@@ -56,5 +56,21 @@ namespace BUS
             DataTable dt = conn.getTable("EXEC Ban_KiemTraTrangThai_TheoIdBan '" + maban + "'");
             return dt.Rows[0]["ban_trangthai"].ToString();
         }
+
+        public static bool Ban_CapNhatTrangThaiBan(string maban, string trangthai)
+        {
+            try
+            {
+                if (conn.ExcuteQuery("EXEC Ban_CapNhatTrangThaiBan " + maban + ",N'" + trangthai + "'"))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
     }
 }

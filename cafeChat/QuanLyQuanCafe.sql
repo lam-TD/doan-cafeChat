@@ -502,6 +502,20 @@ BEGIN
 END
 EXEC Ban_Load_KhuVuc 1
 
+-- Cap nhat trang thai ban
+CREATE PROC Ban_CapNhatTrangThaiBan
+@ban_id VARCHAR(10),
+@trangthai NVARCHAR(20)
+
+AS
+BEGIN
+	UPDATE Ban
+	SET
+		ban_trangthai = @trangthai
+	WHERE ban_id = @ban_id
+END
+EXEC Ban_CapNhatTrangThaiBan B01,N'Trống'
+
 -- ========== KHU VUC ==========
 -- Load Khu Vuc
 CREATE PROC KhucVuc_Load
@@ -714,6 +728,27 @@ BEGIN
 END
 
 EXEC CTHD_Load_DonGia_TinhThanhTien 'HD00003'
+
+-- Kiem Tra Thuc Uong có tồn tại trong CTHD hay chưa
+CREATE PROC CTHD_KiemTraThucUongCoTrongCTHD
+@tu_id INT,
+@hd_id VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		c.cthd_soluong,
+		c.hd_id,
+		c.tu_id
+	FROM
+		CTHD AS c
+	WHERE c.hd_id = @hd_id AND c.tu_id = @tu_id
+END
+EXEC CTHD_KiemTraThucUongCoTrongCTHD 1,'HD00003'
+
+
+
+
+
 
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP

@@ -23,8 +23,11 @@ namespace DXApplication1
 
 
         #region XU LY
+        public static string MaNhanVien = "NV0001";
+        public static int MaThucUong;
         void Tao_Ban()
         {
+            flowLayoutBan.Controls.Clear();
             DataTable dt = KhuVucBUS.KhuVuc_Load();
             GroupBox grkhuvucCu = new GroupBox() { Width = 0, Location = new Point(0, 0) }; // lưu vị trí của groupbox cũ
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -171,8 +174,9 @@ namespace DXApplication1
             gridCTHD.DataSource = ChiTietHoaDonBUS.CTHD_Load_DonGia_TinhThanhTien(mahd);
         }
 
-        void txtTongCong_Load() // tính tổng tiền gán vào txttongcong
+        void txtThanhTien_txtTongCong_Load() // tính tổng tiền gán vào txttongcong
         {
+            txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
             txttongcong.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.HoaDon_TinhTongTien(txtthanhtien.Text, txtphuthu.Text, txtgiamgia.Text));
         }
 
@@ -210,9 +214,9 @@ namespace DXApplication1
                 DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, maban);
                 txtmahd.Text = dt.Rows[0]["hd_id"].ToString(); // gán mã hóa đơn
                 gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
-                                                            
-                txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
-                txtTongCong_Load();
+                txttrangthaiban.Text = trangthaiBan;                                         
+                //txtthanhtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridViewCTHD.Columns["ThanhTien"].SummaryItem.SummaryValue.ToString()));
+                txtThanhTien_txtTongCong_Load();
             }
             catch (Exception)
             {
@@ -223,7 +227,7 @@ namespace DXApplication1
 
         private void txtphuthu_Enter(object sender, EventArgs e)
         {
-            txtTongCong_Load();
+            txtThanhTien_txtTongCong_Load();
         }
 
         private void txtphuthu_TextChanged(object sender, EventArgs e)
@@ -232,7 +236,7 @@ namespace DXApplication1
             {
                 double phuthu = double.Parse(txtphuthu.Text);
                 this.txtphuthu.Text = HoaDonBUS.DinhDangTienTienTe(phuthu);
-                txtTongCong_Load();
+                txtThanhTien_txtTongCong_Load();
             }
             catch (Exception)
             {
@@ -243,7 +247,7 @@ namespace DXApplication1
 
         private void txtgiamgia_TextChanged(object sender, EventArgs e)
         {
-            txtTongCong_Load();
+            txtThanhTien_txtTongCong_Load();
         }
 
         private void txtphuthu_Click(object sender, EventArgs e)
@@ -255,6 +259,83 @@ namespace DXApplication1
         {
             if (txtphuthu.Text == "")
                 txtphuthu.Text = "0";
+        }
+
+        private void listViewThucUong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewThucUong.SelectedItems.Count == 0)
+                return;
+            ListViewItem item = listViewThucUong.SelectedItems[0];
+            txtTenThucChon.Text = item.Text;
+            MaThucUong = int.Parse(item.SubItems[2].Text); // lấy lã thức uống để thêm vào CTHD
+
+        }
+
+        private void btnthemthucuong_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                cthd.Tu_id = MaThucUong;   // lấy mã thức uống lưu vào CTHD
+                cthd.Hd_ma = txtmahd.Text; // lấy mã hóa đơn lưu vào CTHD
+                cthd.Cthd_soluong = int.Parse(numsoluong.Value.ToString()); // lấy số lượng thức uống lưu vào CTHD
+                // kiểm tra trạng thái của Bàn và mã Hóa Đơn
+                // nếu Bàn trống thì thêm Hoa Don trước -> thêm CTHD
+                // Bàn có khách thì chỉ thêm mới cthd -> kiểm tra thức uống thêm vào đã có trong CTHD hay chưa
+                //-> nếu có thì cập nhật lại số lượng theo mã HD và mã Thức uống
+                //-> nếu chưa thì thêm mới CTHD 
+                switch (txttrangthaiban.Text)
+                {
+                    case "Trống":
+                        HoaDonDTO hd = new HoaDonDTO();
+                        hd.Hd_id = txtmahd.Text;
+                        hd.Ban_id = cbBan.SelectedValue.ToString();
+                        hd.Hd_trangthai = 0;
+                        hd.Hd_ngaylap = dateTimePickerNgayLap.Value.ToString("MM/dd/yyyy");
+                        hd.Hd_phuthu = 0;
+                        hd.Hd_giamgia = 0;
+                        hd.Hd_tongtien = 0;
+                        hd.Nv_id = MaNhanVien;
+                        if (HoaDonBUS.HoaDon_ThemXoaSuaHuyBan(hd,1))
+                        {
+                            if (ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 1))
+                            {
+                                if (BanBUS.Ban_CapNhatTrangThaiBan(cbBan.SelectedValue.ToString(),"Có khách"))
+                                    Tao_Ban();
+                                else
+                                    XtraMessageBox.Show("Lỗi nhật được trạng thái bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                                XtraMessageBox.Show("Lỗi không thêm được Chi Tiết Hóa Đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                            XtraMessageBox.Show("Lỗi không thêm Hóa Đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                    case "Có khách":
+                        DataTable dt = ChiTietHoaDonBUS.CTHD_KiemTraThucUongCoTrongCTHD(int.Parse(MaThucUong.ToString()), txtmahd.Text);
+                        if (dt.Rows.Count > 0)
+                        {
+                            cthd.Cthd_soluong = int.Parse(dt.Rows[0]["cthd_soluong"].ToString()) + int.Parse(numsoluong.Value.ToString());
+                            if (!ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd,2))
+                                XtraMessageBox.Show("Lỗi không cập nhật được sô lượng Thức uống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                        else
+                        {
+                            if (!ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd,1))
+                                XtraMessageBox.Show("Lỗi không thêm mới được Chi Tiết Hóa Đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                gridCTHD_Load(txtmahd.Text);
+                txtThanhTien_txtTongCong_Load();
+            }
+            catch (Exception)
+            {
+                XtraMessageBox.Show("Lỗi");
+            }
         }
     }
 }
