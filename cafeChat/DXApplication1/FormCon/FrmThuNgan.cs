@@ -254,10 +254,7 @@ namespace DXApplication1
 
 
         #endregion END XU LY
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
@@ -548,6 +545,15 @@ namespace DXApplication1
         private void numgiamgia_ValueChanged(object sender, EventArgs e)
         {
             txtgiamgia.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.TinhTienTheoPhanTram(numgiamgia.Value.ToString(), txtthanhtien.Text));
+        }
+
+        private void btndoiban_Click(object sender, EventArgs e)
+        {
+            FormCon.frmDoiBan doiban = new FormCon.frmDoiBan();
+            if (doiban.ShowDialog() == DialogResult.OK)
+            {
+                doiban.Tenban = cbBan.SelectedText.ToString();
+            }
         }
     }
 }
