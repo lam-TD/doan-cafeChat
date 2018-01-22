@@ -18,7 +18,12 @@ namespace DXApplication1.FormCon
         private string tenban;
         public frmDoiBan()
         {
-            InitializeComponent();
+            InitializeComponent();  
+        }
+
+        public frmDoiBan()
+        {
+
         }
 
         public string Tenban
@@ -36,10 +41,10 @@ namespace DXApplication1.FormCon
 
         private void frmDoiBan_Load(object sender, EventArgs e)
         {
-            Ban_Load(tenban);
+            Ban_Load();
         }
 
-        void Ban_Load(string tenban)
+        void Ban_Load()
         {
             cbBan.DataSource = BanBUS.Ban_Load();
             cbBan.DisplayMember = "ban_ten";

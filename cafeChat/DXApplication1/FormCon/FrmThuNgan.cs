@@ -25,6 +25,7 @@ namespace DXApplication1
         #region XU LY
         public static string MaNhanVien = "NV0001";
         public static int MaThucUong;
+        public static string tenban;
         void Tao_Ban()
         {
             flowLayoutBan.Controls.Clear();
@@ -296,8 +297,6 @@ namespace DXApplication1
                     
                 txttrangthaiban.Text = trangthaiBan;                                         
                 txtThanhTien_txtTongCong_Load();
-                txttiennhan.ReadOnly = false;
-                btnthemthucuong.Enabled = true;
             }
             catch (Exception)
             { return; }   
@@ -550,9 +549,10 @@ namespace DXApplication1
         private void btndoiban_Click(object sender, EventArgs e)
         {
             FormCon.frmDoiBan doiban = new FormCon.frmDoiBan();
+            doiban.Tenban = tenban;
             if (doiban.ShowDialog() == DialogResult.OK)
             {
-                doiban.Tenban = cbBan.SelectedText.ToString();
+
             }
         }
     }
