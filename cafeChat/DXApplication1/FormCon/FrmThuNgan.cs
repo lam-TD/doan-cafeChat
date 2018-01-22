@@ -548,8 +548,7 @@ namespace DXApplication1
 
         private void btndoiban_Click(object sender, EventArgs e)
         {
-            FormCon.frmDoiBan doiban = new FormCon.frmDoiBan();
-            doiban.Tenban = tenban;
+            FormCon.frmDoiBan doiban = new FormCon.frmDoiBan(cbBan.Text);
             if (doiban.ShowDialog() == DialogResult.OK)
             {
 

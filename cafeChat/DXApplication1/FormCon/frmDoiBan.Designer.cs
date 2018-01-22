@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDoiBan));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.btnthoat = new DevExpress.XtraEditors.SimpleButton();
+            this.btndoiban = new DevExpress.XtraEditors.SimpleButton();
+            this.cbdoiban = new System.Windows.Forms.ComboBox();
             this.cbBan = new System.Windows.Forms.ComboBox();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.cbdoiban = new System.Windows.Forms.ComboBox();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btndoiban = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnthoat = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -64,6 +64,48 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnthoat
+            // 
+            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnthoat.ImageOptions.Image")));
+            this.btnthoat.Location = new System.Drawing.Point(114, 62);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(99, 22);
+            this.btnthoat.StyleController = this.layoutControl1;
+            this.btnthoat.TabIndex = 7;
+            this.btnthoat.Text = "Thoát";
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
+            // 
+            // btndoiban
+            // 
+            this.btndoiban.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btndoiban.ImageOptions.Image")));
+            this.btndoiban.Location = new System.Drawing.Point(12, 62);
+            this.btndoiban.Name = "btndoiban";
+            this.btndoiban.Size = new System.Drawing.Size(98, 22);
+            this.btndoiban.StyleController = this.layoutControl1;
+            this.btndoiban.TabIndex = 6;
+            this.btndoiban.Text = "Đổi";
+            this.btndoiban.Click += new System.EventHandler(this.btndoiban_Click);
+            // 
+            // cbdoiban
+            // 
+            this.cbdoiban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbdoiban.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cbdoiban.FormattingEnabled = true;
+            this.cbdoiban.Location = new System.Drawing.Point(67, 37);
+            this.cbdoiban.Name = "cbdoiban";
+            this.cbdoiban.Size = new System.Drawing.Size(146, 24);
+            this.cbdoiban.TabIndex = 5;
+            // 
+            // cbBan
+            // 
+            this.cbBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBan.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cbBan.FormattingEnabled = true;
+            this.cbBan.Location = new System.Drawing.Point(67, 12);
+            this.cbBan.Name = "cbBan";
+            this.cbBan.Size = new System.Drawing.Size(146, 24);
+            this.cbBan.TabIndex = 4;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -78,16 +120,6 @@
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(225, 107);
             this.layoutControlGroup1.TextVisible = false;
-            // 
-            // cbBan
-            // 
-            this.cbBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBan.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cbBan.FormattingEnabled = true;
-            this.cbBan.Location = new System.Drawing.Point(68, 12);
-            this.cbBan.Name = "cbBan";
-            this.cbBan.Size = new System.Drawing.Size(145, 24);
-            this.cbBan.TabIndex = 4;
             // 
             // layoutControlItem1
             // 
@@ -108,16 +140,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(205, 11);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // cbdoiban
-            // 
-            this.cbdoiban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbdoiban.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cbdoiban.FormattingEnabled = true;
-            this.cbdoiban.Location = new System.Drawing.Point(68, 37);
-            this.cbdoiban.Name = "cbdoiban";
-            this.cbdoiban.Size = new System.Drawing.Size(145, 24);
-            this.cbdoiban.TabIndex = 5;
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F);
@@ -129,16 +151,6 @@
             this.layoutControlItem2.Text = "Đổi đến";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(52, 14);
             // 
-            // btndoiban
-            // 
-            this.btndoiban.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btndoiban.ImageOptions.Image")));
-            this.btndoiban.Location = new System.Drawing.Point(12, 62);
-            this.btndoiban.Name = "btndoiban";
-            this.btndoiban.Size = new System.Drawing.Size(98, 22);
-            this.btndoiban.StyleController = this.layoutControl1;
-            this.btndoiban.TabIndex = 6;
-            this.btndoiban.Text = "Đổi";
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btndoiban;
@@ -147,16 +159,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(102, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // btnthoat
-            // 
-            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnthoat.ImageOptions.Image")));
-            this.btnthoat.Location = new System.Drawing.Point(114, 62);
-            this.btnthoat.Name = "btnthoat";
-            this.btnthoat.Size = new System.Drawing.Size(99, 22);
-            this.btnthoat.StyleController = this.layoutControl1;
-            this.btnthoat.TabIndex = 7;
-            this.btnthoat.Text = "Thoát";
             // 
             // layoutControlItem4
             // 

@@ -15,33 +15,16 @@ namespace DXApplication1.FormCon
 {
     public partial class frmDoiBan : DevExpress.XtraEditors.XtraForm
     {
-        private string tenban;
-        public frmDoiBan()
+        public frmDoiBan(string tenban)
         {
-            InitializeComponent();  
-        }
-
-        public frmDoiBan()
-        {
-
-        }
-
-        public string Tenban
-        {
-            get
-            {
-                return tenban;
-            }
-
-            set
-            {
-                tenban = value;
-            }
+            InitializeComponent();
+            Ban_Load();
+            cbBan.Text = tenban;
         }
 
         private void frmDoiBan_Load(object sender, EventArgs e)
         {
-            Ban_Load();
+            
         }
 
         void Ban_Load()
@@ -49,7 +32,16 @@ namespace DXApplication1.FormCon
             cbBan.DataSource = BanBUS.Ban_Load();
             cbBan.DisplayMember = "ban_ten";
             cbBan.ValueMember = "ban_id";
-            cbBan.Text = tenban;
+        }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btndoiban_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
