@@ -75,6 +75,12 @@
     <Compile Include="FormCon\frmDoiBan.Designer.cs">
       <DependentUpon>frmDoiBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCon\frmGopBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCon\frmGopBan.Designer.cs">
+      <DependentUpon>frmGopBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCon\frmTaiKhoan_Them.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -348,7 +348,7 @@ namespace DXApplication1
                             if (ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 1))
                             {
                                 if (BanBUS.Ban_CapNhatTrangThaiBan(cbBan.SelectedValue.ToString(), "Có khách"))
-                                { Tao_Ban(); txttrangthaiban.Text = "Có khách"; }
+                                { Tao_Ban(); txttrangthaiban.Text = "Có khách"; XetThuocTinhChoCacButton(true, true, true); }
                                 else
                                     XtraMessageBox.Show("Lỗi nhật được trạng thái bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
@@ -548,11 +548,12 @@ namespace DXApplication1
 
         private void btndoiban_Click(object sender, EventArgs e)
         {
-            FormCon.frmDoiBan doiban = new FormCon.frmDoiBan(cbBan.Text);
+            FormCon.frmDoiBan doiban = new FormCon.frmDoiBan(cbBan.Text, cbBan.SelectedValue.ToString());
             if (doiban.ShowDialog() == DialogResult.OK)
             {
-
+                Tao_Ban();
             }
         }
+
     }
 }

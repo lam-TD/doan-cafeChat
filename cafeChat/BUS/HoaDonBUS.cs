@@ -55,6 +55,19 @@ namespace BUS
             }
         }
 
+        public static bool HoaDon_DoiBan(string mabanChon, string mabanDoi)
+        {
+            try
+            {
+                if (conn.ExcuteQuery("EXEC HoaDon_DoiBan '" + mabanChon + "','" + mabanDoi + "'"))
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception) { return false; }
+        }
+
+        #region ĐỊNH DẠNG TIỀN TỆ - TÍNH TIỀN
         public static string DinhDangTienTienTe(double giatri)
         {
             return String.Format("{0:0,0}", giatri);
@@ -95,5 +108,6 @@ namespace BUS
             double tien_tien = double.Parse(tien);
             return (tien_tien * phan_tram / 100);
         }
+        #endregion
     }
 }

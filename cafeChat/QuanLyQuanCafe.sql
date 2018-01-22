@@ -523,7 +523,6 @@ EXEC Ban_Load_KhuVuc 1
 CREATE PROC Ban_CapNhatTrangThaiBan
 @ban_id VARCHAR(10),
 @trangthai NVARCHAR(20)
-
 AS
 BEGIN
 	UPDATE Ban
@@ -532,6 +531,32 @@ BEGIN
 	WHERE ban_id = @ban_id
 END
 EXEC Ban_CapNhatTrangThaiBan B01,N'Trống'
+
+-- Load Ban loai tru 1 ban trùng
+CREATE PROC Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach
+@maban VARCHAR(10)
+AS
+BEGIN
+	SELECT
+	*
+	FROM
+		Ban AS b
+	WHERE b.ban_id <> @maban AND b.ban_trangthai <> N'Xóa' AND b.ban_trangthai = N'Trống'
+END
+EXEC Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach 'B01'
+
+
+CREATE PROC Ban_Load_BanTrangThaiCoKhach
+AS
+BEGIN
+	SELECT
+	*
+	FROM
+		Ban AS b
+	WHERE b.ban_trangthai <> N'Xóa' AND b.ban_trangthai = N'Có khách'
+END
+EXEC Ban_Load_BanTrangThaiCoKhach
+
 
 -- ========== KHU VUC ==========
 -- Load Khu Vuc
@@ -548,6 +573,7 @@ BEGIN
 	WHERE kv.kv_trangthai = N'Đang sử dụng'
 END
 EXEC KhucVuc_Load
+
 
 
 
@@ -657,6 +683,26 @@ BEGIN
 	DELETE FROM HoaDon WHERE hd_id = @hd_id
 END
 EXEC HoaDon_HuyBan 'HD00003'
+
+-- Đổi bàn cập nhật lại Bàn của Hóa Đơn
+CREATE PROC HoaDon_DoiBan
+@mabanChon VARCHAR(10),
+@mabanDoi VARCHAR(10)
+AS
+BEGIN
+	DECLARE @mahd VARCHAR(10)
+	SELECT
+		@mahd = hd.hd_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.ban_id = @mabanChon
+	UPDATE HoaDon
+	SET
+		ban_id = @mabanDoi
+	WHERE hd_id = @mahd
+END
+EXEC HoaDon_DoiBan 'B01','B04'
+
 
 -- ========== CHI TIET HOA DON ==========
 -- Load CTHD theo ma Hoa Don
