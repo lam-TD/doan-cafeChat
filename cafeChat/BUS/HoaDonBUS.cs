@@ -55,11 +55,6 @@ namespace BUS
             }
         }
 
-        //public static bool HoaDon_KiemTraHoaDonCoTonTaiHayChua(string mahd)
-        //{
-
-        //}
-
         public static string DinhDangTienTienTe(double giatri)
         {
             return String.Format("{0:0,0}", giatri);
@@ -83,6 +78,15 @@ namespace BUS
             {
                 return 0;
             }
+        }
+        
+        public static double HoaDon_TinhTienThua(string tiennhan, string tongtien)
+        {
+            double tien_nhan = 0;
+            if (tiennhan != "")
+                tien_nhan = double.Parse(tiennhan);
+            double tong_tien = double.Parse(tongtien);
+            return tien_nhan - tong_tien;
         }
     }
 }
