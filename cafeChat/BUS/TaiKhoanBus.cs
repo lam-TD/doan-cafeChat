@@ -37,10 +37,10 @@ namespace BUS
                 switch (type)
                 {
                     case 1:
-                        query = "EXEC TaiKhoan_Them '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
+                        query = "EXEC TaiKhoan_Them '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + ", "+ tk.Tk_trangthai +"";
                         break;
                     case 2:
-                        query = "EXEC TaiKhoan_Sua '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + "";
+                        query = "EXEC TaiKhoan_Sua '" + tk.Nv_id + "','" + tk.Tm_mk + "'," + tk.Tk_quyen + ", "+ tk.Tk_trangthai +"";
                         break;
                     case 3:
                         query = "EXEC TaiKhoan_Xoa '" + tk.Nv_id + "'";
@@ -56,6 +56,11 @@ namespace BUS
                 return false;
             }
             
+        }
+
+        public static DataTable TaiKhoan_LoadNVChuCoTaiKhoan()
+        {
+            return conn.getTable("EXEC NhanVien_LoadNVChuaCoTaiKhoan");
         }
     }
 }

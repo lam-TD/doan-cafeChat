@@ -17,10 +17,10 @@ namespace DXApplication1.ucControl
         public ucQuanLiTaiKhoan()
         {
             InitializeComponent();
-            load_TaiKhoan();
+            TaiKhoan_Load();
         }
 
-        void load_TaiKhoan()
+        void TaiKhoan_Load()
         {
             gridTk.DataSource =  TaiKhoanBus.Load_TaiKhoan();
         }
@@ -28,7 +28,7 @@ namespace DXApplication1.ucControl
         private void btnThemTk_Click(object sender, EventArgs e)
         {
             frmTaiKhoan_Them tk = new frmTaiKhoan_Them();
-            tk.ShowDialog();
+            if (tk.ShowDialog() == DialogResult.OK) { TaiKhoan_Load(); }
         }
     }
 }

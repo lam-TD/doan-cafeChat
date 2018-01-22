@@ -247,7 +247,11 @@ namespace DXApplication1
             txttienthua.Enabled = dong_mo;
             btnhuyban.Enabled = huyban_thanhtoan;
             btnthanhtoan.Enabled = huyban_thanhtoan;
+            btndoiban.Enabled = huyban_thanhtoan;
+            btngopban.Enabled = huyban_thanhtoan;
+            txttongcong.ForeColor = Color.Red;
         }
+
 
         #endregion END XU LY
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -534,6 +538,16 @@ namespace DXApplication1
         private void txttiennhan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar)) e.Handled = true;
+        }
+
+        private void numphuthu_ValueChanged(object sender, EventArgs e)
+        {
+            txtphuthu.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.TinhTienTheoPhanTram(numphuthu.Value.ToString(), txtthanhtien.Text));
+        }
+
+        private void numgiamgia_ValueChanged(object sender, EventArgs e)
+        {
+            txtgiamgia.Text = HoaDonBUS.DinhDangTienTienTe(HoaDonBUS.TinhTienTheoPhanTram(numgiamgia.Value.ToString(), txtthanhtien.Text));
         }
     }
 }

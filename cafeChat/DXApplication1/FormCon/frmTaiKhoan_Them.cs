@@ -14,6 +14,7 @@ namespace DXApplication1
 {
     public partial class frmTaiKhoan_Them : DevExpress.XtraEditors.XtraForm
     {
+        public static bool flag; // cờ báo hiệu cập nhật gridtaikhoan
         public frmTaiKhoan_Them()
         {
             InitializeComponent();
@@ -21,8 +22,8 @@ namespace DXApplication1
         }
         void Load_cbMaNhanVien()
         {
-            cbMaNv.DataSource = TaiKhoanBus.Load_TaiKhoan();
-            cbMaNv.DisplayMember = "nv_id";
+            cbMaNv.DataSource = TaiKhoanBus.TaiKhoan_LoadNVChuCoTaiKhoan();
+            cbMaNv.DisplayMember = "nv_ten";
             cbMaNv.ValueMember = "nv_id";
             cbMaNv.SelectedIndex = -1;
         }
@@ -56,9 +57,13 @@ namespace DXApplication1
                         else
                             tk.Tk_quyen = 0;
                         tk.Tm_mk = txtmatkhau.Text;
+                        tk.Tk_trangthai = 1;
                         if (TaiKhoanBus.TaiKhoan_Them(tk, 1))
                         {
                             XtraMessageBox.Show("Thêm thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            flag = true;
+                            if (flag == true) { DialogResult = DialogResult.OK; }
+                            else { DialogResult = DialogResult.Cancel; }
                             this.Close();
                         }
                         else

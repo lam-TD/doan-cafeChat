@@ -11,6 +11,7 @@ namespace DTO
         private string nv_id;
         private string tm_mk;
         private int tk_quyen;
+        private int tk_trangthai;
 
         public string Nv_id
         {
@@ -48,6 +49,19 @@ namespace DTO
             set
             {
                 tk_quyen = value;
+            }
+        }
+
+        public int Tk_trangthai
+        {
+            get
+            {
+                return tk_trangthai;
+            }
+
+            set
+            {
+                tk_trangthai = value;
             }
         }
     }

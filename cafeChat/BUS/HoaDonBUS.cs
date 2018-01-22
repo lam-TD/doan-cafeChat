@@ -88,5 +88,12 @@ namespace BUS
             double tong_tien = double.Parse(tongtien);
             return tien_nhan - tong_tien;
         }
+
+        public static double TinhTienTheoPhanTram(string phantram, string tien)
+        {
+            double phan_tram = double.Parse(phantram);
+            double tien_tien = double.Parse(tien);
+            return (tien_tien * phan_tram / 100);
+        }
     }
 }

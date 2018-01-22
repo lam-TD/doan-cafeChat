@@ -294,6 +294,23 @@ BEGIN
 END
 EXEC NhanVien_Xoa 'nv001'
 
+-- Load Nhan Vien chua co Tai Khoan
+CREATE PROC NhanVien_LoadNVChuaCoTaiKhoan
+AS
+BEGIN
+	SELECT
+		nv.nv_id,
+		nv.nv_ten,
+		nv.nv_diachi,
+		nv.nv_sdt,
+		nv.nv_taikhoan,
+		nv.nv_trangthai
+	FROM
+		NhanVien AS nv
+	WHERE nv.nv_trangthai = N'Đang làm việc' AND nv.nv_taikhoan = 0
+END
+EXEC NhanVien_LoadNVChuaCoTaiKhoan
+
 -- ========== THUC UONG ==========
 -- Load Thuc Uong
 CREATE PROC ThucUong_Load
