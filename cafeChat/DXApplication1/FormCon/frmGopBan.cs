@@ -22,7 +22,7 @@ namespace DXApplication1.FormCon
             InitializeComponent();
             Load_cbchonban1();
             cbchonban1.Text = tenban;
-            gridHoaDon1.DataSource = Load_HoaDon(maban);
+            gridHoaDon1.DataSource = Load_HoaDonTheoMaBan(maban);
         }
 
         void Load_cbchonban1()
@@ -45,7 +45,7 @@ namespace DXApplication1.FormCon
             cbchonban2.SelectedIndex = -1;
         }
 
-        DataTable Load_HoaDon(string maban)
+        DataTable Load_HoaDonTheoMaBan(string maban)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace DXApplication1.FormCon
         {
             try
             {
-                gridHoaDon2.DataSource = Load_HoaDon(cbchonban2.SelectedValue.ToString());
+                gridHoaDon2.DataSource = Load_HoaDonTheoMaBan(cbchonban2.SelectedValue.ToString());
             }
             catch (Exception) { gridHoaDon2.DataSource = null; return; }
             
@@ -103,7 +103,7 @@ namespace DXApplication1.FormCon
                             {
                                 XtraMessageBox.Show("Đã GỘP " + cbchonban1.Text + "sang" + cbchonban2.Text + "!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 gridHoaDon1.DataSource = null;
-                                gridHoaDon2.DataSource = Load_HoaDon(mahd2);
+                                gridHoaDon2.DataSource = Load_HoaDonTheoMaBan(maban2);
                             } 
                         }
                         else
@@ -128,7 +128,7 @@ namespace DXApplication1.FormCon
 
                 foreach (ChiTietHoaDonDTO item in list)
                 {
-                    DataTable dt = ChiTietHoaDonBUS.CTHD_KiemTraThucUongCoTrongCTHD(item.Tu_id, mahd1);
+                    DataTable dt = ChiTietHoaDonBUS.CTHD_KiemTraThucUongCoTrongCTHD(item.Tu_id, mahd2);
                     if (dt.Rows.Count > 0)
                     {
                         ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
