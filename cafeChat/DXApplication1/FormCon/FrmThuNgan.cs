@@ -320,6 +320,11 @@ namespace DXApplication1
 
         private void btnthemthucuong_Click(object sender, EventArgs e)
         {
+            if (txtTenThucChon.Text == "")
+            {
+                XtraMessageBox.Show("Chưa chọn thức uống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();

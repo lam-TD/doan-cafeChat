@@ -30,13 +30,13 @@ namespace DXApplication1.FormCon
 
         void cbchonBan_Load()
         {
-            cbChonBan.DataSource = BanBUS.Ban_Load_BanTrangThaiCoKhach();
+            cbChonBan.DataSource = BanBUS.Ban_LoadBanTheoTrangThai("Có khách");
             cbChonBan.DisplayMember = "ban_ten";
             cbChonBan.ValueMember = "ban_id";
         }
         void doiBan_Load(string maban)
         {
-            cbDoiBan.DataSource = BanBUS.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach(maban);
+            cbDoiBan.DataSource = BanBUS.Ban_LoadBanTheoTrangThai("Trống");
             cbDoiBan.DisplayMember = "ban_ten";
             cbDoiBan.ValueMember = "ban_id";
             cbDoiBan.SelectedIndex = -1;

@@ -491,6 +491,7 @@
             // 
             this.txtTenThucChon.Location = new System.Drawing.Point(12, 171);
             this.txtTenThucChon.Name = "txtTenThucChon";
+            this.txtTenThucChon.Properties.ReadOnly = true;
             this.txtTenThucChon.Size = new System.Drawing.Size(87, 20);
             this.txtTenThucChon.StyleController = this.layoutControl3;
             this.txtTenThucChon.TabIndex = 9;

@@ -486,7 +486,7 @@ BEGIN
 		Ban
 	WHERE ban_trangthai = @trangthai AND ban_xoa = 0
 END
-EXEC Ban_Load N'Trống'
+EXEC Ban_Load_TrangThai N'Trống'
 
 -- Load tat ca Ban trừ bàn bị xóa -- ban_xoa = 1(đã xóa) -- 
 CREATE PROC Ban_Load
@@ -541,9 +541,9 @@ BEGIN
 	*
 	FROM
 		Ban AS b
-	WHERE b.ban_id <> @maban AND b.ban_trangthai <> N'Xóa' AND b.ban_trangthai = N'Trống'
+	WHERE b.ban_id <> @maban AND b.ban_trangthai <> N'Xóa' AND b.ban_trangthai = N'Có khách'
 END
-EXEC Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach 'B01'
+EXEC Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach 'B08'
 
 
 CREATE PROC Ban_Load_BanTrangThaiCoKhach
@@ -556,6 +556,7 @@ BEGIN
 	WHERE b.ban_trangthai <> N'Xóa' AND b.ban_trangthai = N'Có khách'
 END
 EXEC Ban_Load_BanTrangThaiCoKhach
+
 
 
 -- ========== KHU VUC ==========
@@ -684,6 +685,26 @@ BEGIN
 END
 EXEC HoaDon_HuyBan 'HD00003'
 
+-- Lấy Hóa Đơn theo Mã Bàn
+CREATE PROC HoaDon_LayHoaDonTheoMaBan
+@maban VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		hd.hd_id,
+		hd.hd_ngaylap,
+		hd.hd_trangthai,
+		hd.hd_phuthu,
+		hd.hd_giamgia,
+		hd.hd_tongtien,
+		hd.ban_id,
+		hd.nv_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.ban_id = @maban AND hd.hd_trangthai = 0
+END
+EXEC HoaDon_LayHoaDonTheoMaBan 'B08'
+
 -- Đổi bàn cập nhật lại Bàn của Hóa Đơn
 CREATE PROC HoaDon_DoiBan
 @mabanChon VARCHAR(10),
@@ -712,7 +733,6 @@ AS
 BEGIN
 	SELECT
 		c.cthd_soluong,
-		c.cthd_thanhtien,
 		c.hd_id,
 		c.tu_id
 	FROM

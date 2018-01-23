@@ -78,9 +78,9 @@ namespace BUS
             return conn.getTable("Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach '" + maban + "'");
         }
 
-        public static DataTable Ban_Load_BanTrangThaiCoKhach()
+        public static DataTable Ban_LoadBanTheoTrangThai(string trangthai)
         {
-            return conn.getTable("EXEC Ban_Load_BanTrangThaiCoKhach");
+            return conn.getTable("EXEC Ban_Load_TrangThai N'"+ trangthai +"'");
         }
     }
 }
