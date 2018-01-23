@@ -560,5 +560,13 @@ namespace DXApplication1
             }
         }
 
+        private void btngopban_Click(object sender, EventArgs e)
+        {
+            FormCon.frmGopBan gb = new FormCon.frmGopBan();
+            if (gb.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

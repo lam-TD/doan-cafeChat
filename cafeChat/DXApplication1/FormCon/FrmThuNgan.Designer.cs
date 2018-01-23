@@ -537,6 +537,7 @@
             this.btngopban.StyleController = this.layoutControl3;
             this.btngopban.TabIndex = 5;
             this.btngopban.Text = "Gộp bàn";
+            this.btngopban.Click += new System.EventHandler(this.btngopban_Click);
             // 
             // btndoiban
             // 

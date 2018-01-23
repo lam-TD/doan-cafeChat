@@ -149,6 +149,9 @@
     <EmbeddedResource Include="FormCon\frmDoiBan.resx">
       <DependentUpon>frmDoiBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCon\frmGopBan.resx">
+      <DependentUpon>frmGopBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCon\frmTaiKhoan_Them.resx">
       <DependentUpon>frmTaiKhoan_Them.cs</DependentUpon>
     </EmbeddedResource>
