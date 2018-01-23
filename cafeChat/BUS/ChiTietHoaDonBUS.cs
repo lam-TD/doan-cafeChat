@@ -13,9 +13,9 @@ namespace BUS
     {
         private static Connect conn = new Connect();
 
-        public static DataTable CTHD_Load()
+        public static DataTable CTHD_LoadTheoMaHD(string mahd)
         {
-            DataTable dt = conn.getTable("EXEC Ban_Load");
+            DataTable dt = conn.getTable("EXEC CTHD_Load_IDHoaDon @hd_ma = '"+ mahd +"'");
             return dt;
         }
 
@@ -59,5 +59,21 @@ namespace BUS
         {
             return conn.getTable("EXEC CTHD_KiemTraThucUongCoTrongCTHD " + mathucuong + ",'" + mahd + "'");
         }
+
+        public static List<ChiTietHoaDonDTO> CTHD_List(string mahd)
+        {
+            DataTable dt = CTHD_LoadTheoMaHD(mahd);
+            List<ChiTietHoaDonDTO> list = new List<ChiTietHoaDonDTO>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                cthd.Tu_id = int.Parse(dt.Rows[i]["tu_id"].ToString());
+                cthd.Hd_ma = dt.Rows[i]["hd_id"].ToString();
+                cthd.Cthd_soluong = int.Parse(dt.Rows[i]["cthd_soluong"].ToString());
+                list.Add(cthd);
+            }
+            return list;
+        }
+
     }
 }

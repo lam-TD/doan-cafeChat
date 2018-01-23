@@ -68,5 +68,21 @@ namespace DXApplication1.FormCon
             catch (Exception) { gridHoaDon2.DataSource = null; return; }
             
         }
+
+        private void btnban1sangban2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        bool GopBan(string mahd1, string maban1, string hd2, string maban2)
+        {
+            // lấy dánh sách chi tiết hóa đơn của hd1
+            // thực hiệp cập nhật cthd của hd1 sang hd2
+            // nếu thức uống đã có trong cthd cua hd2 thì update lại sô lượng
+            // nếu thức uống chưa có thì thêm mới cthd của hd2
+
+            List<ChiTietHoaDonDTO> list = ChiTietHoaDonBUS.CTHD_List(maban1);
+            return true;
+        }
     }
 }

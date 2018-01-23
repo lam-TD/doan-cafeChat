@@ -126,6 +126,7 @@
             this.btnban1sangban2.Size = new System.Drawing.Size(80, 50);
             this.btnban1sangban2.StyleController = this.layoutControl1;
             this.btnban1sangban2.TabIndex = 11;
+            this.btnban1sangban2.Click += new System.EventHandler(this.btnban1sangban2_Click);
             // 
             // btnban2sangban1
             // 

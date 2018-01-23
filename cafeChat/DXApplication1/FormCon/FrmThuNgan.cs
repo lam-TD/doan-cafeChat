@@ -251,6 +251,7 @@ namespace DXApplication1
             btndoiban.Enabled = huyban_thanhtoan;
             btngopban.Enabled = huyban_thanhtoan;
             txttongcong.ForeColor = Color.Red;
+            gridCTHD.Enabled = huyban_thanhtoan;
         }
 
 
@@ -557,6 +558,7 @@ namespace DXApplication1
             if (doiban.ShowDialog() == DialogResult.OK)
             {
                 Tao_Ban();
+                XetThuocTinhChoCacButton(false,false,false);
             }
         }
 
