@@ -58,7 +58,6 @@ namespace DXApplication1.FormCon
                 DataTable dt = null;
                 return dt;
             }
-            
         }
 
         private void cbchonban2_SelectedIndexChanged(object sender, EventArgs e)
