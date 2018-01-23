@@ -567,7 +567,8 @@ namespace DXApplication1
             FormCon.frmGopBan gb = new FormCon.frmGopBan(cbBan.Text,cbBan.SelectedValue.ToString());
             if (gb.ShowDialog() == DialogResult.OK)
             {
-
+                Tao_Ban();
+                XetThuocTinhChoCacButton(false, false, false);
             }
         }
     }

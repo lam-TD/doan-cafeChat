@@ -116,6 +116,7 @@
             this.btnluu.StyleController = this.layoutControl1;
             this.btnluu.TabIndex = 12;
             this.btnluu.Text = "Lưu";
+            this.btnluu.Click += new System.EventHandler(this.btnluu_Click);
             // 
             // btnban1sangban2
             // 

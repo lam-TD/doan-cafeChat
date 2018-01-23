@@ -15,6 +15,8 @@ namespace DXApplication1.FormCon
 {
     public partial class frmGopBan : DevExpress.XtraEditors.XtraForm
     {
+        static List<ChiTietHoaDonDTO> listCTHD1;
+        static List<ChiTietHoaDonDTO> listCTHD2;
         public frmGopBan(string tenban, string maban)
         {
             InitializeComponent();
@@ -71,18 +73,87 @@ namespace DXApplication1.FormCon
 
         private void btnban1sangban2_Click(object sender, EventArgs e)
         {
+            string maban1 = cbchonban1.SelectedValue.ToString();
+            DataTable dt = HoaDonBUS.HoaDon_LayHoaDonTheoMaBan(maban1);
+            string mahd1 = dt.Rows[0]["hd_id"].ToString();
 
+            string maban2 = cbchonban2.SelectedValue.ToString();
+            DataTable dt2 = HoaDonBUS.HoaDon_LayHoaDonTheoMaBan(maban2);
+            string mahd2 = dt2.Rows[0]["hd_id"].ToString();
+
+            listCTHD1 = ChiTietHoaDonBUS.CTHD_List(mahd1);
+            listCTHD2 = ChiTietHoaDonBUS.CTHD_List(mahd2);
+
+            DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn GỘP '" + cbchonban1.Text + "'" + " sang " + "'" + cbchonban2.Text + "' ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (GopBan(mahd1, maban1, mahd2, maban2))
+                {
+                    ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                    cthd.Hd_ma = mahd1;
+                    if (ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 4))
+                    {
+                        HoaDonDTO hd = new HoaDonDTO();
+                        hd.Hd_id = mahd1;
+                        if (HoaDonBUS.HoaDon_ThemXoaSuaHuyBan(hd, 4))
+                        {
+                            if (!BanBUS.Ban_CapNhatTrangThaiBan(maban1, "Trống"))
+                                XtraMessageBox.Show("Lỗi không cập nhật được trạng thái Bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            else 
+                            {
+                                XtraMessageBox.Show("Đã GỘP " + cbchonban1.Text + "sang" + cbchonban2.Text + "!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                gridHoaDon1.DataSource = null;
+                                gridHoaDon2.DataSource = Load_HoaDon(mahd2);
+                            } 
+                        }
+                        else
+                            XtraMessageBox.Show("Lỗi không xóa Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                        XtraMessageBox.Show("Lỗi không xóa được Chi Tiết Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            
         }
 
-        bool GopBan(string mahd1, string maban1, string hd2, string maban2)
+        bool GopBan(string mahd1, string maban1, string mahd2, string maban2)
         {
             // lấy dánh sách chi tiết hóa đơn của hd1
-            // thực hiệp cập nhật cthd của hd1 sang hd2
+            // thực hiện cập nhật cthd của hd1 sang hd2
             // nếu thức uống đã có trong cthd cua hd2 thì update lại sô lượng
             // nếu thức uống chưa có thì thêm mới cthd của hd2
+            try
+            {
+                List<ChiTietHoaDonDTO> list = ChiTietHoaDonBUS.CTHD_List(mahd1);
 
-            List<ChiTietHoaDonDTO> list = ChiTietHoaDonBUS.CTHD_List(maban1);
-            return true;
+                foreach (ChiTietHoaDonDTO item in list)
+                {
+                    DataTable dt = ChiTietHoaDonBUS.CTHD_KiemTraThucUongCoTrongCTHD(item.Tu_id, mahd1);
+                    if (dt.Rows.Count > 0)
+                    {
+                        ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                        cthd.Tu_id = item.Tu_id;
+                        cthd.Hd_ma = mahd2;
+                        cthd.Cthd_soluong = item.Cthd_soluong + int.Parse(dt.Rows[0]["cthd_soluong"].ToString());
+                        ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 2);
+                    }
+                    else
+                    {
+                        ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                        cthd.Tu_id = item.Tu_id;
+                        cthd.Hd_ma = mahd2;
+                        cthd.Cthd_soluong = item.Cthd_soluong;
+                        ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 1);
+                    }
+                }
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
+
+        private void btnluu_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }
