@@ -564,7 +564,8 @@ namespace DXApplication1
 
         private void btngopban_Click(object sender, EventArgs e)
         {
-            FormCon.frmGopBan gb = new FormCon.frmGopBan(cbBan.Text,cbBan.SelectedValue.ToString());
+            //FormCon.frmGopBan gb = new FormCon.frmGopBan(cbBan.Text,cbBan.SelectedValue.ToString());
+            FormCon.frmGopTachBan gb = new FormCon.frmGopTachBan(cbBan.Text, cbBan.SelectedValue.ToString());
             if (gb.ShowDialog() == DialogResult.OK)
             {
                 Tao_Ban();

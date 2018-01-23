@@ -156,3 +156,4 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DX
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiKhuVuc.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FormCon.frmDoiBan.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FormCon.frmGopBan.resources
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FormCon.frmGopTachBan.resources

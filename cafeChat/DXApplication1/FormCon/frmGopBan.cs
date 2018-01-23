@@ -154,5 +154,49 @@ namespace DXApplication1.FormCon
         {
             DialogResult = DialogResult.OK;
         }
+
+        private void btnban2sangban1_Click(object sender, EventArgs e)
+        {
+            string maban1 = cbchonban2.SelectedValue.ToString();
+            DataTable dt = HoaDonBUS.HoaDon_LayHoaDonTheoMaBan(maban1);
+            string mahd1 = dt.Rows[0]["hd_id"].ToString();
+
+            string maban2 = cbchonban1.SelectedValue.ToString();
+            DataTable dt2 = HoaDonBUS.HoaDon_LayHoaDonTheoMaBan(maban2);
+            string mahd2 = dt2.Rows[0]["hd_id"].ToString();
+
+            listCTHD1 = ChiTietHoaDonBUS.CTHD_List(mahd1);
+            listCTHD2 = ChiTietHoaDonBUS.CTHD_List(mahd2);
+
+            DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn GỘP '" + cbchonban1.Text + "'" + " sang " + "'" + cbchonban2.Text + "' ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (GopBan(mahd1, maban1, mahd2, maban2))
+                {
+                    ChiTietHoaDonDTO cthd = new ChiTietHoaDonDTO();
+                    cthd.Hd_ma = mahd1;
+                    if (ChiTietHoaDonBUS.CTHD_ThemXoaSuaHuyBan(cthd, 4))
+                    {
+                        HoaDonDTO hd = new HoaDonDTO();
+                        hd.Hd_id = mahd1;
+                        if (HoaDonBUS.HoaDon_ThemXoaSuaHuyBan(hd, 4))
+                        {
+                            if (!BanBUS.Ban_CapNhatTrangThaiBan(maban1, "Trống"))
+                                XtraMessageBox.Show("Lỗi không cập nhật được trạng thái Bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            else
+                            {
+                                XtraMessageBox.Show("Đã GỘP " + cbchonban1.Text + "sang" + cbchonban2.Text + "!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                gridHoaDon2.DataSource = null;
+                                gridHoaDon1.DataSource = Load_HoaDonTheoMaBan(maban2);
+                            }
+                        }
+                        else
+                            XtraMessageBox.Show("Lỗi không xóa Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                        XtraMessageBox.Show("Lỗi không xóa được Chi Tiết Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
     }
 }

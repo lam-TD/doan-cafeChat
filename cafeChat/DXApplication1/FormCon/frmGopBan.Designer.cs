@@ -138,6 +138,7 @@
             this.btnban2sangban1.Size = new System.Drawing.Size(80, 54);
             this.btnban2sangban1.StyleController = this.layoutControl1;
             this.btnban2sangban1.TabIndex = 10;
+            this.btnban2sangban1.Click += new System.EventHandler(this.btnban2sangban1_Click);
             // 
             // gridHoaDon2
             // 
