@@ -12,6 +12,7 @@ namespace DTO
         private string ban_ten;
         private string ban_trangthai;
         private int kv_id;
+        private int ban_xoa;
 
         public string Ban_id
         {
@@ -62,6 +63,19 @@ namespace DTO
             set
             {
                 kv_id = value;
+            }
+        }
+
+        public int Ban_xoa
+        {
+            get
+            {
+                return ban_xoa;
+            }
+
+            set
+            {
+                ban_xoa = value;
             }
         }
     }

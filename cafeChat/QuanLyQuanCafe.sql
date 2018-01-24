@@ -507,13 +507,10 @@ CREATE PROC Ban_Load
 AS
 BEGIN
 	SELECT
-		ban_id,
-		ban_ten,
-		ban_trangthai,
-		kv_id
+		Ban.ban_id,Ban.ban_ten,Ban.ban_trangthai,kv.kv_ten,kv.kv_id
 	FROM
-		Ban
-	WHERE ban_xoa = 0
+		Ban INNER JOIN KhuVuc AS kv ON kv.kv_id = Ban.kv_id
+	WHERE ban_xoa = 0 AND ban_trangthai <> N'Xóa'
 END
 EXEC Ban_Load
 

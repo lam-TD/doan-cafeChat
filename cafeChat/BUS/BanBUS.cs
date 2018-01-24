@@ -82,5 +82,32 @@ namespace BUS
         {
             return conn.getTable("EXEC Ban_Load_TrangThai N'"+ trangthai +"'");
         }
+
+        public static bool Ban_ThemSuaXoa(BanDTO b, int type)
+        {
+            string query = "";
+            switch (type)
+            {
+                case 1:
+                    query = "EXEC Ban_Them " + b.Ban_id + ",N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "," + b.Ban_xoa + "";
+                    break;
+                case 2:
+                    query = "EXEC Ban_Sua " + b.Ban_id + ",N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "," + b.Ban_xoa + "";
+                    break;
+                case 3:
+                    query = "EXEC Ban_Xoa " + b.Ban_id + "";
+                    break;
+            }
+            if (conn.ExcuteQuery(query))
+                return true;
+            else
+                return false;
+        }
+
+
+        public static string Ban_TimMaBanKeTiep()
+        {
+            return conn.TimIDKeTiep("b");
+        }
     }
 }
