@@ -231,6 +231,54 @@ namespace DXApplication1
             txttiennhan.SelectionStart = txttiennhan.Text.Length;
         }
 
+        public void TachSo_txtphucthu(TextEdit phuthu) //hàm nhập số thêm vào dấu phẩy
+        {
+            string txt, txt1;
+            txt1 = txtphuthu.Text.Replace(",", "");
+            txt = "";
+            int n = txt1.Length;
+            int dem = 0;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (dem == 2 && i != 0)
+                {
+                    txt = "," + txt1.Substring(i, 1) + txt;
+                    dem = 0;
+                }
+                else
+                {
+                    txt = txt1.Substring(i, 1) + txt;
+                    dem += 1;
+                }
+            }
+            txtphuthu.Text = txt;
+            txtphuthu.SelectionStart = txtphuthu.Text.Length;
+        }
+
+        public void TachSo_txtgiamgia(TextEdit phuthu) //hàm nhập số thêm vào dấu phẩy
+        {
+            string txt, txt1;
+            txt1 = txtgiamgia.Text.Replace(",", "");
+            txt = "";
+            int n = txt1.Length;
+            int dem = 0;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (dem == 2 && i != 0)
+                {
+                    txt = "," + txt1.Substring(i, 1) + txt;
+                    dem = 0;
+                }
+                else
+                {
+                    txt = txt1.Substring(i, 1) + txt;
+                    dem += 1;
+                }
+            }
+            txtgiamgia.Text = txt;
+            txtgiamgia.SelectionStart = txtgiamgia.Text.Length;
+        }
+
         void XetThuocTinhChoCacButton(bool dong_mo, bool themthucuong, bool huyban_thanhtoan)
         {
             btnthemthucuong.Enabled = themthucuong;
@@ -479,6 +527,7 @@ namespace DXApplication1
         private void txtphuthu_TextChanged_1(object sender, EventArgs e)
         {
             txtThanhTien_txtTongCong_Load();
+            TachSo_txtphucthu(txtphuthu);
         }
 
         private void txttiennhan_TextChanged(object sender, EventArgs e)
@@ -582,7 +631,8 @@ namespace DXApplication1
                 hd.Hd_id = txtmahd.Text;
                 hd.Hd_phuthu = int.Parse(txtphuthu.Text);
                 hd.Hd_giamgia = int.Parse(txtgiamgia.Text);
-                hd.Hd_tongtien = int.Parse(txttongcong.Text);
+                double tongtien = double.Parse(txttongcong.Text.ToString());
+                hd.Hd_tongtien = tongtien;
                 hd.Hd_ngaylap = dateTimePickerNgayLap.Value.ToString("MM/dd/yyyy");
                 hd.Ban_id = cbBan.SelectedValue.ToString();
                 hd.Nv_id = MaNhanVien;

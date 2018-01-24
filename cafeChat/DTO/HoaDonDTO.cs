@@ -14,7 +14,7 @@ namespace DTO
         private double hd_phuthu;
         private double hd_giamgia;
         private int hd_trangthai;
-        private int hd_tongtien;
+        private double hd_tongtien;
         private string nv_id;
 
         public string Hd_id
@@ -95,7 +95,7 @@ namespace DTO
             }
         }
 
-        public int Hd_tongtien
+        public double Hd_tongtien
         {
             get
             {
