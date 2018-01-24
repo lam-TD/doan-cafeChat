@@ -564,12 +564,41 @@ namespace DXApplication1
 
         private void btngopban_Click(object sender, EventArgs e)
         {
-            //FormCon.frmGopBan gb = new FormCon.frmGopBan(cbBan.Text,cbBan.SelectedValue.ToString());
-            FormCon.frmGopTachBan gb = new FormCon.frmGopTachBan(cbBan.Text, cbBan.SelectedValue.ToString());
+            FormCon.frmGopBan gb = new FormCon.frmGopBan(cbBan.Text, cbBan.SelectedValue.ToString());
+            //FormCon.frmGopTachBan gb = new FormCon.frmGopTachBan(cbBan.Text, cbBan.SelectedValue.ToString());
             if (gb.ShowDialog() == DialogResult.OK)
             {
                 Tao_Ban();
                 XetThuocTinhChoCacButton(false, false, false);
+            }
+        }
+
+        private void btnthanhtoan_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                HoaDonDTO hd = new HoaDonDTO();
+                hd.Hd_id = txtmahd.Text;
+                hd.Hd_phuthu = int.Parse(txtphuthu.Text);
+                hd.Hd_giamgia = int.Parse(txtgiamgia.Text);
+                hd.Hd_tongtien = int.Parse(txttongcong.Text);
+                hd.Hd_ngaylap = dateTimePickerNgayLap.Value.ToString("MM/dd/yyyy");
+                hd.Ban_id = cbBan.SelectedValue.ToString();
+                hd.Nv_id = MaNhanVien;
+                hd.Hd_trangthai = 1;
+                if (HoaDonBUS.HoaDon_ThemXoaSuaHuyBan(hd,2))
+                {
+                    if (BanBUS.Ban_CapNhatTrangThaiBan(hd.Ban_id,"Trống"))
+                    {
+                        Tao_Ban();
+                        XetThuocTinhChoCacButton(false, false, false);
+                    }else XtraMessageBox.Show("Không cập nhật được trạng thái Bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }else XtraMessageBox.Show("Lỗi không cập nhật được Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception)
+            {
+                XtraMessageBox.Show("Lỗi không Thanh Toán được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -22,6 +22,7 @@ namespace DXApplication1.FormCon
             InitializeComponent();
             Load_cbchonban1();
             cbchonban1.Text = tenban;
+            Load_cbchonban2(maban);
             gridHoaDon1.DataSource = Load_HoaDonTheoMaBan(maban);
         }
 
@@ -37,6 +38,7 @@ namespace DXApplication1.FormCon
             cbchonban2.DataSource = BanBUS.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach(maban);
             cbchonban2.DisplayMember = "ban_ten";
             cbchonban2.ValueMember = "ban_id";
+            cbchonban2.SelectedIndex = -1;
         }
 
         private void cbchonban1_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,7 +114,7 @@ namespace DXApplication1.FormCon
                         XtraMessageBox.Show("Lỗi không xóa được Chi Tiết Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            
+            DialogResult = DialogResult.OK;
         }
 
         bool GopBan(string mahd1, string maban1, string mahd2, string maban2)
@@ -152,7 +154,7 @@ namespace DXApplication1.FormCon
 
         private void btnluu_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            
         }
 
         private void btnban2sangban1_Click(object sender, EventArgs e)
@@ -168,7 +170,7 @@ namespace DXApplication1.FormCon
             listCTHD1 = ChiTietHoaDonBUS.CTHD_List(mahd1);
             listCTHD2 = ChiTietHoaDonBUS.CTHD_List(mahd2);
 
-            DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn GỘP '" + cbchonban1.Text + "'" + " sang " + "'" + cbchonban2.Text + "' ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn GỘP '" + cbchonban2.Text + "'" + " sang " + "'" + cbchonban1.Text + "' ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 if (GopBan(mahd1, maban1, mahd2, maban2))
@@ -185,7 +187,7 @@ namespace DXApplication1.FormCon
                                 XtraMessageBox.Show("Lỗi không cập nhật được trạng thái Bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             else
                             {
-                                XtraMessageBox.Show("Đã GỘP " + cbchonban1.Text + "sang" + cbchonban2.Text + "!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                XtraMessageBox.Show("Đã GỘP " + cbchonban2.Text + " sang " + cbchonban1.Text + "!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 gridHoaDon2.DataSource = null;
                                 gridHoaDon1.DataSource = Load_HoaDonTheoMaBan(maban2);
                             }
@@ -197,6 +199,7 @@ namespace DXApplication1.FormCon
                         XtraMessageBox.Show("Lỗi không xóa được Chi Tiết Hóa Đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            DialogResult = DialogResult.OK;
         }
     }
 }

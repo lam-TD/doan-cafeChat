@@ -11,7 +11,9 @@ namespace DTO
         private string hd_ma;
         private int cthd_soluong;
         private int tu_id;
-
+        private int tu_dongia;
+        private int cthd_thanhtien;
+        private string tu_ten;
         public string Hd_ma
         {
             get
@@ -48,6 +50,45 @@ namespace DTO
             set
             {
                 tu_id = value;
+            }
+        }
+
+        public int Tu_dongia
+        {
+            get
+            {
+                return tu_dongia;
+            }
+
+            set
+            {
+                tu_dongia = value;
+            }
+        }
+
+        public int Cthd_thanhtien
+        {
+            get
+            {
+                return cthd_thanhtien;
+            }
+
+            set
+            {
+                cthd_thanhtien = value;
+            }
+        }
+
+        public string Tu_ten
+        {
+            get
+            {
+                return tu_ten;
+            }
+
+            set
+            {
+                tu_ten = value;
             }
         }
     }

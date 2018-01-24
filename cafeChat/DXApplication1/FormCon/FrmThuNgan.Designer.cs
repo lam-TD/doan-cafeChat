@@ -506,6 +506,7 @@
             this.btnthanhtoan.StyleController = this.layoutControl3;
             this.btnthanhtoan.TabIndex = 8;
             this.btnthanhtoan.Text = "Thanh toán";
+            this.btnthanhtoan.Click += new System.EventHandler(this.btnthanhtoan_Click);
             // 
             // numsoluong
             // 
