@@ -311,6 +311,24 @@ BEGIN
 END
 EXEC NhanVien_LoadNVChuaCoTaiKhoan
 
+-- Load Nhan Vien theo mã NV
+CREATE PROC NhanVien_LoadNhanVienTheoMa
+@manv VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		nv.nv_id,
+		nv.nv_ten,
+		nv.nv_diachi,
+		nv.nv_sdt,
+		nv.nv_taikhoan,
+		nv.nv_trangthai
+	FROM
+		NhanVien AS nv
+	WHERE nv.nv_id = @manv
+END
+EXEC NhanVien_LoadNhanVienTheoMa 'NV0001'
+
 -- ========== THUC UONG ==========
 -- Load Thuc Uong
 CREATE PROC ThucUong_Load
