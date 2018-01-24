@@ -335,13 +335,9 @@ CREATE PROC ThucUong_Load
 AS
 BEGIN
 	SELECT
-		tu.tu_id,
-		tu.tu_ten,
-		tu.tu_gia,
-		tu.tu_trangthai,
-		tu.dm_id
+		*
 	FROM
-		ThucUong AS tu
+		ThucUong AS tu INNER JOIN DanhMuc AS dm ON dm.dm_id = tu.dm_id
 	WHERE tu.tu_trangthai = 1
 END
 EXEC ThucUong_Load

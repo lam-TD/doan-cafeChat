@@ -23,6 +23,27 @@ namespace BUS
             return conn.getTable("EXEC ThucUong_Load_IDDanhMuc " + iddanhmuc + "");
         }
 
+        public static bool ThucUong_ThemSuaXoa(ThucUongDTO tu, int type)
+        {
+            string query = "";
+            switch (type)
+            {
+                case 1:
+                    query = "EXEC ThucUong_Them " + tu.Tu_id + ",N'" + tu.Tu_ten + "'," + tu.Tu_gia + "," + tu.Tu_trangthai + "," + tu.Dm_id + "";
+                    break;
+                case 2:
+                    query = "EXEC ThucUong_Sua " + tu.Tu_id + ",N'" + tu.Tu_ten + "'," + tu.Tu_gia + "," + tu.Tu_trangthai + "," + tu.Dm_id + "";
+                    break;
+                case 3:
+                    query = "EXEC ThucUong_Xoa " + tu.Tu_id + "";
+                    break;
+            }
+            if (conn.ExcuteQuery(query))
+                return true;
+            else
+                return false;
+        }
+
         public static List<ThucUongDTO> ThucUong_List()
         {
             DataTable dt = ThucUong_Load();
@@ -39,5 +60,6 @@ namespace BUS
             }
             return listThucUong;
         }
+
     }
 }

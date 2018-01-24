@@ -55,6 +55,7 @@ namespace DXApplication1.ucControl
                 {
                     XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     NhanVien_Load();
+                    resetText();
                 }
                 else { XtraMessageBox.Show("Lỗi không thêm được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
@@ -109,6 +110,11 @@ namespace DXApplication1.ucControl
                 else
                     XtraMessageBox.Show("Lỗi không xóa được!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void txtsdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar)) { e.Handled = true; }
         }
     }
 }
