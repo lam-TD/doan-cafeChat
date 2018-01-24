@@ -96,6 +96,7 @@
             // 
             // txtmatkhau
             // 
+            this.txtmatkhau.EditValue = "123456";
             this.txtmatkhau.Location = new System.Drawing.Point(79, 36);
             this.txtmatkhau.Name = "txtmatkhau";
             this.txtmatkhau.Properties.UseSystemPasswordChar = true;
@@ -107,6 +108,7 @@
             // 
             // txttaikhoan
             // 
+            this.txttaikhoan.EditValue = "NV0001";
             this.txttaikhoan.Location = new System.Drawing.Point(79, 12);
             this.txttaikhoan.Name = "txttaikhoan";
             this.txttaikhoan.Size = new System.Drawing.Size(159, 20);
