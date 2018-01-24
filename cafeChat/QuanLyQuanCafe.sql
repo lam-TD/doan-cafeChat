@@ -453,7 +453,7 @@ BEGIN
 		@dm_ghichu
 	)
 END
-EXEC DanhMuc_Them N'Sinh Tố',1
+EXEC DanhMuc_Them N'Đồ chơi',1,N'FFDFFFDFDFDFDFDFDFD'
 
 -- Cap Nhat Danh Muc
 CREATE PROC DanhMuc_Sua

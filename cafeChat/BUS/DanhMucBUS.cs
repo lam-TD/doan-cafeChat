@@ -19,6 +19,27 @@ namespace BUS
             return dt;
         }
 
+        public static bool DanhMuc_ThemSuaXoa(DanhMucDTO dm, int type)
+        {
+            string query = "";
+            switch (type)
+            {
+                case 1:
+                    query = "EXEC DanhMuc_Them N'" + dm.Dm_ten + "'," + dm.Dm_trangthai + ",N'" + dm.Dm_ghichu + "'";
+                    break;
+                case 2:
+                    query = "EXEC DanhMuc_Sua " + dm.Dm_id + ",N'" + dm.Dm_ten + "'," + dm.Dm_trangthai + ",'" + dm.Dm_ghichu + "'";
+                    break;
+                case 3:
+                    query = "EXEC DanhMuc_Xoa " + dm.Dm_id + "";
+                    break;
+            }
+            if (conn.ExcuteQuery(query))
+                return true;
+            else
+                return false;
+        }
+
         public static List<DanhMucDTO> DanhMuc_List()
         {
             DataTable dt = DanhMuc_Load();
