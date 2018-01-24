@@ -18,5 +18,10 @@ namespace BUS
             DataTable dt = conn.getTable(query);
             return dt;
         }
+
+        public static DataTable NhanVien_LoadNhanVienTheoMa(string manv)
+        {
+            return conn.getTable("EXEC NhanVien_LoadNhanVienTheoMa '" + manv + "'");
+        }
     }
 }

@@ -6,15 +6,26 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BUS;
+
 namespace DXApplication1
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        public static string manv;
+        public static string tennv;
+        public Form1(string manv)
         {
             InitializeComponent();
+            NhanVien_LoadThongTin(manv);
         }
 
+        void NhanVien_LoadThongTin(string manv)
+        {
+            DataTable dt = NhanVienBUS.NhanVien_LoadNhanVienTheoMa(manv);
+            manv = dt.Rows[0]["nv_id"].ToString();
+            tennv = dt.Rows[0]["nv_ten"].ToString();
+        }
         void load_ucControl(UserControl uc, string caption, int col, int row)
         {
             uc.Dock = DockStyle.Fill;
@@ -63,6 +74,11 @@ namespace DXApplication1
         {
             ucControl.ucQuanLiDanhMuc ucDM = new ucControl.ucQuanLiDanhMuc();
             load_ucControl(ucDM, "Quản lý danh mục", 1, 1);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            txttenhanvien.Caption = "Nhân viên: " + tennv;
         }
     }
 }

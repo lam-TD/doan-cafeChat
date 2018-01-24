@@ -58,6 +58,7 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbcaption = new DevExpress.XtraEditors.LabelControl();
+            this.txttenhanvien = new DevExpress.XtraBars.BarHeaderItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.tableLayoutMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,9 +81,10 @@
             this.btnQLSanPham,
             this.btnQLDanhMuc,
             this.btnQLBan,
-            this.btnQLKhuVuc});
+            this.btnQLKhuVuc,
+            this.txttenhanvien});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 14;
+            this.ribbonControl1.MaxItemId = 15;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -276,6 +278,7 @@
             // 
             // ribbonStatusBar1
             // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.txttenhanvien);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 513);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
@@ -320,6 +323,12 @@
             this.lbcaption.TabIndex = 0;
             this.lbcaption.Text = "Quản lý tài khoản";
             // 
+            // txttenhanvien
+            // 
+            this.txttenhanvien.Caption = "Lâm Trần Đức";
+            this.txttenhanvien.Id = 14;
+            this.txttenhanvien.Name = "txttenhanvien";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,6 +340,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffe Chất";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.tableLayoutMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -370,6 +380,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutMain;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.LabelControl lbcaption;
+        private DevExpress.XtraBars.BarHeaderItem txttenhanvien;
     }
 }
 
