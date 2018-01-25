@@ -641,6 +641,22 @@ BEGIN
 END
 EXEC KhucVuc_Load
 
+-- Load Khu Vực theo trạng thái
+CREATE PROC KhuVuc_LoadTheoTrangThai
+@trangthai NVARCHAR(20)
+AS
+BEGIN
+	SELECT
+		kv.kv_id,
+		kv.kv_ten,
+		kv.kv_trangthai,
+		kv.kv_ghichu
+	FROM
+		KhuVuc AS kv
+	WHERE kv.kv_trangthai = @trangthai
+END
+EXEC KhuVuc_LoadTheoTrangThai N'Đang sử dụng'
+
 -- Thêm Khu Vực
 CREATE PROC KhuVuc_Them
 @kv_ten NVARCHAR(100),

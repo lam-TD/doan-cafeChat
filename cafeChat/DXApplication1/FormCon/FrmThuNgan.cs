@@ -29,7 +29,7 @@ namespace DXApplication1
         void Tao_Ban()
         {
             flowLayoutBan.Controls.Clear();
-            DataTable dt = KhuVucBUS.KhuVuc_Load();
+            DataTable dt = KhuVucBUS.KhuVuc_LoadTheoTrangThai("Đang sử dụng");
             GroupBox grkhuvucCu = new GroupBox() { Width = 0, Location = new Point(0, 0) }; // lưu vị trí của groupbox cũ
             for (int i = 0; i < dt.Rows.Count; i++)
             {

@@ -18,6 +18,12 @@ namespace BUS
             return dt;
         }
 
+        public static DataTable KhuVuc_LoadTheoTrangThai(string trangthai)
+        {
+            DataTable dt = conn.getTable("EXEC KhuVuc_LoadTheoTrangThai N'"+ trangthai +"'");
+            return dt;
+        }
+
         public static bool KhuVuc_ThemSuaXoa(KhuVucDTO kv, int type)
         {
             string query = "";
