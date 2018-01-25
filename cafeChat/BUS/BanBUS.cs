@@ -89,13 +89,13 @@ namespace BUS
             switch (type)
             {
                 case 1:
-                    query = "EXEC Ban_Them " + b.Ban_id + ",N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "," + b.Ban_xoa + "";
+                    query = "EXEC Ban_Them '" + b.Ban_id + "',N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "," + b.Ban_xoa + "";
                     break;
                 case 2:
-                    query = "EXEC Ban_Sua " + b.Ban_id + ",N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "," + b.Ban_xoa + "";
+                    query = "EXEC Ban_Sua '" + b.Ban_id + "',N'" + b.Ban_ten + "',N'" + b.Ban_trangthai + "'," + b.Kv_id + "";
                     break;
                 case 3:
-                    query = "EXEC Ban_Xoa " + b.Ban_id + "";
+                    query = "EXEC Ban_Xoa '" + b.Ban_id + "'";
                     break;
             }
             if (conn.ExcuteQuery(query))

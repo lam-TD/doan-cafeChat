@@ -568,6 +568,61 @@ BEGIN
 END
 EXEC Ban_Load_BanTrangThaiCoKhach
 
+-- Thêm Bàn
+CREATE PROC Ban_Them
+@ban_id VARCHAR(10),
+@ban_ten NVARCHAR(100),
+@ban_trangthai NVARCHAR(100),
+@kv_id NVARCHAR(200),
+@ban_xoa INT
+AS
+BEGIN
+	INSERT INTO Ban
+	(
+		ban_id,
+		ban_ten,
+		ban_trangthai,
+		kv_id,
+		ban_xoa
+	)
+	VALUES
+	(
+		@ban_id,
+		@ban_ten,
+		@ban_trangthai,
+		@kv_id,
+		@ban_xoa
+	)
+END
+EXEC Ban_Them 'B11',N'Bàn 16',N'Trống',3,0
+--Sửa Bàn
+CREATE PROC Ban_Sua
+@ban_id VARCHAR(10),
+@ban_ten NVARCHAR(100),
+@ban_trangthai NVARCHAR(100),
+@kv_id NVARCHAR(200)
+AS
+BEGIN
+	UPDATE Ban
+	SET
+		ban_ten		 = @ban_ten,
+		ban_trangthai = @ban_trangthai,
+		kv_id	 = @kv_id
+	WHERE ban_id = @ban_id
+END
+EXEC Ban_Sua 3,N'Bàn 3',N'Đang sử dụng', 2,0
+
+-- Xóa Bàn
+CREATE PROC Ban_Xoa
+@ban_id VARCHAR(10)
+AS
+BEGIN
+	UPDATE Ban
+	SET
+		ban_trangthai = N'Xóa',
+		ban_xoa = 1
+	WHERE ban_id = @ban_id
+END
 
 
 -- ========== KHU VUC ==========

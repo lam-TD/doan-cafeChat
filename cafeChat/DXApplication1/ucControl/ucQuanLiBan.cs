@@ -43,7 +43,7 @@ namespace DXApplication1.ucControl
 
         private void btnThemBan_Click(object sender, EventArgs e)
         {
-            if (txtma.Text != "" && txtten.Text != "" && cbkhu_vuc.ToString() != "" && cbtrang_thai.ToString() != "")
+            if (txtten.Text != "" && cbkhu_vuc.ToString() != "" && cbtrang_thai.ToString() != "")
             {
                 BanDTO b = new BanDTO();
                 b.Ban_id = BanBUS.Ban_TimMaBanKeTiep();
@@ -70,7 +70,7 @@ namespace DXApplication1.ucControl
         private void btnCapNhatBan_Click(object sender, EventArgs e)
         {
             BanDTO b = new BanDTO();
-            DialogResult dialogResult = MessageBox.Show("Chắc chắn", "Bạn chắc muốn sửa chứ", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn SỬA thông tin BÀN vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
 
@@ -107,7 +107,7 @@ namespace DXApplication1.ucControl
         private void btnXoa_Click(object sender, EventArgs e)
         {
             BanDTO b = new BanDTO();
-            DialogResult dialogResult = MessageBox.Show("Chắc chắn", "Bạn chắc muốn xóa chứ", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn XÓA thông tin BÀN vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 b.Ban_id = txtma.Text;
