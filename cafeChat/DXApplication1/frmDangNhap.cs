@@ -53,22 +53,22 @@ namespace DXApplication1.FormCon
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
             AcceptButton = btndangnhap;
-            txttaikhoan.Text = "Vui lòng nhập tài khoản...";
-            txttaikhoan.ForeColor = Color.Gray;
-            this.txttaikhoan.Leave += new System.EventHandler(this.txttaikhoan_Leave);
-            this.txttaikhoan.Enter += new System.EventHandler(this.txttaikhoan_Enter);
+            //txttaikhoan.Text = "Vui lòng nhập mã nhân viên...";
+            //txttaikhoan.ForeColor = Color.Gray;
+            //this.txttaikhoan.Leave += new System.EventHandler(this.txttaikhoan_Leave);
+            //this.txttaikhoan.Enter += new System.EventHandler(this.txttaikhoan_Enter);
             
         }
 
         private void txttaikhoan_Enter(object sender, EventArgs e)
         {
-            if (txttaikhoan.Text == "Vui lòng nhập tài khoản...")
-            { txttaikhoan.Text = ""; txttaikhoan.ForeColor = Color.Black; }
+            //if (txttaikhoan.Text == "Vui lòng nhập tài khoản...")
+            //{ txttaikhoan.Text = ""; txttaikhoan.ForeColor = Color.Black; }
         }
 
         private void txttaikhoan_Leave(object sender, EventArgs e)
         {
-            if (txttaikhoan.Text == "") { txttaikhoan.Text = "Vui lòng nhập tài khoản..."; txttaikhoan.ForeColor = Color.LightGray; }
+            //if (txttaikhoan.Text == "") { txttaikhoan.Text = "Vui lòng nhập tài khoản..."; txttaikhoan.ForeColor = Color.LightGray; }
         }
 
         private void txtmatkhau_Enter(object sender, EventArgs e)

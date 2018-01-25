@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
+using DevExpress.XtraEditors;
+using DXApplication1.FormCon;
 
 namespace DXApplication1
 {
@@ -43,7 +45,7 @@ namespace DXApplication1
         private void btnQLSanPham_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ucControl.ucQuanLiSanPham ucSP = new ucControl.ucQuanLiSanPham();
-            load_ucControl(ucSP, "Quản lý sản phẩm", 1, 1);
+            load_ucControl(ucSP, "Quản lý thức uống", 1, 1);
         }
 
         private void btnQLNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -79,6 +81,16 @@ namespace DXApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             txttenhanvien.Caption = "Nhân viên: " + tennv;
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("Bạn có muốn đăng xuất?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Hide();
+                frmDangNhap dn = new frmDangNhap();
+                dn.ShowDialog();
+            }
         }
     }
 }

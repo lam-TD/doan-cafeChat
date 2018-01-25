@@ -641,6 +641,55 @@ BEGIN
 END
 EXEC KhucVuc_Load
 
+-- Thêm Khu Vực
+CREATE PROC KhuVuc_Them
+@kv_ten NVARCHAR(100),
+@kv_trangthai NVARCHAR(100),
+@kv_ghichu NVARCHAR(200)
+AS
+BEGIN
+	INSERT INTO KhuVuc
+	(
+		kv_ten,
+		kv_trangthai,
+		kv_ghichu
+	)
+	VALUES
+	(
+		@kv_ten,
+		@kv_trangthai,
+		@kv_ghichu
+	)
+END
+EXEC KhuVuc_Them N'Tầng 3',N'Đang sử dụng', 'hfusahu'
+
+--Sua khu vuc 
+CREATE PROC KhuVuc_Sua
+@kv_id INT,
+@kv_ten NVARCHAR(100),
+@kv_trangthai NVARCHAR(100),
+@kv_ghichu NVARCHAR(200)
+AS
+BEGIN
+	UPDATE KhuVuc
+	SET
+		kv_ten		 = @kv_ten,
+		kv_trangthai = @kv_trangthai,
+		kv_ghichu	 = @kv_ghichu
+	WHERE kv_id = @kv_id
+END
+EXEC KhuVuc_Sua 3,N'Tầng 3',N'Đang sử dụng', 'hfusafhu'
+-- Xoa khu vuc
+CREATE PROC KhuVuc_Xoa
+@kv_id INT
+AS
+BEGIN
+	UPDATE KhuVuc
+	SET
+		kv_trangthai = N'Ngưng sử dụng'
+	WHERE kv_id = @kv_id
+END
+
 
 
 

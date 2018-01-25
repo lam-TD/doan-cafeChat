@@ -43,6 +43,7 @@
             this.btnQLDanhMuc = new DevExpress.XtraBars.BarButtonItem();
             this.btnQLBan = new DevExpress.XtraBars.BarButtonItem();
             this.btnQLKhuVuc = new DevExpress.XtraBars.BarButtonItem();
+            this.txttenhanvien = new DevExpress.XtraBars.BarHeaderItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -58,7 +59,6 @@
             this.tableLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbcaption = new DevExpress.XtraEditors.LabelControl();
-            this.txttenhanvien = new DevExpress.XtraBars.BarHeaderItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.tableLayoutMain.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,6 +117,7 @@
             this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // btnThuNgan
             // 
@@ -201,6 +202,12 @@
             this.btnQLKhuVuc.Name = "btnQLKhuVuc";
             this.btnQLKhuVuc.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnQLKhuVuc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLKhuVuc_ItemClick);
+            // 
+            // txttenhanvien
+            // 
+            this.txttenhanvien.Caption = "Lâm Trần Đức";
+            this.txttenhanvien.Id = 14;
+            this.txttenhanvien.Name = "txttenhanvien";
             // 
             // ribbonPage2
             // 
@@ -322,12 +329,6 @@
             this.lbcaption.Size = new System.Drawing.Size(706, 31);
             this.lbcaption.TabIndex = 0;
             this.lbcaption.Text = "Quản lý tài khoản";
-            // 
-            // txttenhanvien
-            // 
-            this.txttenhanvien.Caption = "Lâm Trần Đức";
-            this.txttenhanvien.Id = 14;
-            this.txttenhanvien.Name = "txttenhanvien";
             // 
             // Form1
             // 
