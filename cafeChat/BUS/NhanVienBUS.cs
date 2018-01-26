@@ -60,5 +60,11 @@ namespace BUS
             else
                 return "null";
         }
+
+        public static bool NhanVien_CapNhatNhanVienCoTaiKhoan(string nv_id, int nv_taikhoan)
+        {
+            return conn.ExcuteQuery("EXEC NhanVien_CapNhatNhanVienCoTaiKhoan '"+ nv_id +"',"+ nv_taikhoan +"");
+        }
+
     }
 }

@@ -219,6 +219,20 @@ END
 
 EXEC TaiKhoan_Xoa '1'
 
+-- Lấy ra quyền truy cập của tài khoản
+CREATE PROC TaiKhoan_LayQuyenTruyCap
+@tk_ma VARCHAR(10)
+AS
+BEGIN
+	 SELECT
+	 	tk.tk_quyen
+	 FROM
+	 	TaiKhoan AS tk
+	 WHERE tk.nv_id = @tk_ma
+END
+EXEC TaiKhoan_LayQuyenTruyCap 'NV0001'
+
+
 -- ============ NHAN VIEN =============
 -- Load NhanVien
 CREATE PROC NhanVien_Load
@@ -310,6 +324,19 @@ BEGIN
 	WHERE nv.nv_trangthai = N'Đang làm việc' AND nv.nv_taikhoan = 0
 END
 EXEC NhanVien_LoadNVChuaCoTaiKhoan
+
+-- Cập nhật lại Nhân Viên có tài khoản
+CREATE PROC NhanVien_CapNhatNhanVienCoTaiKhoan
+@nv_id VARCHAR(10),
+@nv_taikhoan INT
+AS
+BEGIN
+	UPDATE NhanVien
+	SET
+		nv_taikhoan = @nv_taikhoan
+	WHERE nv_id = @nv_id
+END
+EXEC NhanVien_CapNhatNhanVienCoTaiKhoan 'NV0001',1
 
 -- Load Nhan Vien theo mã NV
 CREATE PROC NhanVien_LoadNhanVienTheoMa
@@ -624,7 +651,21 @@ BEGIN
 	WHERE ban_id = @ban_id
 END
 
-
+-- Kiểm tra tên bàn có bị trùng hay không
+CREATE PROC Ban_KiemTraTenBanTrung
+@ban_ten NVARCHAR(20)
+AS
+BEGIN
+	SELECT
+		b.ban_id,
+		b.ban_ten,
+		b.ban_trangthai,
+		b.kv_id
+	FROM
+		Ban AS b
+	WHERE b.ban_ten = @ban_ten AND b.ban_xoa = 0 AND b.ban_trangthai <> N'Xóa'
+END
+EXEC Ban_KiemTraTenBanTrung N'Bàn 1'
 -- ========== KHU VUC ==========
 -- Load Khu Vuc
 CREATE PROC KhucVuc_Load

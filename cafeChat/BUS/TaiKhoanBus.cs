@@ -62,5 +62,16 @@ namespace BUS
         {
             return conn.getTable("EXEC NhanVien_LoadNVChuaCoTaiKhoan");
         }
+
+        public static string TaiKhoan_LayQuyenTruyCap(string tk_id)
+        {
+            DataTable dt = conn.getTable("EXEC TaiKhoan_LayQuyenTruyCap '" + tk_id + "'");
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["tk_quyen"].ToString();
+            }
+            else
+                return "";
+        }
     }
 }

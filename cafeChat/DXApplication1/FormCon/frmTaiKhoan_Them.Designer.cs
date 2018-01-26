@@ -176,7 +176,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(279, 25);
-            this.layoutControlItem1.Text = "Mã nhân viên";
+            this.layoutControlItem1.Text = "Nhân viên";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(85, 13);
             // 
             // layoutControlItem4

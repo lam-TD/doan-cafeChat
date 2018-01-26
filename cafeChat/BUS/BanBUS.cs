@@ -104,6 +104,13 @@ namespace BUS
                 return false;
         }
 
+        public static bool Ban_KiemTraBanTrungTen(string tenban)
+        {
+            DataTable dt = conn.getTable("EXEC Ban_KiemTraTenBanTrung N'Bàn 1'");
+            if (dt.Rows.Count > 0)
+                return true;
+            else return false;
+        }
 
         public static string Ban_TimMaBanKeTiep()
         {

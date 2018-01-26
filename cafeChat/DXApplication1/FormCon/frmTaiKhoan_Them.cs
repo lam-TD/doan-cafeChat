@@ -23,7 +23,7 @@ namespace DXApplication1
         void Load_cbMaNhanVien()
         {
             cbMaNv.DataSource = TaiKhoanBus.TaiKhoan_LoadNVChuCoTaiKhoan();
-            cbMaNv.DisplayMember = "nv_ten";
+            cbMaNv.DisplayMember = "nv_id";
             cbMaNv.ValueMember = "nv_id";
             cbMaNv.SelectedIndex = -1;
         }
@@ -60,11 +60,16 @@ namespace DXApplication1
                         tk.Tk_trangthai = 1;
                         if (TaiKhoanBus.TaiKhoan_Them(tk, 1))
                         {
-                            XtraMessageBox.Show("Thêm thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            flag = true;
-                            if (flag == true) { DialogResult = DialogResult.OK; }
-                            else { DialogResult = DialogResult.Cancel; }
-                            this.Close();
+                            if (NhanVienBUS.NhanVien_CapNhatNhanVienCoTaiKhoan(cbMaNv.SelectedValue.ToString(),1))
+                            {
+                                XtraMessageBox.Show("Thêm thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                flag = true;
+                                if (flag == true) { DialogResult = DialogResult.OK; }
+                                else { DialogResult = DialogResult.Cancel; }
+                                this.Close();
+                            }
+                            else
+                                XtraMessageBox.Show("Lỗi cập nhật được trạng thái tài khoản của nhân viên!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                             XtraMessageBox.Show("Lỗi không thêm được!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

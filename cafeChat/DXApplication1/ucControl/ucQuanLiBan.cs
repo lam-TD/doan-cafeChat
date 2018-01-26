@@ -45,20 +45,27 @@ namespace DXApplication1.ucControl
         {
             if (txtten.Text != "" && cbkhu_vuc.ToString() != "" && cbtrang_thai.ToString() != "")
             {
-                BanDTO b = new BanDTO();
-                b.Ban_id = BanBUS.Ban_TimMaBanKeTiep();
-                b.Ban_ten = txtten.Text;
-                b.Ban_trangthai = cbtrang_thai.SelectedItem.ToString();
-                b.Kv_id = int.Parse(cbkhu_vuc.SelectedValue.ToString());
-                b.Ban_xoa = 0;
-                if (BanBUS.Ban_ThemSuaXoa(b, 1))
+                if (BanBUS.Ban_KiemTraBanTrungTen(txtten.Text))
                 {
-                    XtraMessageBox.Show("Thêm thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Ban_Load();
-                    resetText();
+                    XtraMessageBox.Show("Tên bàn đã tồn tại vui lòng nhập tên khác!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
-                    XtraMessageBox.Show("Lỗi không thêm được!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                    BanDTO b = new BanDTO();
+                    b.Ban_id = BanBUS.Ban_TimMaBanKeTiep();
+                    b.Ban_ten = txtten.Text;
+                    b.Ban_trangthai = cbtrang_thai.SelectedItem.ToString();
+                    b.Kv_id = int.Parse(cbkhu_vuc.SelectedValue.ToString());
+                    b.Ban_xoa = 0;
+                    if (BanBUS.Ban_ThemSuaXoa(b, 1))
+                    {
+                        XtraMessageBox.Show("Thêm thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Ban_Load();
+                        resetText();
+                    }
+                    else
+                        XtraMessageBox.Show("Lỗi không thêm được!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
