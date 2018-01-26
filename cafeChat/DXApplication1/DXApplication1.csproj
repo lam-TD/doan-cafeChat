@@ -113,6 +113,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucControl\frmQuanLiHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucControl\frmQuanLiHoaDon.Designer.cs">
+      <DependentUpon>frmQuanLiHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucControl\ucQuanLiBan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -195,6 +201,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ucControl\frmQuanLiHoaDon.resx">
+      <DependentUpon>frmQuanLiHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiBan.resx">
       <DependentUpon>ucQuanLiBan.cs</DependentUpon>
     </EmbeddedResource>

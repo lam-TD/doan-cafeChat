@@ -13,6 +13,11 @@ namespace BUS
     {
         private static Connect conn = new Connect();
 
+        public static DataTable HoaDon_Load()
+        {
+            return conn.getTable("EXEC HoaDon_Load");
+        }
+
         public static DataTable HoaDon_XacDinh_BanCoHDHayChua(string trangthaiBan, string maban)
         {
             if (trangthaiBan == "Có khách")

@@ -26,9 +26,11 @@ namespace DXApplication1.FormCon
             {
                 string taikhoan = txttaikhoan.Text.Trim();
                 string matkhau = txtmatkhau.Text.Trim();
-                if (TaiKhoanBus.TaiKhoan_Login(taikhoan, matkhau))
+                DataTable dt = TaiKhoanBus.TaiKhoan_Login(taikhoan, matkhau);
+                int quyen = int.Parse(dt.Rows[0]["tk_quyen"].ToString());
+                if (dt.Rows.Count > 0)
                 {
-                    Form1 frmchinh = new Form1(taikhoan);
+                    Form1 frmchinh = new Form1(taikhoan, quyen);
                     frmchinh.ShowDialog();
                     this.Hide();
                 }

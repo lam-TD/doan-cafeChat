@@ -754,6 +754,45 @@ END
 
 
 -- =========== HOA DON ==========
+-- Hóa Đơn
+CREATE PROC HoaDon_Load
+AS
+BEGIN
+	SELECT
+		hd.hd_id,
+		hd.hd_ngaylap,
+		hd.hd_trangthai,
+		hd.hd_phuthu,
+		hd.hd_giamgia,
+		hd.hd_tongtien,
+		hd.ban_id,
+		hd.nv_id
+	FROM
+		HoaDon AS hd
+	ORDER BY hd.hd_ngaylap DESC 
+END
+EXEC HoaDon_Load
+
+-- Thống kê Hóa Đơn theo ngày lập
+CREATE PROC HoaDon_ThongKeTheoNgayLap
+@tungay DATE,
+@denngay DATE
+AS
+BEGIN
+	SELECT
+	hd.hd_id,
+	hd.hd_ngaylap,
+	hd.hd_phuthu,
+	hd.hd_giamgia,
+	hd.hd_tongtien,
+	hd.hd_trangthai,
+	hd.ban_id,
+	hd.nv_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.hd_ngaylap > @denngay AND hd.hd_ngaylap < @tungay
+END
+
 -- Load Hoa Don theo ma Ban và trang thai Hoa Don = 0
 CREATE PROC HoaDon_Load_IDBan_TrangThaiHD
 @ban_id VARCHAR(10)

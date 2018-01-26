@@ -16,13 +16,22 @@ namespace DXApplication1
     {
         public static string manv;
         public static string tennv;
-        public Form1(string manv1)
+        public Form1(string manv1,int quyen)
         {
             InitializeComponent();
             NhanVien_LoadThongTin(manv1);
             manv = manv1;
+            lbcaption.Text = "";
+            if (quyen == 1) { PhanQuyen(true); }
+            else { PhanQuyen(false); }
         }
 
+        void PhanQuyen(bool quyen)
+        {
+            ribbonPageQuanLi.Visible = quyen;
+            ribbonPageThongKe.Visible = quyen;
+            ribbonPageGroupQLTaiKhoan.Visible = quyen;
+        }
         void NhanVien_LoadThongTin(string manv)
         {
             DataTable dt = NhanVienBUS.NhanVien_LoadNhanVienTheoMa(manv);
@@ -98,6 +107,15 @@ namespace DXApplication1
         {
             FormCon.frmDoiMatkhau doimk = new frmDoiMatkhau(manv);
             doimk.ShowDialog();
+        }
+
+        private void btnQLHoaDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            tableLayoutMain.Controls.Clear();
+            ucControl.frmQuanLiHoaDon uchd = new ucControl.frmQuanLiHoaDon();
+            //uchd.Dock = DockStyle.Fill;
+            //tableLayoutMain.Controls.Add(uchd);
+            load_ucControl(uchd, "Quản lý Hóa Đơn", 1, 1);
         }
     }
 }
