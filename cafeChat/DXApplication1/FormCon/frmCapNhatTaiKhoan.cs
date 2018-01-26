@@ -40,11 +40,12 @@ namespace DXApplication1.FormCon
         {
             try
             {
-                string quyen = TaiKhoanBus.TaiKhoan_LayQuyenTruyCap(cbmanv.SelectedValue.ToString());
-                if (quyen == "0")
+                DataTable dt = TaiKhoanBus.TaiKhoan_LayQuyenTruyCap(cbmanv.SelectedValue.ToString());
+                if (dt.Rows[0]["tk_quyen"].ToString() == "0")
                     cbquyen.Text = "Nhân viên";
                 else
                     cbquyen.Text = "Quản lý";
+                txtmatkhau.Text = dt.Rows[0]["tk_matkhau"].ToString();
             }
             catch (Exception)
             {

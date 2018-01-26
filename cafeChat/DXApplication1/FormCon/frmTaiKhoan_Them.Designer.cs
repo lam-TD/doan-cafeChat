@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaiKhoan_Them));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemTk = new DevExpress.XtraEditors.SimpleButton();
@@ -75,18 +74,16 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
             this.btnHuy.Location = new System.Drawing.Point(143, 110);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(144, 23);
             this.btnHuy.StyleController = this.layoutControl1;
             this.btnHuy.TabIndex = 10;
-            this.btnHuy.Text = "Hủy";
+            this.btnHuy.Text = "Thoát";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnThemTk
             // 
-            this.btnThemTk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemTk.ImageOptions.Image")));
             this.btnThemTk.Location = new System.Drawing.Point(12, 110);
             this.btnThemTk.Name = "btnThemTk";
             this.btnThemTk.Size = new System.Drawing.Size(127, 23);

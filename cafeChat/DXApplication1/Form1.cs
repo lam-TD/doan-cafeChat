@@ -16,10 +16,11 @@ namespace DXApplication1
     {
         public static string manv;
         public static string tennv;
-        public Form1(string manv)
+        public Form1(string manv1)
         {
             InitializeComponent();
-            NhanVien_LoadThongTin(manv);
+            NhanVien_LoadThongTin(manv1);
+            manv = manv1;
         }
 
         void NhanVien_LoadThongTin(string manv)
@@ -91,6 +92,12 @@ namespace DXApplication1
                 frmDangNhap dn = new frmDangNhap();
                 dn.ShowDialog();
             }
+        }
+
+        private void btndoimk_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FormCon.frmDoiMatkhau doimk = new frmDoiMatkhau(manv);
+            doimk.ShowDialog();
         }
     }
 }

@@ -227,7 +227,7 @@ BEGIN
 	 SELECT
 	 	tk.tk_quyen
 	 FROM
-	 	TaiKhoan AS tk
+	 	*
 	 WHERE tk.nv_id = @tk_ma
 END
 EXEC TaiKhoan_LayQuyenTruyCap 'NV0001'
