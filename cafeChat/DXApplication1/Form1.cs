@@ -66,7 +66,7 @@ namespace DXApplication1
 
         private void btnThuNgan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmThuNgan frmTn = new FrmThuNgan();
+            FrmThuNgan frmTn = new FrmThuNgan(manv);
             frmTn.ShowDialog();
         }
 

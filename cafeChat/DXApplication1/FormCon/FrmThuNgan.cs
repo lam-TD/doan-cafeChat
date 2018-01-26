@@ -15,9 +15,10 @@ namespace DXApplication1
 {
     public partial class FrmThuNgan : DevExpress.XtraEditors.XtraForm
     {
-        public FrmThuNgan()
+        public FrmThuNgan(string manv)
         {
             InitializeComponent();
+            MaNhanVien = manv;
         }
 
 

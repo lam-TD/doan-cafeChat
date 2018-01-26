@@ -130,5 +130,34 @@ namespace DXApplication1.ucControl
         {
             HoaDon_Load();
         }
+
+        private void btncapnhattrangthaiHD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult di = XtraMessageBox.Show("Bạn có muốn cập nhật lại trạng thái Hóa Đơn: " + txtmahd.Text + "?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (di == DialogResult.OK)
+                {
+                    HoaDonDTO hd = new HoaDonDTO();
+                    hd.Ban_id = txtban.Text;
+                    hd.Hd_id = txtmahd.Text;
+                    hd.Hd_ngaylap = txtngaylap.Text;
+                    hd.Hd_tongtien = double.Parse(txttongtien.Text);
+                    hd.Hd_giamgia = double.Parse(txtgiamgia.Text);
+                    hd.Hd_phuthu = double.Parse(txtphuthu.Text);
+                    hd.Nv_id = txtmanv.Text;
+                    if (cbtrangthaihd.Text == "Đã thanh toán") { hd.Hd_trangthai = 1; }
+                    else { hd.Hd_trangthai = 0; }
+                    hd.Hd_trangthai = 0;
+                    if (HoaDonBUS.HoaDon_ThemXoaSuaHuyBan(hd, 2))
+                    {
+                        if (BanBUS.Ban_CapNhatTrangThaiBan(txtban.Text, "Trống")) { XtraMessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information); HoaDon_Load(); }
+                        else { XtraMessageBox.Show("Lỗi không cập nhật được trạng thái bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); }     
+                    }         
+                    else XtraMessageBox.Show("Lỗi không cập nhật được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception) { XtraMessageBox.Show("Lỗi không cập nhật được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
     }
 }
