@@ -790,10 +790,55 @@ BEGIN
 	hd.nv_id
 	FROM
 		HoaDon AS hd
-	WHERE hd.hd_ngaylap > '01-17-2018' AND hd.hd_ngaylap < '01-27-2018'
+	WHERE hd.hd_ngaylap >= '01-26-2018' AND hd.hd_ngaylap <= '01-26-2018'
 	ORDER BY hd.hd_ngaylap DESC
 END
 EXEC HoaDon_ThongKeTheoNgayLap '01-18-2018','01-26-2018'
+
+-- Thống kê Hóa Đơn theo nhân viên
+CREATE PROC HoaDon_ThongKeTheoNhanVien
+@manv VARCHAR(10)
+AS
+BEGIN
+	SELECT
+		hd.hd_id,
+		hd.hd_ngaylap,
+		hd.hd_trangthai,
+		hd.hd_phuthu,
+		hd.hd_giamgia,
+		hd.hd_tongtien,
+		hd.ban_id,
+		hd.nv_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.nv_id = @manv
+	ORDER BY hd.hd_ngaylap DESC
+END
+EXEC HoaDon_ThongKeTheoNhanVien 'NV0001'
+
+-- Thống kê Hóa Đơn theo nhân viên và ngay lập
+CREATE PROC HoaDon_ThongKeTheoNhanVienTheoNgayLap
+@manv VARCHAR(10),
+@tungay DATE,
+@denngay DATE
+AS
+BEGIN
+	SELECT
+		hd.hd_id,
+		hd.hd_ngaylap,
+		hd.hd_trangthai,
+		hd.hd_phuthu,
+		hd.hd_giamgia,
+		hd.hd_tongtien,
+		hd.ban_id,
+		hd.nv_id
+	FROM
+		HoaDon AS hd
+	WHERE hd.nv_id = @manv AND hd.hd_ngaylap >= @tungay AND hd.hd_ngaylap <= @denngay
+	ORDER BY hd.hd_ngaylap DESC
+END
+EXEC HoaDon_ThongKeTheoNhanVienTheoNgayLap 'NV0001','1-26-2018','1-26-2018'
+
 -- Load Hoa Don theo ma Ban và trang thai Hoa Don = 0
 CREATE PROC HoaDon_Load_IDBan_TrangThaiHD
 @ban_id VARCHAR(10)

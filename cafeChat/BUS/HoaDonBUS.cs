@@ -82,6 +82,11 @@ namespace BUS
             return conn.getTable("EXEC HoaDon_ThongKeTheoNhanVien '" + manv + "'");
         }
 
+        public static DataTable HoaDonThongKeTheoNhanVienTheoNgay(string manv, string tungay, string denngay)
+        {
+            return conn.getTable("EXEC HoaDon_ThongKeTheoNhanVienTheoNgayLap 'NV0001','"+ tungay +"','"+ denngay +"'");
+        }
+
         public static DataTable HoaDonThongKeTheoKhoangCachNgay(string tungay, string denngay)
         {
             return conn.getTable("EXEC HoaDon_ThongKeTheoNgayLap '"+ tungay +"','"+ denngay +"'");

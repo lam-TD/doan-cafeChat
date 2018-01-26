@@ -304,7 +304,7 @@
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.ItemLinks.Add(this.txttenhanvien);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 513);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 558);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(891, 27);
@@ -320,9 +320,9 @@
             this.tableLayoutMain.Location = new System.Drawing.Point(0, 141);
             this.tableLayoutMain.Name = "tableLayoutMain";
             this.tableLayoutMain.RowCount = 2;
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutMain.Size = new System.Drawing.Size(891, 372);
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95F));
+            this.tableLayoutMain.Size = new System.Drawing.Size(891, 417);
             this.tableLayoutMain.TabIndex = 2;
             // 
             // panel1
@@ -331,7 +331,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(92, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(706, 31);
+            this.panel1.Size = new System.Drawing.Size(706, 14);
             this.panel1.TabIndex = 0;
             // 
             // lbcaption
@@ -344,7 +344,7 @@
             this.lbcaption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbcaption.Location = new System.Drawing.Point(0, 0);
             this.lbcaption.Name = "lbcaption";
-            this.lbcaption.Size = new System.Drawing.Size(706, 31);
+            this.lbcaption.Size = new System.Drawing.Size(706, 14);
             this.lbcaption.TabIndex = 0;
             this.lbcaption.Text = "Quản lý tài khoản";
             // 
@@ -360,7 +360,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 540);
+            this.ClientSize = new System.Drawing.Size(891, 585);
             this.Controls.Add(this.tableLayoutMain);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);

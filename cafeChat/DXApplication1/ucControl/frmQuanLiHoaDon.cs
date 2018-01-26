@@ -44,6 +44,21 @@ namespace DXApplication1.ucControl
             cbhienthi.SelectedIndex = -1;
         }
 
+        void ThongKe_LietKe()
+        {
+            switch (cbloaithongke.Text)
+            {
+                case "Nhân viên":
+                    gridHoaDon.DataSource = HoaDonBUS.HoaDonThongKeTheoNhanVienTheoNgay(cbhienthi.SelectedValue.ToString(), dateTuNgay.Value.ToString(), dateDenNgay.Value.ToString());
+                    break;
+                case "Ngày lập hóa đơn":
+                    gridHoaDon.DataSource = HoaDonBUS.HoaDonThongKeTheoKhoangCachNgay(dateTuNgay.Value.ToString(), dateDenNgay.Value.ToString());
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void gridHoaDon_Click_1(object sender, EventArgs e)
         {
             try
@@ -60,10 +75,7 @@ namespace DXApplication1.ucControl
                 else { cbtrangthaihd.Text = "Chưa thanh toán"; cbtrangthaihd.Enabled = true; }
                 CTHD_LoadTheoIDHoaDon(txtmahd.Text);
             }
-            catch (Exception)
-            {
-                return;
-            }
+            catch (Exception) { return; }
         }
 
         private void cbloaithongke_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,8 +93,7 @@ namespace DXApplication1.ucControl
                         break;
                 }
             }
-            catch (Exception) { return; }
-            
+            catch (Exception) { return; }    
         }
 
         private void cbhienthi_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,6 +101,8 @@ namespace DXApplication1.ucControl
             try
             {
                 gridHoaDon.DataSource = HoaDonBUS.HoaDonThongKeTheoNhanVien(cbhienthi.SelectedValue.ToString());
+                txtsoluongketqua.Text = gridView1.RowCount.ToString();
+                txttongdoanhthu.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridView1.Columns["hd_tongtien"].SummaryItem.SummaryValue.ToString())).ToString();
             }
             catch (Exception) { return; }
         }
@@ -98,11 +111,24 @@ namespace DXApplication1.ucControl
         {
             DateTime d1 = dateTuNgay.Value;
             DateTime d2 = dateDenNgay.Value;
-            if (DateTime.Compare(d1,d2) > 0)
+            if (DateTime.Compare(d1,d2) > 0){ XtraMessageBox.Show("Ngày không được bé hơn ngày đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            try
             {
-                gridHoaDon.DataSource = HoaDonBUS.HoaDonThongKeTheoKhoangCachNgay(dateTuNgay.Value.ToString(), dateDenNgay.Value.ToString());
+                ThongKe_LietKe();
+                txtsoluongketqua.Text = gridView1.RowCount.ToString();
+                txttongdoanhthu.Text = txttongdoanhthu.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridView1.Columns["hd_tongtien"].SummaryItem.SummaryValue.ToString())).ToString();
             }
-            else { XtraMessageBox.Show("Ngày không được bé hơn ngày đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (Exception) { return; }
+            
+        }
+
+        private void btnlammoi_Click(object sender, EventArgs e)
+        {
+            HoaDon_Load();
         }
     }
 }
