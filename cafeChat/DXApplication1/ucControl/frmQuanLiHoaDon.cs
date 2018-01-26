@@ -40,14 +40,14 @@ namespace DXApplication1.ucControl
             {
                 txtmahd.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[0]).ToString();
                 txtngaylap.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[1]).ToString();
-                txtphuthu.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString();
-                txtgiamgia.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString();
-                txttongtien.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString();
+                txtphuthu.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[2]).ToString()));
+                txtgiamgia.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[3]).ToString()));
+                txttongtien.Text = HoaDonBUS.DinhDangTienTienTe(double.Parse(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[4]).ToString()));
                 txtban.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[5]).ToString();
                 txtmanv.Text = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[6]).ToString();
                 string trangthai = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, gridView1.Columns[7]).ToString();
                 if (trangthai == "1") { cbtrangthaihd.Text = "Đã thanh toán"; cbtrangthaihd.Enabled = false; }
-                else { cbtrangthaihd.Text = "Chưa thanh toán"; }
+                else { cbtrangthaihd.Text = "Chưa thanh toán"; cbtrangthaihd.Enabled = true; }
                 CTHD_LoadTheoIDHoaDon(txtmahd.Text);
             }
             catch (Exception)

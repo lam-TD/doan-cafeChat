@@ -392,7 +392,8 @@ namespace DXApplication1
                         hd.Hd_id = txtmahd.Text;
                         hd.Ban_id = cbBan.SelectedValue.ToString();
                         hd.Hd_trangthai = 0;
-                        hd.Hd_ngaylap = dateTimePickerNgayLap.Value.ToString("MM/dd/yyyy");
+                        DateTime dtt = DateTime.Now;
+                        hd.Hd_ngaylap = dtt.ToString();
                         hd.Hd_phuthu = 0;
                         hd.Hd_giamgia = 0;
                         hd.Hd_tongtien = 0;
@@ -629,8 +630,8 @@ namespace DXApplication1
             {
                 HoaDonDTO hd = new HoaDonDTO();
                 hd.Hd_id = txtmahd.Text;
-                hd.Hd_phuthu = int.Parse(txtphuthu.Text);
-                hd.Hd_giamgia = int.Parse(txtgiamgia.Text);
+                hd.Hd_phuthu = double.Parse(txtphuthu.Text);
+                hd.Hd_giamgia = double.Parse(txtgiamgia.Text);
                 double tongtien = double.Parse(txttongcong.Text.ToString());
                 hd.Hd_tongtien = tongtien;
                 hd.Hd_ngaylap = dateTimePickerNgayLap.Value.ToString("MM/dd/yyyy");

@@ -77,6 +77,13 @@ namespace BUS
             return conn.getTable("EXEC HoaDon_LayHoaDonTheoMaBan @maban = '"+ maban +"'");
         }
 
+        public static DataTable HoaDonThongKe()
+        {
+            string query = "EXEC HoaDon_ThongKeTheoNgayLap '01-18-2018','01-26-2018'";
+            DataTable dt = conn.getTable(query);
+            return dt;
+        }
+
         #region ĐỊNH DẠNG TIỀN TỆ - TÍNH TIỀN
         public static string DinhDangTienTienTe(double giatri)
         {

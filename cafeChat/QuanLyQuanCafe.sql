@@ -790,9 +790,10 @@ BEGIN
 	hd.nv_id
 	FROM
 		HoaDon AS hd
-	WHERE hd.hd_ngaylap > @denngay AND hd.hd_ngaylap < @tungay
+	WHERE hd.hd_ngaylap > '01-17-2018' AND hd.hd_ngaylap < '01-27-2018'
+	ORDER BY hd.hd_ngaylap DESC
 END
-
+EXEC HoaDon_ThongKeTheoNgayLap '01-18-2018','01-26-2018'
 -- Load Hoa Don theo ma Ban và trang thai Hoa Don = 0
 CREATE PROC HoaDon_Load_IDBan_TrangThaiHD
 @ban_id VARCHAR(10)
@@ -816,7 +817,7 @@ EXEC HoaDon_Load_IDBan_TrangThaiHD 'B01'
 -- Them Hoa Don
 CREATE PROC HoaDon_Them
 		@hd_id VARCHAR(10),
-		@hd_ngaylap DATE,
+		@hd_ngaylap DATETIME,
 		@hd_trangthai INT,
 		@hd_phuthu INT,
 		@hd_giamgia INT,
@@ -853,7 +854,7 @@ EXEC HoaDon_Them 'HD00005','1-1-2018',1,10000,5000,200000,'B06','NV0001'
 -- Cap Nhat Hoa Don
 CREATE PROC HoaDon_Sua
 		@hd_id VARCHAR(10),
-		@hd_ngaylap DATE,
+		@hd_ngaylap DATETIME,
 		@hd_trangthai INT,
 		@hd_phuthu INT,
 		@hd_giamgia INT,
