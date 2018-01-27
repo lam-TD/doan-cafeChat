@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HoaDon_InThongKe2">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+    </Key>
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_phuthu" Type="int" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tu_gia" Type="int" Nullable="false" />
+    <Property Name="cthd_soluong" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CafeDataBaseModelStoreContainer">
+    <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HoaDon_InThongKe2].[hd_id] AS [hd_id], 
+    [HoaDon_InThongKe2].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe2].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe2].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InThongKe2].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe2].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe2].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe2].[cthd_soluong] AS [cthd_soluong]
+    FROM [dbo].[HoaDon_InThongKe2] AS [HoaDon_InThongKe2]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

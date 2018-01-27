@@ -981,6 +981,14 @@ BEGIN
 END
 EXEC HoaDon_DoiBan 'B01','B04'
 
+-- In Hóa Đơn
+CREATE PROC HoaDon_In
+@mahd VARCHAR(10)
+AS
+BEGIN
+	SELECT * FROM HoaDon_InThongKe WHERE hd_id = @mahd
+END
+EXEC HoaDon_In 'HD00001'
 
 -- ========== CHI TIET HOA DON ==========
 -- Load CTHD theo ma Hoa Don
@@ -1086,9 +1094,15 @@ END
 EXEC CTHD_KiemTraThucUongCoTrongCTHD 1,'HD00003'
 
 
+--============ TẠO VIEW ==========
+CREATE VIEW HoaDon_InThongKe
+AS 
+SELECT hd.hd_id,nv.nv_ten,hd2.hd_ngaylap,hd.hd_phuthu,hd.hd_giamgia,tu.tu_ten,tu.tu_gia,c.cthd_soluong
+  FROM HoaDon AS hd INNER JOIN CTHD AS c ON c.hd_id = hd.hd_id INNER JOIN HoaDon AS hd2
+  ON hd2.hd_id = c.hd_id INNER JOIN NhanVien AS nv
+  ON nv.nv_id = hd2.nv_id INNER JOIN ThucUong AS tu ON tu.tu_id = c.tu_id
 
-
-
+SELECT * FROM HoaDon_InThongKe
 
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HoaDon_InThongKe2">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+    </Key>
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_phuthu" Type="Int32" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tu_gia" Type="Int32" Nullable="false" />
+    <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CafeDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" />
+  </EntityContainer>
+</Schema>

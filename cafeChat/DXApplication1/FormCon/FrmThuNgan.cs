@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using DTO;
 using BUS;
 using DAL;
+using DevExpress.XtraReports.UI;
+
 namespace DXApplication1
 {
     public partial class FrmThuNgan : DevExpress.XtraEditors.XtraForm
@@ -643,6 +645,14 @@ namespace DXApplication1
                 {
                     if (BanBUS.Ban_CapNhatTrangThaiBan(hd.Ban_id,"Trống"))
                     {
+                        DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa thức uống vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            XtraReport1 In_HoaDon = new XtraReport1();
+                            Connect conn = new Connect();
+                            In_HoaDon.DataSource = conn.getTable("EXEC HoaDon_In '"+ txtmahd.Text +"'");
+                            In_HoaDon.ShowPreviewDialog();
+                        }
                         Tao_Ban();
                         XetThuocTinhChoCacButton(false, false, false);
                     }else XtraMessageBox.Show("Không cập nhật được trạng thái Bàn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

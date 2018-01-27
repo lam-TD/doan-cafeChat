@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CafeDataBaseModelStoreContainer" CdmEntityContainer="CafeDataBaseEntities">
+    <EntitySetMapping Name="HoaDon_InThongKe2">
+      <EntityTypeMapping TypeName="CafeDataBaseModel.HoaDon_InThongKe2">
+        <MappingFragment StoreEntitySet="HoaDon_InThongKe2">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
