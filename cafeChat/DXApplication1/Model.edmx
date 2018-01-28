@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CafeDataBaseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ban">
+          <Key>
+            <PropertyRef Name="ban_id" />
+          </Key>
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ban_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ban_trangthai" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="kv_id" Type="int" Nullable="false" />
+          <Property Name="ban_xoa" Type="int" />
+        </EntityType>
+        <EntityType Name="CaTruc">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="int" Nullable="false" />
+          <Property Name="ct_ngaytruc" Type="datetime" Nullable="false" />
+          <Property Name="ct_buoitruc" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="tu_id" />
+          </Key>
+          <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tu_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="dm_id" />
+          </Key>
+          <Property Name="dm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dm_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="dm_trangthai" Type="int" />
+          <Property Name="dm_ghichu" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+          <Property Name="hd_trangthai" Type="int" Nullable="false" />
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KhuVuc">
+          <Key>
+            <PropertyRef Name="kv_id" />
+          </Key>
+          <Property Name="kv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="kv_trangthai" Type="nvarchar" MaxLength="100" />
+          <Property Name="kv_ghichu" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="nv_diachi" Type="nvarchar" MaxLength="200" />
+          <Property Name="nv_sdt" Type="varchar" MaxLength="11" />
+          <Property Name="nv_trangthai" Type="nvarchar" MaxLength="20" />
+          <Property Name="nv_taikhoan" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.TaiKhoan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="nv_id" />
+            <PropertyRef Name="tk_matkhau" />
+            <PropertyRef Name="tk_quyen" />
+          </Key>
+          <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tk_matkhau" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tk_quyen" Type="int" Nullable="false" />
+          <Property Name="tk_trangthai" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CafeDataBase.dbo.ThamSo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ThamSo">
+          <Property Name="ban_id" Type="varchar" MaxLength="10" />
+          <Property Name="hd_id" Type="varchar" MaxLength="50" />
+          <Property Name="nv_id" Type="varchar" MaxLength="50" />
+          <Property Name="id" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="ThucUong">
+          <Key>
+            <PropertyRef Name="tu_id" />
+          </Key>
+          <Property Name="tu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tu_gia" Type="int" Nullable="false" />
+          <Property Name="tu_trangthai" Type="int" />
+          <Property Name="dm_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InBaoCao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_InBaoCao">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="hd_trangthai" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+          <Property Name="hd_trangthai" Type="int" Nullable="false" />
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_InThongKe">
+          <Key>
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tu_gia" Type="int" Nullable="false" />
+          <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_InThongKe2">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_tongtien" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tu_gia" Type="int" Nullable="false" />
+          <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_ThongKeMaHD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_ThongKeMaHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Ban__kv_id__286302EC">
+          <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="1" />
+          <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuVuc">
+              <PropertyRef Name="kv_id" />
+            </Principal>
+            <Dependent Role="Ban">
+              <PropertyRef Name="kv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CaTruc__nv_id__173876EA">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="CaTruc" Type="Self.CaTruc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="CaTruc">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__hd_id__31EC6D26">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="hd_id" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="hd_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__tu_id__32E0915F">
+          <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThucUong">
+              <PropertyRef Name="tu_id" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="tu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__nv_id__2D27B809">
+          <End Role="Ban" Type="Self.Ban" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ban">
+              <PropertyRef Name="ban_id" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ban_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__nv_id__2E1BDC42">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__tk_quy__145C0A3F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThucUong__dm_id__20C1E124">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+          <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="dm_id" />
+            </Principal>
+            <Dependent Role="ThucUong">
+              <PropertyRef Name="dm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Ban_CapNhatTrangThaiBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+          <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_KiemTraTenBanTrung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_KiemTraTrangThai_TheoIdBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Ban_Load_BanTrangThaiCoKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Ban_Load_KhuVuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kv_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maban" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_Load_TrangThai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+          <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="ban_trangthai" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_id" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Ban_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+          <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="ban_trangthai" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_id" Type="nvarchar" Mode="In" />
+          <Parameter Name="ban_xoa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Ban_TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Ban_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CTHD_HuyBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CTHD_KiemTraThucUongCoTrongCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CTHD_Load_DonGia_TinhThanhTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CTHD_Load_IDHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_ma" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CTHD_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cthd_soluong" Type="int" Mode="In" />
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CTHD_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cthd_soluong" Type="int" Mode="In" />
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CTHD_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DanhMuc_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DanhMuc_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dm_id" Type="int" Mode="In" />
+          <Parameter Name="dm_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="dm_trangthai" Type="int" Mode="In" />
+          <Parameter Name="dm_ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DanhMuc_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dm_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="dm_trangthai" Type="int" Mode="In" />
+          <Parameter Name="dm_ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DanhMuc_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dm_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_DoiBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mabanChon" Type="varchar" Mode="In" />
+          <Parameter Name="mabanDoi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_HuyBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_In" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mahd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_InBaoCaoTheoTuyChon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="datetime" Mode="In" />
+          <Parameter Name="denngay" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_LayHoaDonTheoMaBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maban" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="HoaDon_Load_IDBan_TrangThaiHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+          <Parameter Name="hd_ngaylap" Type="date" Mode="In" />
+          <Parameter Name="hd_trangthai" Type="int" Mode="In" />
+          <Parameter Name="hd_phuthu" Type="int" Mode="In" />
+          <Parameter Name="hd_giamgia" Type="int" Mode="In" />
+          <Parameter Name="hd_tongtien" Type="float" Mode="In" />
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_id" Type="varchar" Mode="In" />
+          <Parameter Name="hd_ngaylap" Type="datetime" Mode="In" />
+          <Parameter Name="hd_trangthai" Type="int" Mode="In" />
+          <Parameter Name="hd_phuthu" Type="int" Mode="In" />
+          <Parameter Name="hd_giamgia" Type="int" Mode="In" />
+          <Parameter Name="hd_tongtien" Type="float" Mode="In" />
+          <Parameter Name="ban_id" Type="varchar" Mode="In" />
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_ThongKeTheoNgayLap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_ThongKeTheoNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="varchar" Mode="In" />
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hd_ma" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="KhucVuc_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="KhuVuc_LoadTheoTrangThai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="KhuVuc_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kv_id" Type="int" Mode="In" />
+          <Parameter Name="kv_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_trangthai" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="KhuVuc_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kv_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_trangthai" Type="nvarchar" Mode="In" />
+          <Parameter Name="kv_ghichu" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="KhuVuc_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kv_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LayIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NhanVien_CapNhatNhanVienCoTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NhanVien_LoadNhanVienTheoMa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_LoadNVChuaCoTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NhanVien_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="nv_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="nv_diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="nv_sdt" Type="varchar" Mode="In" />
+          <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+          <Parameter Name="nv_trangthai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="nv_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="nv_diachi" Type="nvarchar" Mode="In" />
+          <Parameter Name="nv_sdt" Type="varchar" Mode="In" />
+          <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+          <Parameter Name="nv_trangthai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NhanVien_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TaiKhoan_LayQuyenTruyCap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tk_ma" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TaiKhoan_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TaiKhoan_Load_nv_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="TaiKhoan_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+          <Parameter Name="tk_quyen" Type="int" Mode="In" />
+          <Parameter Name="tk_trangthai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TaiKhoan_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+          <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+          <Parameter Name="tk_quyen" Type="int" Mode="In" />
+          <Parameter Name="tk_trangthai" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TaiKhoan_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ThucUong_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ThucUong_Load_IDDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dm_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThucUong_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+          <Parameter Name="tu_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="tu_gia" Type="int" Mode="In" />
+          <Parameter Name="tu_trangthai" Type="int" Mode="In" />
+          <Parameter Name="dm_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThucUong_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+          <Parameter Name="tu_ten" Type="nvarchar" Mode="In" />
+          <Parameter Name="tu_gia" Type="int" Mode="In" />
+          <Parameter Name="tu_trangthai" Type="int" Mode="In" />
+          <Parameter Name="dm_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThucUong_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="table" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CafeDataBaseModel1StoreContainer">
+          <EntitySet Name="Ban" EntityType="Self.Ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaTruc" EntityType="Self.CaTruc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuVuc" EntityType="Self.KhuVuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThucUong" EntityType="Self.ThucUong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TaiKhoan].[nv_id] AS [nv_id], 
+    [TaiKhoan].[tk_matkhau] AS [tk_matkhau], 
+    [TaiKhoan].[tk_quyen] AS [tk_quyen], 
+    [TaiKhoan].[tk_trangthai] AS [tk_trangthai]
+    FROM [dbo].[TaiKhoan] AS [TaiKhoan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HoaDon_InBaoCao" EntityType="Self.HoaDon_InBaoCao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_InBaoCao].[hd_id] AS [hd_id], 
+    [HoaDon_InBaoCao].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InBaoCao].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InBaoCao].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InBaoCao].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_InBaoCao].[hd_trangthai] AS [hd_trangthai], 
+    [HoaDon_InBaoCao].[ban_id] AS [ban_id], 
+    [HoaDon_InBaoCao].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_InBaoCao] AS [HoaDon_InBaoCao]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HoaDon_InThongKe" EntityType="Self.HoaDon_InThongKe" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_InThongKe].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe].[hd_id] AS [hd_id]
+    FROM [dbo].[HoaDon_InThongKe] AS [HoaDon_InThongKe]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_InThongKe2].[hd_id] AS [hd_id], 
+    [HoaDon_InThongKe2].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe2].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe2].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InThongKe2].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe2].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe2].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe2].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe2].[hd_tongtien] AS [hd_tongtien]
+    FROM [dbo].[HoaDon_InThongKe2] AS [HoaDon_InThongKe2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="Self.HoaDon_ThongKeMaHD" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_ThongKeMaHD].[hd_id] AS [hd_id], 
+    [HoaDon_ThongKeMaHD].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_ThongKeMaHD].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_ThongKeMaHD].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_ThongKeMaHD].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_ThongKeMaHD].[ban_id] AS [ban_id], 
+    [HoaDon_ThongKeMaHD].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_ThongKeMaHD] AS [HoaDon_ThongKeMaHD]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Ban__kv_id__286302EC" Association="Self.FK__Ban__kv_id__286302EC">
+            <End Role="KhuVuc" EntitySet="KhuVuc" />
+            <End Role="Ban" EntitySet="Ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CaTruc__nv_id__173876EA" Association="Self.FK__CaTruc__nv_id__173876EA">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="CaTruc" EntitySet="CaTruc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__hd_id__31EC6D26" Association="Self.FK__CTHD__hd_id__31EC6D26">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__tu_id__32E0915F" Association="Self.FK__CTHD__tu_id__32E0915F">
+            <End Role="ThucUong" EntitySet="ThucUong" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__nv_id__2D27B809" Association="Self.FK__HoaDon__nv_id__2D27B809">
+            <End Role="Ban" EntitySet="Ban" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__nv_id__2E1BDC42" Association="Self.FK__HoaDon__nv_id__2E1BDC42">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__tk_quy__145C0A3F" Association="Self.FK__TaiKhoan__tk_quy__145C0A3F">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThucUong__dm_id__20C1E124" Association="Self.FK__ThucUong__dm_id__20C1E124">
+            <End Role="DanhMuc" EntitySet="DanhMuc" />
+            <End Role="ThucUong" EntitySet="ThucUong" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CafeDataBaseModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ban">
+          <Key>
+            <PropertyRef Name="ban_id" />
+          </Key>
+          <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ban_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ban_trangthai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kv_id" Type="Int32" Nullable="false" />
+          <Property Name="ban_xoa" Type="Int32" />
+          <NavigationProperty Name="KhuVuc" Relationship="Self.FK__Ban__kv_id__286302EC" FromRole="Ban" ToRole="KhuVuc" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__nv_id__2D27B809" FromRole="Ban" ToRole="HoaDon" />
+        </EntityType>
+        <EntityType Name="CaTruc">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="Int32" Nullable="false" />
+          <Property Name="ct_ngaytruc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ct_buoitruc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__CaTruc__nv_id__173876EA" FromRole="CaTruc" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="tu_id" />
+          </Key>
+          <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tu_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDon" Relationship="Self.FK__CTHD__hd_id__31EC6D26" FromRole="CTHD" ToRole="HoaDon" />
+          <NavigationProperty Name="ThucUong" Relationship="Self.FK__CTHD__tu_id__32E0915F" FromRole="CTHD" ToRole="ThucUong" />
+        </EntityType>
+        <EntityType Name="DanhMuc">
+          <Key>
+            <PropertyRef Name="dm_id" />
+          </Key>
+          <Property Name="dm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dm_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dm_trangthai" Type="Int32" />
+          <Property Name="dm_ghichu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ThucUongs" Relationship="Self.FK__ThucUong__dm_id__20C1E124" FromRole="DanhMuc" ToRole="ThucUong" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+          <Property Name="hd_trangthai" Type="Int32" Nullable="false" />
+          <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDon__nv_id__2D27B809" FromRole="HoaDon" ToRole="Ban" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__hd_id__31EC6D26" FromRole="HoaDon" ToRole="CTHD" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__nv_id__2E1BDC42" FromRole="HoaDon" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="KhuVuc">
+          <Key>
+            <PropertyRef Name="kv_id" />
+          </Key>
+          <Property Name="kv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kv_trangthai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="kv_ghichu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bans" Relationship="Self.FK__Ban__kv_id__286302EC" FromRole="KhuVuc" ToRole="Ban" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nv_diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="nv_sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="nv_trangthai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="nv_taikhoan" Type="Int32" />
+          <NavigationProperty Name="CaTrucs" Relationship="Self.FK__CaTruc__nv_id__173876EA" FromRole="NhanVien" ToRole="CaTruc" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__nv_id__2E1BDC42" FromRole="NhanVien" ToRole="HoaDon" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__tk_quy__145C0A3F" FromRole="NhanVien" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="ThucUong">
+          <Key>
+            <PropertyRef Name="tu_id" />
+          </Key>
+          <Property Name="tu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tu_gia" Type="Int32" Nullable="false" />
+          <Property Name="tu_trangthai" Type="Int32" />
+          <Property Name="dm_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__tu_id__32E0915F" FromRole="ThucUong" ToRole="CTHD" />
+          <NavigationProperty Name="DanhMuc" Relationship="Self.FK__ThucUong__dm_id__20C1E124" FromRole="ThucUong" ToRole="DanhMuc" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="nv_id" />
+            <PropertyRef Name="tk_matkhau" />
+            <PropertyRef Name="tk_quyen" />
+          </Key>
+          <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tk_matkhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tk_quyen" Type="Int32" Nullable="false" />
+          <Property Name="tk_trangthai" Type="Int32" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__TaiKhoan__tk_quy__145C0A3F" FromRole="TaiKhoan" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="HoaDon_InBaoCao">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="hd_trangthai" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+          <Property Name="hd_trangthai" Type="Int32" Nullable="false" />
+          <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDon_InThongKe">
+          <Key>
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tu_gia" Type="Int32" Nullable="false" />
+          <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDon_InThongKe2">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_tongtien" />
+          </Key>
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tu_gia" Type="Int32" Nullable="false" />
+          <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDon_ThongKeMaHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+          <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Ban__kv_id__286302EC">
+          <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="1" />
+          <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuVuc">
+              <PropertyRef Name="kv_id" />
+            </Principal>
+            <Dependent Role="Ban">
+              <PropertyRef Name="kv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__nv_id__2D27B809">
+          <End Role="Ban" Type="Self.Ban" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ban">
+              <PropertyRef Name="ban_id" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="ban_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CaTruc__nv_id__173876EA">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="CaTruc" Type="Self.CaTruc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="CaTruc">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__hd_id__31EC6D26">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="hd_id" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="hd_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTHD__tu_id__32E0915F">
+          <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThucUong">
+              <PropertyRef Name="tu_id" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="tu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThucUong__dm_id__20C1E124">
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+          <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMuc">
+              <PropertyRef Name="dm_id" />
+            </Principal>
+            <Dependent Role="ThucUong">
+              <PropertyRef Name="dm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__nv_id__2E1BDC42">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__tk_quy__145C0A3F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="nv_id" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="nv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CafeDataBaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bans" EntityType="Self.Ban" />
+          <EntitySet Name="CaTrucs" EntityType="Self.CaTruc" />
+          <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+          <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+          <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+          <EntitySet Name="KhuVucs" EntityType="Self.KhuVuc" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="ThucUongs" EntityType="Self.ThucUong" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="HoaDon_InBaoCao" EntityType="Self.HoaDon_InBaoCao" />
+          <EntitySet Name="HoaDon_InThongKe" EntityType="Self.HoaDon_InThongKe" />
+          <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" />
+          <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="Self.HoaDon_ThongKeMaHD" />
+          <AssociationSet Name="FK__Ban__kv_id__286302EC" Association="Self.FK__Ban__kv_id__286302EC">
+            <End Role="KhuVuc" EntitySet="KhuVucs" />
+            <End Role="Ban" EntitySet="Bans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__nv_id__2D27B809" Association="Self.FK__HoaDon__nv_id__2D27B809">
+            <End Role="Ban" EntitySet="Bans" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CaTruc__nv_id__173876EA" Association="Self.FK__CaTruc__nv_id__173876EA">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="CaTruc" EntitySet="CaTrucs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__hd_id__31EC6D26" Association="Self.FK__CTHD__hd_id__31EC6D26">
+            <End Role="HoaDon" EntitySet="HoaDons" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTHD__tu_id__32E0915F" Association="Self.FK__CTHD__tu_id__32E0915F">
+            <End Role="ThucUong" EntitySet="ThucUongs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThucUong__dm_id__20C1E124" Association="Self.FK__ThucUong__dm_id__20C1E124">
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+            <End Role="ThucUong" EntitySet="ThucUongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__nv_id__2E1BDC42" Association="Self.FK__HoaDon__nv_id__2E1BDC42">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__tk_quy__145C0A3F" Association="Self.FK__TaiKhoan__tk_quy__145C0A3F">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <FunctionImport Name="Ban_CapNhatTrangThaiBan">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+            <Parameter Name="trangthai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_KiemTraTenBanTrung" ReturnType="Collection(CafeDataBaseModel1.Ban_KiemTraTenBanTrung_Result)">
+            <Parameter Name="ban_ten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_KiemTraTrangThai_TheoIdBan" ReturnType="Collection(String)">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_Load" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_Result)" />
+          <FunctionImport Name="Ban_Load_BanTrangThaiCoKhach" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_BanTrangThaiCoKhach_Result)" />
+          <FunctionImport Name="Ban_Load_KhuVuc" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_KhuVuc_Result)">
+            <Parameter Name="kv_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result)">
+            <Parameter Name="maban" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_Load_TrangThai" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_TrangThai_Result)">
+            <Parameter Name="trangthai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_Sua">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+            <Parameter Name="ban_ten" Mode="In" Type="String" />
+            <Parameter Name="ban_trangthai" Mode="In" Type="String" />
+            <Parameter Name="kv_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_Them">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+            <Parameter Name="ban_ten" Mode="In" Type="String" />
+            <Parameter Name="ban_trangthai" Mode="In" Type="String" />
+            <Parameter Name="kv_id" Mode="In" Type="String" />
+            <Parameter Name="ban_xoa" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ban_TimIDKeTiep" />
+          <FunctionImport Name="Ban_Xoa">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_HuyBan">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_KiemTraThucUongCoTrongCTHD" ReturnType="Collection(CafeDataBaseModel1.CTHD_KiemTraThucUongCoTrongCTHD_Result)">
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_Load_DonGia_TinhThanhTien" ReturnType="Collection(CafeDataBaseModel1.CTHD_Load_DonGia_TinhThanhTien_Result)">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_Load_IDHoaDon" ReturnType="Collection(CafeDataBaseModel1.CTHD_Load_IDHoaDon_Result)">
+            <Parameter Name="hd_ma" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_Sua">
+            <Parameter Name="cthd_soluong" Mode="In" Type="Int32" />
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_Them">
+            <Parameter Name="cthd_soluong" Mode="In" Type="Int32" />
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CTHD_Xoa">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DanhMuc_Load" ReturnType="Collection(CafeDataBaseModel1.DanhMuc_Load_Result)" />
+          <FunctionImport Name="DanhMuc_Sua">
+            <Parameter Name="dm_id" Mode="In" Type="Int32" />
+            <Parameter Name="dm_ten" Mode="In" Type="String" />
+            <Parameter Name="dm_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="dm_ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DanhMuc_Them">
+            <Parameter Name="dm_ten" Mode="In" Type="String" />
+            <Parameter Name="dm_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="dm_ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DanhMuc_Xoa">
+            <Parameter Name="dm_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_DoiBan">
+            <Parameter Name="mabanChon" Mode="In" Type="String" />
+            <Parameter Name="mabanDoi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_HuyBan">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_In" ReturnType="Collection(CafeDataBaseModel1.HoaDon_In_Result)">
+            <Parameter Name="mahd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_InBaoCaoTheoTuyChon" ReturnType="Collection(CafeDataBaseModel1.HoaDon_InBaoCaoTheoTuyChon_Result)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_LayHoaDonTheoMaBan" ReturnType="Collection(CafeDataBaseModel1.HoaDon_LayHoaDonTheoMaBan_Result)">
+            <Parameter Name="maban" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_Load" ReturnType="Collection(CafeDataBaseModel1.HoaDon_Load_Result)" />
+          <FunctionImport Name="HoaDon_Load_IDBan_TrangThaiHD" ReturnType="Collection(CafeDataBaseModel1.HoaDon_Load_IDBan_TrangThaiHD_Result)">
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_Sua">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+            <Parameter Name="hd_ngaylap" Mode="In" Type="DateTime" />
+            <Parameter Name="hd_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="hd_phuthu" Mode="In" Type="Int32" />
+            <Parameter Name="hd_giamgia" Mode="In" Type="Int32" />
+            <Parameter Name="hd_tongtien" Mode="In" Type="Double" />
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_Them">
+            <Parameter Name="hd_id" Mode="In" Type="String" />
+            <Parameter Name="hd_ngaylap" Mode="In" Type="DateTime" />
+            <Parameter Name="hd_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="hd_phuthu" Mode="In" Type="Int32" />
+            <Parameter Name="hd_giamgia" Mode="In" Type="Int32" />
+            <Parameter Name="hd_tongtien" Mode="In" Type="Double" />
+            <Parameter Name="ban_id" Mode="In" Type="String" />
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_ThongKeTheoNgayLap" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNgayLap_Result)">
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_ThongKeTheoNhanVien" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVien_Result)">
+            <Parameter Name="manv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result)">
+            <Parameter Name="manv" Mode="In" Type="String" />
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_Xoa">
+            <Parameter Name="hd_ma" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="KhucVuc_Load" ReturnType="Collection(CafeDataBaseModel1.KhucVuc_Load_Result)" />
+          <FunctionImport Name="KhuVuc_LoadTheoTrangThai" ReturnType="Collection(CafeDataBaseModel1.KhuVuc_LoadTheoTrangThai_Result)">
+            <Parameter Name="trangthai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="KhuVuc_Sua">
+            <Parameter Name="kv_id" Mode="In" Type="Int32" />
+            <Parameter Name="kv_ten" Mode="In" Type="String" />
+            <Parameter Name="kv_trangthai" Mode="In" Type="String" />
+            <Parameter Name="kv_ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="KhuVuc_Them">
+            <Parameter Name="kv_ten" Mode="In" Type="String" />
+            <Parameter Name="kv_trangthai" Mode="In" Type="String" />
+            <Parameter Name="kv_ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="KhuVuc_Xoa">
+            <Parameter Name="kv_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LayIDKeTiep" ReturnType="Collection(CafeDataBaseModel1.LayIDKeTiep_Result)" />
+          <FunctionImport Name="NhanVien_CapNhatNhanVienCoTaiKhoan">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_Load" ReturnType="Collection(CafeDataBaseModel1.NhanVien_Load_Result)" />
+          <FunctionImport Name="NhanVien_LoadNhanVienTheoMa" ReturnType="Collection(CafeDataBaseModel1.NhanVien_LoadNhanVienTheoMa_Result)">
+            <Parameter Name="manv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_LoadNVChuaCoTaiKhoan" ReturnType="Collection(CafeDataBaseModel1.NhanVien_LoadNVChuaCoTaiKhoan_Result)" />
+          <FunctionImport Name="NhanVien_Sua">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="nv_ten" Mode="In" Type="String" />
+            <Parameter Name="nv_diachi" Mode="In" Type="String" />
+            <Parameter Name="nv_sdt" Mode="In" Type="String" />
+            <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="nv_trangthai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_Them">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="nv_ten" Mode="In" Type="String" />
+            <Parameter Name="nv_diachi" Mode="In" Type="String" />
+            <Parameter Name="nv_sdt" Mode="In" Type="String" />
+            <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+            <Parameter Name="nv_trangthai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_TimIDKeTiep" />
+          <FunctionImport Name="NhanVien_Xoa">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TaiKhoan_LayQuyenTruyCap" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_LayQuyenTruyCap_Result)">
+            <Parameter Name="tk_ma" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TaiKhoan_Load" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_Load_Result)" />
+          <FunctionImport Name="TaiKhoan_Load_nv_id" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_Load_nv_id_Result)">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TaiKhoan_Sua">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+            <Parameter Name="tk_quyen" Mode="In" Type="Int32" />
+            <Parameter Name="tk_trangthai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TaiKhoan_Them">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+            <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+            <Parameter Name="tk_quyen" Mode="In" Type="Int32" />
+            <Parameter Name="tk_trangthai" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TaiKhoan_Xoa">
+            <Parameter Name="nv_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ThucUong_Load" ReturnType="Collection(CafeDataBaseModel1.ThucUong_Load_Result)" />
+          <FunctionImport Name="ThucUong_Load_IDDanhMuc" ReturnType="Collection(CafeDataBaseModel1.ThucUong_Load_IDDanhMuc_Result)">
+            <Parameter Name="dm_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ThucUong_Sua">
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+            <Parameter Name="tu_ten" Mode="In" Type="String" />
+            <Parameter Name="tu_gia" Mode="In" Type="Int32" />
+            <Parameter Name="tu_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="dm_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ThucUong_Them">
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+            <Parameter Name="tu_ten" Mode="In" Type="String" />
+            <Parameter Name="tu_gia" Mode="In" Type="Int32" />
+            <Parameter Name="tu_trangthai" Mode="In" Type="Int32" />
+            <Parameter Name="dm_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ThucUong_Xoa">
+            <Parameter Name="tu_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TimIDKeTiep">
+            <Parameter Name="table" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Ban_KiemTraTenBanTrung_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Ban_Load_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Ban_Load_BanTrangThaiCoKhach_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+          <Property Type="Int32" Name="ban_xoa" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Ban_Load_KhuVuc_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+          <Property Type="Int32" Name="ban_xoa" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Ban_Load_TrangThai_Result">
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CTHD_KiemTraThucUongCoTrongCTHD_Result">
+          <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="tu_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CTHD_Load_DonGia_TinhThanhTien_Result">
+          <Property Type="Int32" Name="tu_id" Nullable="false" />
+          <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+          <Property Type="Int32" Name="tu_gia" Nullable="false" />
+          <Property Type="Int32" Name="ThanhTien" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CTHD_Load_IDHoaDon_Result">
+          <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="tu_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="DanhMuc_Load_Result">
+          <Property Type="Int32" Name="dm_id" Nullable="false" />
+          <Property Type="String" Name="dm_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="dm_trangthai" Nullable="true" />
+          <Property Type="String" Name="dm_ghichu" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_In_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="tu_gia" Nullable="false" />
+          <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_InBaoCaoTheoTuyChon_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_LayHoaDonTheoMaBan_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_Load_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_Load_IDBan_TrangThaiHD_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_ThongKeTheoNgayLap_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_ThongKeTheoNhanVien_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result">
+          <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+          <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+          <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+          <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+          <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="KhucVuc_Load_Result">
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+          <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="kv_trangthai" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="kv_ghichu" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="KhuVuc_LoadTheoTrangThai_Result">
+          <Property Type="Int32" Name="kv_id" Nullable="false" />
+          <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="kv_trangthai" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="kv_ghichu" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="LayIDKeTiep_Result">
+          <Property Type="String" Name="ban_id" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="hd_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nv_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="id" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NhanVien_Load_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NhanVien_LoadNhanVienTheoMa_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+          <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+          <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="NhanVien_LoadNVChuaCoTaiKhoan_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+          <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+          <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="TaiKhoan_LayQuyenTruyCap_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+          <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TaiKhoan_Load_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+          <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TaiKhoan_Load_nv_id_Result">
+          <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+          <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ThucUong_Load_Result">
+          <Property Type="Int32" Name="tu_id" Nullable="false" />
+          <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="tu_gia" Nullable="false" />
+          <Property Type="Int32" Name="tu_trangthai" Nullable="true" />
+          <Property Type="Int32" Name="dm_id" Nullable="false" />
+          <Property Type="Int32" Name="dm_id1" Nullable="false" />
+          <Property Type="String" Name="dm_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="dm_trangthai" Nullable="true" />
+          <Property Type="String" Name="dm_ghichu" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="ThucUong_Load_IDDanhMuc_Result">
+          <Property Type="Int32" Name="tu_id" Nullable="false" />
+          <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="tu_gia" Nullable="false" />
+          <Property Type="Int32" Name="tu_trangthai" Nullable="true" />
+          <Property Type="Int32" Name="dm_id" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CafeDataBaseModel1StoreContainer" CdmEntityContainer="CafeDataBaseEntities1">
+          <EntitySetMapping Name="Bans">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.Ban">
+              <MappingFragment StoreEntitySet="Ban">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaTrucs">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.CaTruc">
+              <MappingFragment StoreEntitySet="CaTruc">
+                <ScalarProperty Name="ct_id" ColumnName="ct_id" />
+                <ScalarProperty Name="ct_ngaytruc" ColumnName="ct_ngaytruc" />
+                <ScalarProperty Name="ct_buoitruc" ColumnName="ct_buoitruc" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTHDs">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.CTHD">
+              <MappingFragment StoreEntitySet="CTHD">
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhMucs">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.DanhMuc">
+              <MappingFragment StoreEntitySet="DanhMuc">
+                <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+                <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+                <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+                <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhuVucs">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.KhuVuc">
+              <MappingFragment StoreEntitySet="KhuVuc">
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+                <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+                <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+                <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThucUongs">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.ThucUong">
+              <MappingFragment StoreEntitySet="ThucUong">
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+                <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+                <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+                <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_InBaoCao">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InBaoCao">
+              <MappingFragment StoreEntitySet="HoaDon_InBaoCao">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_InThongKe">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InThongKe">
+              <MappingFragment StoreEntitySet="HoaDon_InThongKe">
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_InThongKe2">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InThongKe2">
+              <MappingFragment StoreEntitySet="HoaDon_InThongKe2">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_ThongKeMaHD">
+            <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeMaHD">
+              <MappingFragment StoreEntitySet="HoaDon_ThongKeMaHD">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Ban_CapNhatTrangThaiBan" FunctionName="CafeDataBaseModel1.Store.Ban_CapNhatTrangThaiBan" />
+          <FunctionImportMapping FunctionImportName="Ban_KiemTraTenBanTrung" FunctionName="CafeDataBaseModel1.Store.Ban_KiemTraTenBanTrung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_KiemTraTenBanTrung_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_KiemTraTrangThai_TheoIdBan" FunctionName="CafeDataBaseModel1.Store.Ban_KiemTraTrangThai_TheoIdBan" />
+          <FunctionImportMapping FunctionImportName="Ban_Load" FunctionName="CafeDataBaseModel1.Store.Ban_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_Load_BanTrangThaiCoKhach" FunctionName="CafeDataBaseModel1.Store.Ban_Load_BanTrangThaiCoKhach">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_BanTrangThaiCoKhach_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_Load_KhuVuc" FunctionName="CafeDataBaseModel1.Store.Ban_Load_KhuVuc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_KhuVuc_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" FunctionName="CafeDataBaseModel1.Store.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_Load_TrangThai" FunctionName="CafeDataBaseModel1.Store.Ban_Load_TrangThai">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_TrangThai_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+                <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Ban_Sua" FunctionName="CafeDataBaseModel1.Store.Ban_Sua" />
+          <FunctionImportMapping FunctionImportName="Ban_Them" FunctionName="CafeDataBaseModel1.Store.Ban_Them" />
+          <FunctionImportMapping FunctionImportName="Ban_TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.Ban_TimIDKeTiep" />
+          <FunctionImportMapping FunctionImportName="Ban_Xoa" FunctionName="CafeDataBaseModel1.Store.Ban_Xoa" />
+          <FunctionImportMapping FunctionImportName="CTHD_HuyBan" FunctionName="CafeDataBaseModel1.Store.CTHD_HuyBan" />
+          <FunctionImportMapping FunctionImportName="CTHD_KiemTraThucUongCoTrongCTHD" FunctionName="CafeDataBaseModel1.Store.CTHD_KiemTraThucUongCoTrongCTHD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_KiemTraThucUongCoTrongCTHD_Result">
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CTHD_Load_DonGia_TinhThanhTien" FunctionName="CafeDataBaseModel1.Store.CTHD_Load_DonGia_TinhThanhTien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_Load_DonGia_TinhThanhTien_Result">
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CTHD_Load_IDHoaDon" FunctionName="CafeDataBaseModel1.Store.CTHD_Load_IDHoaDon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_Load_IDHoaDon_Result">
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CTHD_Sua" FunctionName="CafeDataBaseModel1.Store.CTHD_Sua" />
+          <FunctionImportMapping FunctionImportName="CTHD_Them" FunctionName="CafeDataBaseModel1.Store.CTHD_Them" />
+          <FunctionImportMapping FunctionImportName="CTHD_Xoa" FunctionName="CafeDataBaseModel1.Store.CTHD_Xoa" />
+          <FunctionImportMapping FunctionImportName="DanhMuc_Load" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.DanhMuc_Load_Result">
+                <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+                <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+                <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+                <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DanhMuc_Sua" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Sua" />
+          <FunctionImportMapping FunctionImportName="DanhMuc_Them" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Them" />
+          <FunctionImportMapping FunctionImportName="DanhMuc_Xoa" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Xoa" />
+          <FunctionImportMapping FunctionImportName="HoaDon_DoiBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_DoiBan" />
+          <FunctionImportMapping FunctionImportName="HoaDon_HuyBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_HuyBan" />
+          <FunctionImportMapping FunctionImportName="HoaDon_In" FunctionName="CafeDataBaseModel1.Store.HoaDon_In">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_In_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_InBaoCaoTheoTuyChon" FunctionName="CafeDataBaseModel1.Store.HoaDon_InBaoCaoTheoTuyChon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InBaoCaoTheoTuyChon_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_LayHoaDonTheoMaBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_LayHoaDonTheoMaBan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_LayHoaDonTheoMaBan_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_Load" FunctionName="CafeDataBaseModel1.Store.HoaDon_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_Load_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_Load_IDBan_TrangThaiHD" FunctionName="CafeDataBaseModel1.Store.HoaDon_Load_IDBan_TrangThaiHD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_Load_IDBan_TrangThaiHD_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_Sua" FunctionName="CafeDataBaseModel1.Store.HoaDon_Sua" />
+          <FunctionImportMapping FunctionImportName="HoaDon_Them" FunctionName="CafeDataBaseModel1.Store.HoaDon_Them" />
+          <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNgayLap" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNgayLap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNgayLap_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNhanVien" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNhanVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVien_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNhanVienTheoNgayLap" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNhanVienTheoNgayLap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_Xoa" FunctionName="CafeDataBaseModel1.Store.HoaDon_Xoa" />
+          <FunctionImportMapping FunctionImportName="KhucVuc_Load" FunctionName="CafeDataBaseModel1.Store.KhucVuc_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.KhucVuc_Load_Result">
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+                <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+                <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="KhuVuc_LoadTheoTrangThai" FunctionName="CafeDataBaseModel1.Store.KhuVuc_LoadTheoTrangThai">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.KhuVuc_LoadTheoTrangThai_Result">
+                <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+                <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+                <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+                <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="KhuVuc_Sua" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Sua" />
+          <FunctionImportMapping FunctionImportName="KhuVuc_Them" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Them" />
+          <FunctionImportMapping FunctionImportName="KhuVuc_Xoa" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Xoa" />
+          <FunctionImportMapping FunctionImportName="LayIDKeTiep" FunctionName="CafeDataBaseModel1.Store.LayIDKeTiep">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.LayIDKeTiep_Result">
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanVien_CapNhatNhanVienCoTaiKhoan" FunctionName="CafeDataBaseModel1.Store.NhanVien_CapNhatNhanVienCoTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="NhanVien_Load" FunctionName="CafeDataBaseModel1.Store.NhanVien_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_Load_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+                <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanVien_LoadNhanVienTheoMa" FunctionName="CafeDataBaseModel1.Store.NhanVien_LoadNhanVienTheoMa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_LoadNhanVienTheoMa_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+                <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanVien_LoadNVChuaCoTaiKhoan" FunctionName="CafeDataBaseModel1.Store.NhanVien_LoadNVChuaCoTaiKhoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_LoadNVChuaCoTaiKhoan_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+                <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NhanVien_Sua" FunctionName="CafeDataBaseModel1.Store.NhanVien_Sua" />
+          <FunctionImportMapping FunctionImportName="NhanVien_Them" FunctionName="CafeDataBaseModel1.Store.NhanVien_Them" />
+          <FunctionImportMapping FunctionImportName="NhanVien_TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.NhanVien_TimIDKeTiep" />
+          <FunctionImportMapping FunctionImportName="NhanVien_Xoa" FunctionName="CafeDataBaseModel1.Store.NhanVien_Xoa" />
+          <FunctionImportMapping FunctionImportName="TaiKhoan_LayQuyenTruyCap" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_LayQuyenTruyCap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_LayQuyenTruyCap_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+                <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+                <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TaiKhoan_Load" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_Load_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+                <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+                <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TaiKhoan_Load_nv_id" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Load_nv_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_Load_nv_id_Result">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+                <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+                <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TaiKhoan_Sua" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Sua" />
+          <FunctionImportMapping FunctionImportName="TaiKhoan_Them" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Them" />
+          <FunctionImportMapping FunctionImportName="TaiKhoan_Xoa" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Xoa" />
+          <FunctionImportMapping FunctionImportName="ThucUong_Load" FunctionName="CafeDataBaseModel1.Store.ThucUong_Load">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.ThucUong_Load_Result">
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+                <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+                <ScalarProperty Name="dm_id1" ColumnName="dm_id1" />
+                <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+                <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+                <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ThucUong_Load_IDDanhMuc" FunctionName="CafeDataBaseModel1.Store.ThucUong_Load_IDDanhMuc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CafeDataBaseModel1.ThucUong_Load_IDDanhMuc_Result">
+                <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+                <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ThucUong_Sua" FunctionName="CafeDataBaseModel1.Store.ThucUong_Sua" />
+          <FunctionImportMapping FunctionImportName="ThucUong_Them" FunctionName="CafeDataBaseModel1.Store.ThucUong_Them" />
+          <FunctionImportMapping FunctionImportName="ThucUong_Xoa" FunctionName="CafeDataBaseModel1.Store.ThucUong_Xoa" />
+          <FunctionImportMapping FunctionImportName="TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.TimIDKeTiep" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
