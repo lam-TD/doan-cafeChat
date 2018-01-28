@@ -26,5 +26,8 @@ namespace DXApplication1
         }
     
         public virtual DbSet<HoaDon_InThongKe2> HoaDon_InThongKe2 { get; set; }
+        public virtual DbSet<HoaDon_InBaoCao> HoaDon_InBaoCao { get; set; }
+        public virtual DbSet<HoaDon_InThongKe> HoaDon_InThongKe { get; set; }
+        public virtual DbSet<HoaDon_ThongKeMaHD> HoaDon_ThongKeMaHD { get; set; }
     }
 }

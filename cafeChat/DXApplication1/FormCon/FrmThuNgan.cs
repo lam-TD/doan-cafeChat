@@ -628,7 +628,6 @@ namespace DXApplication1
 
         private void btnthanhtoan_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 HoaDonDTO hd = new HoaDonDTO();
@@ -648,7 +647,7 @@ namespace DXApplication1
                         DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa thức uống vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            XtraReport1 In_HoaDon = new XtraReport1();
+                            XtraReport2 In_HoaDon = new XtraReport2();
                             Connect conn = new Connect();
                             In_HoaDon.DataSource = conn.getTable("EXEC HoaDon_In '"+ txtmahd.Text +"'");
                             In_HoaDon.ShowPreviewDialog();

@@ -263,3 +263,4 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ja
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ru\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FormCon.frmReport.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.XtraReport1.resources
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.XtraReport2.resources

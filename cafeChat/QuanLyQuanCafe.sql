@@ -990,6 +990,17 @@ BEGIN
 END
 EXEC HoaDon_In 'HD00001'
 
+-- In báo cáo Hóa Đơn
+CREATE PROC HoaDon_InBaoCaoTheoTuyChon
+@tungay DATETIME,
+@denngay DATETIME
+AS
+BEGIN
+	SELECT * FROM HoaDon_InBaoCao WHERE hd_ngaylap >= @tungay AND hd_ngaylap <= @denngay
+END
+
+EXEC HoaDon_InBaoCaoTheoTuyChon '1-26-2018','1-28-2018'
+
 -- ========== CHI TIET HOA DON ==========
 -- Load CTHD theo ma Hoa Don
 CREATE PROC CTHD_Load_IDHoaDon
@@ -1103,6 +1114,23 @@ SELECT hd.hd_id,nv.nv_ten,hd2.hd_ngaylap,hd.hd_phuthu,hd.hd_giamgia,tu.tu_ten,tu
   ON nv.nv_id = hd2.nv_id INNER JOIN ThucUong AS tu ON tu.tu_id = c.tu_id
 
 SELECT * FROM HoaDon_InThongKe
+
+-- In báo cáo
+CREATE VIEW HoaDon_InBaoCao
+AS
+SELECT
+	hd.hd_id,
+	hd.hd_ngaylap,
+	hd.hd_phuthu,
+	hd.hd_giamgia,
+	hd.hd_tongtien,
+	hd.hd_trangthai,
+	hd.ban_id,
+	nv.nv_ten
+FROM
+	HoaDon AS hd INNER JOIN NhanVien AS nv
+	                       ON nv.nv_id = hd.nv_id
+
 
 --================= HAM XU LY DAC BIET
 -- TIM MA BAN KE TIEP

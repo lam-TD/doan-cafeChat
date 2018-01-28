@@ -4,7 +4,46 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CafeDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CafeDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InBaoCao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_InBaoCao">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="hd_trangthai" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+          <Property Name="hd_trangthai" Type="int" Nullable="false" />
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_InThongKe">
+          <Key>
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tu_gia" Type="int" Nullable="false" />
+          <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HoaDon_InThongKe2">
@@ -15,6 +54,7 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
             <PropertyRef Name="tu_ten" />
             <PropertyRef Name="tu_gia" />
             <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_tongtien" />
           </Key>
           <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -24,8 +64,50 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
           <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="tu_gia" Type="int" Nullable="false" />
           <Property Name="cthd_soluong" Type="int" Nullable="false" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_ThongKeMaHD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDon_ThongKeMaHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="hd_phuthu" Type="int" />
+          <Property Name="hd_giamgia" Type="int" />
+          <Property Name="hd_tongtien" Type="int" Nullable="false" />
+          <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CafeDataBaseModelStoreContainer">
+          <EntitySet Name="HoaDon_InBaoCao" EntityType="Self.HoaDon_InBaoCao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_InBaoCao].[hd_id] AS [hd_id], 
+    [HoaDon_InBaoCao].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InBaoCao].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InBaoCao].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InBaoCao].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_InBaoCao].[hd_trangthai] AS [hd_trangthai], 
+    [HoaDon_InBaoCao].[ban_id] AS [ban_id], 
+    [HoaDon_InBaoCao].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_InBaoCao] AS [HoaDon_InBaoCao]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HoaDon_InThongKe" EntityType="Self.HoaDon_InThongKe" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_InThongKe].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe].[hd_id] AS [hd_id]
+    FROM [dbo].[HoaDon_InThongKe] AS [HoaDon_InThongKe]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [HoaDon_InThongKe2].[hd_id] AS [hd_id], 
@@ -35,12 +117,23 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
     [HoaDon_InThongKe2].[hd_giamgia] AS [hd_giamgia], 
     [HoaDon_InThongKe2].[tu_ten] AS [tu_ten], 
     [HoaDon_InThongKe2].[tu_gia] AS [tu_gia], 
-    [HoaDon_InThongKe2].[cthd_soluong] AS [cthd_soluong]
+    [HoaDon_InThongKe2].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe2].[hd_tongtien] AS [hd_tongtien]
     FROM [dbo].[HoaDon_InThongKe2] AS [HoaDon_InThongKe2]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="Self.HoaDon_ThongKeMaHD" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDon_ThongKeMaHD].[hd_id] AS [hd_id], 
+    [HoaDon_ThongKeMaHD].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_ThongKeMaHD].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_ThongKeMaHD].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_ThongKeMaHD].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_ThongKeMaHD].[ban_id] AS [ban_id], 
+    [HoaDon_ThongKeMaHD].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_ThongKeMaHD] AS [HoaDon_ThongKeMaHD]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CafeDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -52,6 +145,7 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
             <PropertyRef Name="tu_ten" />
             <PropertyRef Name="tu_gia" />
             <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_tongtien" />
           </Key>
           <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
@@ -61,10 +155,65 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
           <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tu_gia" Type="Int32" Nullable="false" />
           <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CafeDataBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" />
+          <EntitySet Name="HoaDon_InBaoCao" EntityType="CafeDataBaseModel.HoaDon_InBaoCao" />
+          <EntitySet Name="HoaDon_InThongKe" EntityType="CafeDataBaseModel.HoaDon_InThongKe" />
+          <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="CafeDataBaseModel.HoaDon_ThongKeMaHD" />
         </EntityContainer>
+        <EntityType Name="HoaDon_InBaoCao">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="hd_trangthai" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+          <Property Name="hd_trangthai" Type="Int32" Nullable="false" />
+          <Property Name="ban_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nv_ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HoaDon_InThongKe">
+          <Key>
+            <PropertyRef Name="nv_ten" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="tu_ten" />
+            <PropertyRef Name="tu_gia" />
+            <PropertyRef Name="cthd_soluong" />
+            <PropertyRef Name="hd_id" />
+          </Key>
+          <Property Name="nv_ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="tu_ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tu_gia" Type="Int32" Nullable="false" />
+          <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+          <Property Name="hd_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HoaDon_ThongKeMaHD">
+          <Key>
+            <PropertyRef Name="hd_id" />
+            <PropertyRef Name="hd_ngaylap" />
+            <PropertyRef Name="hd_tongtien" />
+            <PropertyRef Name="ban_id" />
+            <PropertyRef Name="nv_ten" />
+          </Key>
+          <Property Name="hd_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hd_phuthu" Type="Int32" />
+          <Property Name="hd_giamgia" Type="Int32" />
+          <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+          <Property Name="ban_id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nv_ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -74,6 +223,7 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
           <EntitySetMapping Name="HoaDon_InThongKe2">
             <EntityTypeMapping TypeName="CafeDataBaseModel.HoaDon_InThongKe2">
               <MappingFragment StoreEntitySet="HoaDon_InThongKe2">
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
                 <ScalarProperty Name="hd_id" ColumnName="hd_id" />
                 <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
                 <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
@@ -82,6 +232,46 @@ warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have 
                 <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
                 <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
                 <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_InBaoCao">
+            <EntityTypeMapping TypeName="CafeDataBaseModel.HoaDon_InBaoCao">
+              <MappingFragment StoreEntitySet="HoaDon_InBaoCao">
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_InThongKe">
+            <EntityTypeMapping TypeName="CafeDataBaseModel.HoaDon_InThongKe">
+              <MappingFragment StoreEntitySet="HoaDon_InThongKe">
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+                <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+                <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+                <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDon_ThongKeMaHD">
+            <EntityTypeMapping TypeName="CafeDataBaseModel.HoaDon_ThongKeMaHD">
+              <MappingFragment StoreEntitySet="HoaDon_ThongKeMaHD">
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+                <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+                <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+                <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+                <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+                <ScalarProperty Name="hd_id" ColumnName="hd_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
