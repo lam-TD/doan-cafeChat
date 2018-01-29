@@ -410,6 +410,7 @@
             this.txttimthucuong.Size = new System.Drawing.Size(166, 20);
             this.txttimthucuong.StyleController = this.layoutControl2;
             this.txttimthucuong.TabIndex = 4;
+            this.txttimthucuong.TextChanged += new System.EventHandler(this.txttimthucuong_TextChanged);
             // 
             // layoutControlItem2
             // 

@@ -146,13 +146,15 @@ namespace DXApplication1
             listViewThucUong.Columns.Add(header2);
             listViewThucUong.Columns.Add(header3);
         }
-        void listview_ThucUong_Load(int type, int iddanhmuc) // load tất cả thức uống hoặc theo id danh mục 1-tất cả || 2-id danh mục
+        void listview_ThucUong_Load(int type, int iddanhmuc,string tukhoa) // load tất cả thức uống hoặc theo id danh mục 1-tất cả || 2-id danh mục
         {
             listViewThucUong.Clear();
             CauHinh_ListViewThucUong();
             DataTable dt = new DataTable();
             if (type == 1)
                 dt = ThucUongBUS.ThucUong_Load();
+            else if (type == 2)
+                dt = ThucUongBUS.ThucUong_TimKiem(tukhoa);
             else
                 dt = ThucUongBUS.ThucUong_Load_IDDanhMuc(iddanhmuc);
             int i = 0;
@@ -318,7 +320,7 @@ namespace DXApplication1
         {
             Tao_Ban();
             treelist_ThemDanhMuc();
-            listview_ThucUong_Load(1,0);
+            listview_ThucUong_Load(1,0,"");
             cbBan_Load();
             dateTimePickerNgayLap.Value = DateTime.Now;
             dateTimeGioLapHD.Value = DateTime.Now;
@@ -328,7 +330,7 @@ namespace DXApplication1
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            listview_ThucUong_Load(2, int.Parse(e.Node.Tag.ToString()));
+            listview_ThucUong_Load(3, int.Parse(e.Node.Tag.ToString()),"");
         }
 
         private void cbBan_SelectedIndexChanged(object sender, EventArgs e)
@@ -647,7 +649,7 @@ namespace DXApplication1
                         DialogResult dialogResult = XtraMessageBox.Show("Bạn có muốn In Hóa Đơn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            XtraReport2 In_HoaDon = new XtraReport2();
+                            InHoaDonBanLe In_HoaDon = new InHoaDonBanLe();
                             Connect conn = new Connect();
                             In_HoaDon.DataSource = conn.getTable("EXEC HoaDon_In '"+ txtmahd.Text +"'");
                             In_HoaDon.ShowPreviewDialog();
@@ -661,6 +663,14 @@ namespace DXApplication1
             {
                 XtraMessageBox.Show("Lỗi không Thanh Toán được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void txttimthucuong_TextChanged(object sender, EventArgs e)
+        {
+            if (txttimthucuong.Text == "")
+                listview_ThucUong_Load(1, 0, "");
+            else
+                listview_ThucUong_Load(2, 0, txttimthucuong.Text);
         }
     }
 }

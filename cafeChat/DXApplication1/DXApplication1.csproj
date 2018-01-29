@@ -327,12 +327,6 @@
     <Compile Include="ucControl\ucQuanLiDanhMuc.Designer.cs">
       <DependentUpon>ucQuanLiDanhMuc.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucControl\ucQuanLiHoaDon.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucControl\ucQuanLiHoaDon.Designer.cs">
-      <DependentUpon>ucQuanLiHoaDon.cs</DependentUpon>
-    </Compile>
     <Compile Include="ucControl\ucQuanLiKhuVuc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,23 +351,11 @@
     <Compile Include="ucControl\ucQuanLiTaiKhoan.Designer.cs">
       <DependentUpon>ucQuanLiTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraReport1.cs">
+    <Compile Include="InHoaDonBanLe.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport2.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport2.Designer.cs">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport3.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport3.Designer.cs">
-      <DependentUpon>XtraReport3.cs</DependentUpon>
+    <Compile Include="InHoaDonBanLe.Designer.cs">
+      <DependentUpon>InHoaDonBanLe.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -427,9 +409,6 @@
     <EmbeddedResource Include="ucControl\ucQuanLiDanhMuc.resx">
       <DependentUpon>ucQuanLiDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucControl\ucQuanLiHoaDon.resx">
-      <DependentUpon>ucQuanLiHoaDon.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ucControl\ucQuanLiKhuVuc.resx">
       <DependentUpon>ucQuanLiKhuVuc.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,14 +421,8 @@
     <EmbeddedResource Include="ucControl\ucQuanLiTaiKhoan.resx">
       <DependentUpon>ucQuanLiTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport2.resx">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport3.resx">
-      <DependentUpon>XtraReport3.cs</DependentUpon>
+    <EmbeddedResource Include="InHoaDonBanLe.resx">
+      <DependentUpon>InHoaDonBanLe.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

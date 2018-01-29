@@ -140,7 +140,6 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\es
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ja\DevExpress.Office.v17.1.Core.resources.dll
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiTaiKhoan.resources
-C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiHoaDon.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiNhanVien.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.ucControl.ucQuanLiSanPham.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FrmThuNgan.resources
@@ -262,7 +261,5 @@ C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\es
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ja\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\bin\Debug\ru\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.FormCon.frmReport.resources
-C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.XtraReport1.resources
-C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.XtraReport2.resources
-C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.XtraReport3.resources
 C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.InBaoCao.resources
+C:\Users\lamtranduc\Documents\doan-cafeChat\cafeChat\DXApplication1\obj\Debug\DXApplication1.InHoaDonBanLe.resources

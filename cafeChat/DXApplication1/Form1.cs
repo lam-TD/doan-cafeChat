@@ -29,7 +29,6 @@ namespace DXApplication1
         void PhanQuyen(bool quyen)
         {
             ribbonPageQuanLi.Visible = quyen;
-            ribbonPageThongKe.Visible = quyen;
             ribbonPageGroupQLTaiKhoan.Visible = quyen;
         }
         void NhanVien_LoadThongTin(string manv)

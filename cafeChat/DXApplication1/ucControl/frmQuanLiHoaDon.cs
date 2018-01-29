@@ -31,7 +31,17 @@ namespace DXApplication1.ucControl
         {
             HoaDon_Load();
             cbloaithongke.SelectedIndex = -1;
-            cbhienthi.Enabled = false;
+            cauhinhButton(false);
+        }
+
+        void cauhinhButton(bool t)
+        {
+            cbhienthi.Enabled = t;
+            dateTuNgay.Enabled = t;
+            dateDenNgay.Enabled = t;
+            btnlammoi.Enabled = t;
+            simpleButton2.Enabled = t;
+            btnIn.Enabled = t;
         }
 
         void CTHD_LoadTheoIDHoaDon(string mahd)
@@ -89,10 +99,14 @@ namespace DXApplication1.ucControl
                 {
                     case "Nhân viên":
                         Load_cbNhanVienLapHD();
-                        cbhienthi.Enabled = true;
+                        cauhinhButton(true);
                         break;
                     case "Ngày lập hóa đơn":
                         cbhienthi.Enabled = false;
+                        cauhinhButton(true);
+                        break;
+                    default:
+                        cauhinhButton(false);
                         break;
                 }
             }

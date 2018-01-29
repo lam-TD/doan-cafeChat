@@ -444,6 +444,22 @@ BEGIN
 	WHERE tu_id = @tu_id
 END
 
+-- Tìm kiếm Thức Uống
+CREATE PROC ThucUong_TimKiem
+@tukhoa NVARCHAR(20)
+AS
+BEGIN
+	SELECT
+		tu.tu_id,
+		tu.tu_ten,
+		tu.tu_gia,
+		tu.tu_trangthai,
+		tu.dm_id
+	FROM
+		ThucUong AS tu
+	WHERE tu.tu_trangthai = 1 AND tu.tu_ten LIKE @tukhoa OR tu.tu_gia LIKE @tukhoa
+END
+EXEC ThucUong_TimKiem N'%ca cao%'
 -- ========== DANH MUC ==========
 -- Load Danh Muc
 CREATE PROC DanhMuc_Load

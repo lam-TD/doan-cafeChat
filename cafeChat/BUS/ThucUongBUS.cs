@@ -61,5 +61,10 @@ namespace BUS
             return listThucUong;
         }
 
+        public static DataTable ThucUong_TimKiem(string tukhoa)
+        {
+            return conn.getTable("EXEC ThucUong_TimKiem N'%"+ tukhoa +"%'");
+        }
+
     }
 }
