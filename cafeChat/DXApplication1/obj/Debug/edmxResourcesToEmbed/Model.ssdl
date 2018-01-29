@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeDataBaseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ban">
+    <Key>
+      <PropertyRef Name="ban_id" />
+    </Key>
+    <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ban_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ban_trangthai" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="kv_id" Type="int" Nullable="false" />
+    <Property Name="ban_xoa" Type="int" />
+  </EntityType>
+  <EntityType Name="CaTruc">
+    <Key>
+      <PropertyRef Name="ct_id" />
+    </Key>
+    <Property Name="ct_id" Type="int" Nullable="false" />
+    <Property Name="ct_ngaytruc" Type="datetime" Nullable="false" />
+    <Property Name="ct_buoitruc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="tu_id" />
+    </Key>
+    <Property Name="cthd_soluong" Type="int" Nullable="false" />
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tu_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="dm_id" />
+    </Key>
+    <Property Name="dm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dm_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="dm_trangthai" Type="int" />
+    <Property Name="dm_ghichu" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="hd_id" />
+    </Key>
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_phuthu" Type="int" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="hd_tongtien" Type="int" Nullable="false" />
+    <Property Name="hd_trangthai" Type="int" Nullable="false" />
+    <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KhuVuc">
+    <Key>
+      <PropertyRef Name="kv_id" />
+    </Key>
+    <Property Name="kv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="kv_trangthai" Type="nvarchar" MaxLength="100" />
+    <Property Name="kv_ghichu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="nv_id" />
+    </Key>
+    <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="nv_diachi" Type="nvarchar" MaxLength="200" />
+    <Property Name="nv_sdt" Type="varchar" MaxLength="11" />
+    <Property Name="nv_trangthai" Type="nvarchar" MaxLength="20" />
+    <Property Name="nv_taikhoan" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.TaiKhoan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="nv_id" />
+      <PropertyRef Name="tk_matkhau" />
+      <PropertyRef Name="tk_quyen" />
+    </Key>
+    <Property Name="nv_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tk_matkhau" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="tk_quyen" Type="int" Nullable="false" />
+    <Property Name="tk_trangthai" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'CafeDataBase.dbo.ThamSo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ThamSo">
+          <Property Name="ban_id" Type="varchar" MaxLength="10" />
+          <Property Name="hd_id" Type="varchar" MaxLength="50" />
+          <Property Name="nv_id" Type="varchar" MaxLength="50" />
+          <Property Name="id" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="ThucUong">
+    <Key>
+      <PropertyRef Name="tu_id" />
+    </Key>
+    <Property Name="tu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tu_gia" Type="int" Nullable="false" />
+    <Property Name="tu_trangthai" Type="int" />
+    <Property Name="dm_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InBaoCao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HoaDon_InBaoCao">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="hd_tongtien" />
+      <PropertyRef Name="hd_trangthai" />
+      <PropertyRef Name="ban_id" />
+      <PropertyRef Name="nv_ten" />
+    </Key>
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_phuthu" Type="int" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="hd_tongtien" Type="int" Nullable="false" />
+    <Property Name="hd_trangthai" Type="int" Nullable="false" />
+    <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HoaDon_InThongKe">
+    <Key>
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+      <PropertyRef Name="hd_id" />
+    </Key>
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tu_gia" Type="int" Nullable="false" />
+    <Property Name="cthd_soluong" Type="int" Nullable="false" />
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_InThongKe2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HoaDon_InThongKe2">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+      <PropertyRef Name="hd_tongtien" />
+    </Key>
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_phuthu" Type="int" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="tu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="tu_gia" Type="int" Nullable="false" />
+    <Property Name="cthd_soluong" Type="int" Nullable="false" />
+    <Property Name="hd_tongtien" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CafeDataBase.dbo.HoaDon_ThongKeMaHD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HoaDon_ThongKeMaHD">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="hd_tongtien" />
+      <PropertyRef Name="ban_id" />
+      <PropertyRef Name="nv_ten" />
+    </Key>
+    <Property Name="hd_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hd_phuthu" Type="int" />
+    <Property Name="hd_giamgia" Type="int" />
+    <Property Name="hd_tongtien" Type="int" Nullable="false" />
+    <Property Name="ban_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="nv_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Ban__kv_id__286302EC">
+    <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="1" />
+    <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuVuc">
+        <PropertyRef Name="kv_id" />
+      </Principal>
+      <Dependent Role="Ban">
+        <PropertyRef Name="kv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CaTruc__nv_id__173876EA">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="CaTruc" Type="Self.CaTruc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="CaTruc">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__hd_id__31EC6D26">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="hd_id" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="hd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__tu_id__32E0915F">
+    <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucUong">
+        <PropertyRef Name="tu_id" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="tu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__nv_id__2D27B809">
+    <End Role="Ban" Type="Self.Ban" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ban">
+        <PropertyRef Name="ban_id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ban_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__nv_id__2E1BDC42">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__tk_quy__145C0A3F">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucUong__dm_id__20C1E124">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+    <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="dm_id" />
+      </Principal>
+      <Dependent Role="ThucUong">
+        <PropertyRef Name="dm_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Ban_CapNhatTrangThaiBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+    <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_KiemTraTenBanTrung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_KiemTraTrangThai_TheoIdBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ban_Load_BanTrangThaiCoKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ban_Load_KhuVuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kv_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maban" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_Load_TrangThai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+    <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="ban_trangthai" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Ban_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+    <Parameter Name="ban_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="ban_trangthai" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_id" Type="nvarchar" Mode="In" />
+    <Parameter Name="ban_xoa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Ban_TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Ban_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CTHD_HuyBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CTHD_KiemTraThucUongCoTrongCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CTHD_Load_DonGia_TinhThanhTien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CTHD_Load_IDHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_ma" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CTHD_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cthd_soluong" Type="int" Mode="In" />
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CTHD_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cthd_soluong" Type="int" Mode="In" />
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CTHD_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DanhMuc_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DanhMuc_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dm_id" Type="int" Mode="In" />
+    <Parameter Name="dm_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="dm_trangthai" Type="int" Mode="In" />
+    <Parameter Name="dm_ghichu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DanhMuc_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dm_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="dm_trangthai" Type="int" Mode="In" />
+    <Parameter Name="dm_ghichu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DanhMuc_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dm_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_DoiBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mabanChon" Type="varchar" Mode="In" />
+    <Parameter Name="mabanDoi" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_HuyBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_In" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mahd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_InBaoCaoTheoTuyChon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="datetime" Mode="In" />
+    <Parameter Name="denngay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_LayHoaDonTheoMaBan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maban" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="HoaDon_Load_IDBan_TrangThaiHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+    <Parameter Name="hd_ngaylap" Type="date" Mode="In" />
+    <Parameter Name="hd_trangthai" Type="int" Mode="In" />
+    <Parameter Name="hd_phuthu" Type="int" Mode="In" />
+    <Parameter Name="hd_giamgia" Type="int" Mode="In" />
+    <Parameter Name="hd_tongtien" Type="float" Mode="In" />
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_id" Type="varchar" Mode="In" />
+    <Parameter Name="hd_ngaylap" Type="datetime" Mode="In" />
+    <Parameter Name="hd_trangthai" Type="int" Mode="In" />
+    <Parameter Name="hd_phuthu" Type="int" Mode="In" />
+    <Parameter Name="hd_giamgia" Type="int" Mode="In" />
+    <Parameter Name="hd_tongtien" Type="float" Mode="In" />
+    <Parameter Name="ban_id" Type="varchar" Mode="In" />
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_ThongKeTheoNgayLap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tungay" Type="date" Mode="In" />
+    <Parameter Name="denngay" Type="date" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_ThongKeTheoNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="varchar" Mode="In" />
+    <Parameter Name="tungay" Type="date" Mode="In" />
+    <Parameter Name="denngay" Type="date" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hd_ma" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="KhucVuc_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="KhuVuc_LoadTheoTrangThai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trangthai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KhuVuc_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kv_id" Type="int" Mode="In" />
+    <Parameter Name="kv_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_trangthai" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_ghichu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KhuVuc_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kv_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_trangthai" Type="nvarchar" Mode="In" />
+    <Parameter Name="kv_ghichu" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KhuVuc_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kv_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="LayIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NhanVien_CapNhatNhanVienCoTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NhanVien_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NhanVien_LoadNhanVienTheoMa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="manv" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="NhanVien_LoadNVChuaCoTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NhanVien_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="nv_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="nv_diachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nv_sdt" Type="varchar" Mode="In" />
+    <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+    <Parameter Name="nv_trangthai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="NhanVien_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="nv_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="nv_diachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="nv_sdt" Type="varchar" Mode="In" />
+    <Parameter Name="nv_taikhoan" Type="int" Mode="In" />
+    <Parameter Name="nv_trangthai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="NhanVien_TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NhanVien_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TaiKhoan_LayQuyenTruyCap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tk_ma" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TaiKhoan_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TaiKhoan_Load_nv_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TaiKhoan_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+    <Parameter Name="tk_quyen" Type="int" Mode="In" />
+    <Parameter Name="tk_trangthai" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TaiKhoan_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+    <Parameter Name="tk_matkhau" Type="varchar" Mode="In" />
+    <Parameter Name="tk_quyen" Type="int" Mode="In" />
+    <Parameter Name="tk_trangthai" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TaiKhoan_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nv_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ThucUong_Load" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ThucUong_Load_IDDanhMuc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dm_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ThucUong_Sua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+    <Parameter Name="tu_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="tu_gia" Type="int" Mode="In" />
+    <Parameter Name="tu_trangthai" Type="int" Mode="In" />
+    <Parameter Name="dm_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ThucUong_Them" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+    <Parameter Name="tu_ten" Type="nvarchar" Mode="In" />
+    <Parameter Name="tu_gia" Type="int" Mode="In" />
+    <Parameter Name="tu_trangthai" Type="int" Mode="In" />
+    <Parameter Name="dm_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ThucUong_Xoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TimIDKeTiep" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="table" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="CafeDataBaseModel1StoreContainer">
+    <EntitySet Name="Ban" EntityType="Self.Ban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CaTruc" EntityType="Self.CaTruc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhuVuc" EntityType="Self.KhuVuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThucUong" EntityType="Self.ThucUong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaiKhoan].[nv_id] AS [nv_id], 
+    [TaiKhoan].[tk_matkhau] AS [tk_matkhau], 
+    [TaiKhoan].[tk_quyen] AS [tk_quyen], 
+    [TaiKhoan].[tk_trangthai] AS [tk_trangthai]
+    FROM [dbo].[TaiKhoan] AS [TaiKhoan]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HoaDon_InBaoCao" EntityType="Self.HoaDon_InBaoCao" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HoaDon_InBaoCao].[hd_id] AS [hd_id], 
+    [HoaDon_InBaoCao].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InBaoCao].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InBaoCao].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InBaoCao].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_InBaoCao].[hd_trangthai] AS [hd_trangthai], 
+    [HoaDon_InBaoCao].[ban_id] AS [ban_id], 
+    [HoaDon_InBaoCao].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_InBaoCao] AS [HoaDon_InBaoCao]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HoaDon_InThongKe" EntityType="Self.HoaDon_InThongKe" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HoaDon_InThongKe].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe].[hd_id] AS [hd_id]
+    FROM [dbo].[HoaDon_InThongKe] AS [HoaDon_InThongKe]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HoaDon_InThongKe2].[hd_id] AS [hd_id], 
+    [HoaDon_InThongKe2].[nv_ten] AS [nv_ten], 
+    [HoaDon_InThongKe2].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_InThongKe2].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_InThongKe2].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_InThongKe2].[tu_ten] AS [tu_ten], 
+    [HoaDon_InThongKe2].[tu_gia] AS [tu_gia], 
+    [HoaDon_InThongKe2].[cthd_soluong] AS [cthd_soluong], 
+    [HoaDon_InThongKe2].[hd_tongtien] AS [hd_tongtien]
+    FROM [dbo].[HoaDon_InThongKe2] AS [HoaDon_InThongKe2]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="Self.HoaDon_ThongKeMaHD" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HoaDon_ThongKeMaHD].[hd_id] AS [hd_id], 
+    [HoaDon_ThongKeMaHD].[hd_ngaylap] AS [hd_ngaylap], 
+    [HoaDon_ThongKeMaHD].[hd_phuthu] AS [hd_phuthu], 
+    [HoaDon_ThongKeMaHD].[hd_giamgia] AS [hd_giamgia], 
+    [HoaDon_ThongKeMaHD].[hd_tongtien] AS [hd_tongtien], 
+    [HoaDon_ThongKeMaHD].[ban_id] AS [ban_id], 
+    [HoaDon_ThongKeMaHD].[nv_ten] AS [nv_ten]
+    FROM [dbo].[HoaDon_ThongKeMaHD] AS [HoaDon_ThongKeMaHD]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Ban__kv_id__286302EC" Association="Self.FK__Ban__kv_id__286302EC">
+      <End Role="KhuVuc" EntitySet="KhuVuc" />
+      <End Role="Ban" EntitySet="Ban" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CaTruc__nv_id__173876EA" Association="Self.FK__CaTruc__nv_id__173876EA">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="CaTruc" EntitySet="CaTruc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__hd_id__31EC6D26" Association="Self.FK__CTHD__hd_id__31EC6D26">
+      <End Role="HoaDon" EntitySet="HoaDon" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__tu_id__32E0915F" Association="Self.FK__CTHD__tu_id__32E0915F">
+      <End Role="ThucUong" EntitySet="ThucUong" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__nv_id__2D27B809" Association="Self.FK__HoaDon__nv_id__2D27B809">
+      <End Role="Ban" EntitySet="Ban" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__nv_id__2E1BDC42" Association="Self.FK__HoaDon__nv_id__2E1BDC42">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__tk_quy__145C0A3F" Association="Self.FK__TaiKhoan__tk_quy__145C0A3F">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucUong__dm_id__20C1E124" Association="Self.FK__ThucUong__dm_id__20C1E124">
+      <End Role="DanhMuc" EntitySet="DanhMuc" />
+      <End Role="ThucUong" EntitySet="ThucUong" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

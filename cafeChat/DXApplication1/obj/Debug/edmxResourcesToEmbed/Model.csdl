@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeDataBaseModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ban">
+    <Key>
+      <PropertyRef Name="ban_id" />
+    </Key>
+    <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ban_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ban_trangthai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kv_id" Type="Int32" Nullable="false" />
+    <Property Name="ban_xoa" Type="Int32" />
+    <NavigationProperty Name="KhuVuc" Relationship="Self.FK__Ban__kv_id__286302EC" FromRole="Ban" ToRole="KhuVuc" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__nv_id__2D27B809" FromRole="Ban" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="CaTruc">
+    <Key>
+      <PropertyRef Name="ct_id" />
+    </Key>
+    <Property Name="ct_id" Type="Int32" Nullable="false" />
+    <Property Name="ct_ngaytruc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ct_buoitruc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK__CaTruc__nv_id__173876EA" FromRole="CaTruc" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="tu_id" />
+    </Key>
+    <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tu_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__CTHD__hd_id__31EC6D26" FromRole="CTHD" ToRole="HoaDon" />
+    <NavigationProperty Name="ThucUong" Relationship="Self.FK__CTHD__tu_id__32E0915F" FromRole="CTHD" ToRole="ThucUong" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="dm_id" />
+    </Key>
+    <Property Name="dm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dm_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dm_trangthai" Type="Int32" />
+    <Property Name="dm_ghichu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ThucUongs" Relationship="Self.FK__ThucUong__dm_id__20C1E124" FromRole="DanhMuc" ToRole="ThucUong" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="hd_id" />
+    </Key>
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_phuthu" Type="Int32" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+    <Property Name="hd_trangthai" Type="Int32" Nullable="false" />
+    <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ban" Relationship="Self.FK__HoaDon__nv_id__2D27B809" FromRole="HoaDon" ToRole="Ban" />
+    <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__hd_id__31EC6D26" FromRole="HoaDon" ToRole="CTHD" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__nv_id__2E1BDC42" FromRole="HoaDon" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="KhuVuc">
+    <Key>
+      <PropertyRef Name="kv_id" />
+    </Key>
+    <Property Name="kv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kv_trangthai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="kv_ghichu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bans" Relationship="Self.FK__Ban__kv_id__286302EC" FromRole="KhuVuc" ToRole="Ban" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="nv_id" />
+    </Key>
+    <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nv_diachi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="nv_sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="nv_trangthai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="nv_taikhoan" Type="Int32" />
+    <NavigationProperty Name="CaTrucs" Relationship="Self.FK__CaTruc__nv_id__173876EA" FromRole="NhanVien" ToRole="CaTruc" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__nv_id__2E1BDC42" FromRole="NhanVien" ToRole="HoaDon" />
+    <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__tk_quy__145C0A3F" FromRole="NhanVien" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="ThucUong">
+    <Key>
+      <PropertyRef Name="tu_id" />
+    </Key>
+    <Property Name="tu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tu_gia" Type="Int32" Nullable="false" />
+    <Property Name="tu_trangthai" Type="Int32" />
+    <Property Name="dm_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__tu_id__32E0915F" FromRole="ThucUong" ToRole="CTHD" />
+    <NavigationProperty Name="DanhMuc" Relationship="Self.FK__ThucUong__dm_id__20C1E124" FromRole="ThucUong" ToRole="DanhMuc" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="nv_id" />
+      <PropertyRef Name="tk_matkhau" />
+      <PropertyRef Name="tk_quyen" />
+    </Key>
+    <Property Name="nv_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tk_matkhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tk_quyen" Type="Int32" Nullable="false" />
+    <Property Name="tk_trangthai" Type="Int32" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK__TaiKhoan__tk_quy__145C0A3F" FromRole="TaiKhoan" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="HoaDon_InBaoCao">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="hd_tongtien" />
+      <PropertyRef Name="hd_trangthai" />
+      <PropertyRef Name="ban_id" />
+      <PropertyRef Name="nv_ten" />
+    </Key>
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_phuthu" Type="Int32" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+    <Property Name="hd_trangthai" Type="Int32" Nullable="false" />
+    <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoaDon_InThongKe">
+    <Key>
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+      <PropertyRef Name="hd_id" />
+    </Key>
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tu_gia" Type="Int32" Nullable="false" />
+    <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoaDon_InThongKe2">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="nv_ten" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="tu_ten" />
+      <PropertyRef Name="tu_gia" />
+      <PropertyRef Name="cthd_soluong" />
+      <PropertyRef Name="hd_tongtien" />
+    </Key>
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_phuthu" Type="Int32" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="tu_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tu_gia" Type="Int32" Nullable="false" />
+    <Property Name="cthd_soluong" Type="Int32" Nullable="false" />
+    <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HoaDon_ThongKeMaHD">
+    <Key>
+      <PropertyRef Name="hd_id" />
+      <PropertyRef Name="hd_ngaylap" />
+      <PropertyRef Name="hd_tongtien" />
+      <PropertyRef Name="ban_id" />
+      <PropertyRef Name="nv_ten" />
+    </Key>
+    <Property Name="hd_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hd_ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hd_phuthu" Type="Int32" />
+    <Property Name="hd_giamgia" Type="Int32" />
+    <Property Name="hd_tongtien" Type="Int32" Nullable="false" />
+    <Property Name="ban_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nv_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Ban__kv_id__286302EC">
+    <End Role="KhuVuc" Type="Self.KhuVuc" Multiplicity="1" />
+    <End Role="Ban" Type="Self.Ban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuVuc">
+        <PropertyRef Name="kv_id" />
+      </Principal>
+      <Dependent Role="Ban">
+        <PropertyRef Name="kv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__nv_id__2D27B809">
+    <End Role="Ban" Type="Self.Ban" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ban">
+        <PropertyRef Name="ban_id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ban_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CaTruc__nv_id__173876EA">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="CaTruc" Type="Self.CaTruc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="CaTruc">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__hd_id__31EC6D26">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="hd_id" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="hd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__tu_id__32E0915F">
+    <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThucUong">
+        <PropertyRef Name="tu_id" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="tu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThucUong__dm_id__20C1E124">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
+    <End Role="ThucUong" Type="Self.ThucUong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="dm_id" />
+      </Principal>
+      <Dependent Role="ThucUong">
+        <PropertyRef Name="dm_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__nv_id__2E1BDC42">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__tk_quy__145C0A3F">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="nv_id" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="nv_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CafeDataBaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bans" EntityType="Self.Ban" />
+    <EntitySet Name="CaTrucs" EntityType="Self.CaTruc" />
+    <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+    <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="KhuVucs" EntityType="Self.KhuVuc" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="ThucUongs" EntityType="Self.ThucUong" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <EntitySet Name="HoaDon_InBaoCao" EntityType="Self.HoaDon_InBaoCao" />
+    <EntitySet Name="HoaDon_InThongKe" EntityType="Self.HoaDon_InThongKe" />
+    <EntitySet Name="HoaDon_InThongKe2" EntityType="Self.HoaDon_InThongKe2" />
+    <EntitySet Name="HoaDon_ThongKeMaHD" EntityType="Self.HoaDon_ThongKeMaHD" />
+    <AssociationSet Name="FK__Ban__kv_id__286302EC" Association="Self.FK__Ban__kv_id__286302EC">
+      <End Role="KhuVuc" EntitySet="KhuVucs" />
+      <End Role="Ban" EntitySet="Bans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__nv_id__2D27B809" Association="Self.FK__HoaDon__nv_id__2D27B809">
+      <End Role="Ban" EntitySet="Bans" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CaTruc__nv_id__173876EA" Association="Self.FK__CaTruc__nv_id__173876EA">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="CaTruc" EntitySet="CaTrucs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__hd_id__31EC6D26" Association="Self.FK__CTHD__hd_id__31EC6D26">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__tu_id__32E0915F" Association="Self.FK__CTHD__tu_id__32E0915F">
+      <End Role="ThucUong" EntitySet="ThucUongs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThucUong__dm_id__20C1E124" Association="Self.FK__ThucUong__dm_id__20C1E124">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="ThucUong" EntitySet="ThucUongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__nv_id__2E1BDC42" Association="Self.FK__HoaDon__nv_id__2E1BDC42">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__tk_quy__145C0A3F" Association="Self.FK__TaiKhoan__tk_quy__145C0A3F">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <FunctionImport Name="Ban_CapNhatTrangThaiBan">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+      <Parameter Name="trangthai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_KiemTraTenBanTrung" ReturnType="Collection(CafeDataBaseModel1.Ban_KiemTraTenBanTrung_Result)">
+      <Parameter Name="ban_ten" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_KiemTraTrangThai_TheoIdBan" ReturnType="Collection(String)">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_Load" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_Result)" />
+    <FunctionImport Name="Ban_Load_BanTrangThaiCoKhach" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_BanTrangThaiCoKhach_Result)" />
+    <FunctionImport Name="Ban_Load_KhuVuc" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_KhuVuc_Result)">
+      <Parameter Name="kv_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result)">
+      <Parameter Name="maban" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_Load_TrangThai" ReturnType="Collection(CafeDataBaseModel1.Ban_Load_TrangThai_Result)">
+      <Parameter Name="trangthai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_Sua">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+      <Parameter Name="ban_ten" Mode="In" Type="String" />
+      <Parameter Name="ban_trangthai" Mode="In" Type="String" />
+      <Parameter Name="kv_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_Them">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+      <Parameter Name="ban_ten" Mode="In" Type="String" />
+      <Parameter Name="ban_trangthai" Mode="In" Type="String" />
+      <Parameter Name="kv_id" Mode="In" Type="String" />
+      <Parameter Name="ban_xoa" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Ban_TimIDKeTiep" />
+    <FunctionImport Name="Ban_Xoa">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_HuyBan">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_KiemTraThucUongCoTrongCTHD" ReturnType="Collection(CafeDataBaseModel1.CTHD_KiemTraThucUongCoTrongCTHD_Result)">
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_Load_DonGia_TinhThanhTien" ReturnType="Collection(CafeDataBaseModel1.CTHD_Load_DonGia_TinhThanhTien_Result)">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_Load_IDHoaDon" ReturnType="Collection(CafeDataBaseModel1.CTHD_Load_IDHoaDon_Result)">
+      <Parameter Name="hd_ma" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_Sua">
+      <Parameter Name="cthd_soluong" Mode="In" Type="Int32" />
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_Them">
+      <Parameter Name="cthd_soluong" Mode="In" Type="Int32" />
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CTHD_Xoa">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DanhMuc_Load" ReturnType="Collection(CafeDataBaseModel1.DanhMuc_Load_Result)" />
+    <FunctionImport Name="DanhMuc_Sua">
+      <Parameter Name="dm_id" Mode="In" Type="Int32" />
+      <Parameter Name="dm_ten" Mode="In" Type="String" />
+      <Parameter Name="dm_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="dm_ghichu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DanhMuc_Them">
+      <Parameter Name="dm_ten" Mode="In" Type="String" />
+      <Parameter Name="dm_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="dm_ghichu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DanhMuc_Xoa">
+      <Parameter Name="dm_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_DoiBan">
+      <Parameter Name="mabanChon" Mode="In" Type="String" />
+      <Parameter Name="mabanDoi" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_HuyBan">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_In" ReturnType="Collection(CafeDataBaseModel1.HoaDon_In_Result)">
+      <Parameter Name="mahd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_InBaoCaoTheoTuyChon" ReturnType="Collection(CafeDataBaseModel1.HoaDon_InBaoCaoTheoTuyChon_Result)">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_LayHoaDonTheoMaBan" ReturnType="Collection(CafeDataBaseModel1.HoaDon_LayHoaDonTheoMaBan_Result)">
+      <Parameter Name="maban" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_Load" ReturnType="Collection(CafeDataBaseModel1.HoaDon_Load_Result)" />
+    <FunctionImport Name="HoaDon_Load_IDBan_TrangThaiHD" ReturnType="Collection(CafeDataBaseModel1.HoaDon_Load_IDBan_TrangThaiHD_Result)">
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_Sua">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+      <Parameter Name="hd_ngaylap" Mode="In" Type="DateTime" />
+      <Parameter Name="hd_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="hd_phuthu" Mode="In" Type="Int32" />
+      <Parameter Name="hd_giamgia" Mode="In" Type="Int32" />
+      <Parameter Name="hd_tongtien" Mode="In" Type="Double" />
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_Them">
+      <Parameter Name="hd_id" Mode="In" Type="String" />
+      <Parameter Name="hd_ngaylap" Mode="In" Type="DateTime" />
+      <Parameter Name="hd_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="hd_phuthu" Mode="In" Type="Int32" />
+      <Parameter Name="hd_giamgia" Mode="In" Type="Int32" />
+      <Parameter Name="hd_tongtien" Mode="In" Type="Double" />
+      <Parameter Name="ban_id" Mode="In" Type="String" />
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_ThongKeTheoNgayLap" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNgayLap_Result)">
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_ThongKeTheoNhanVien" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVien_Result)">
+      <Parameter Name="manv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap" ReturnType="Collection(CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result)">
+      <Parameter Name="manv" Mode="In" Type="String" />
+      <Parameter Name="tungay" Mode="In" Type="DateTime" />
+      <Parameter Name="denngay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_Xoa">
+      <Parameter Name="hd_ma" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhucVuc_Load" ReturnType="Collection(CafeDataBaseModel1.KhucVuc_Load_Result)" />
+    <FunctionImport Name="KhuVuc_LoadTheoTrangThai" ReturnType="Collection(CafeDataBaseModel1.KhuVuc_LoadTheoTrangThai_Result)">
+      <Parameter Name="trangthai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhuVuc_Sua">
+      <Parameter Name="kv_id" Mode="In" Type="Int32" />
+      <Parameter Name="kv_ten" Mode="In" Type="String" />
+      <Parameter Name="kv_trangthai" Mode="In" Type="String" />
+      <Parameter Name="kv_ghichu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhuVuc_Them">
+      <Parameter Name="kv_ten" Mode="In" Type="String" />
+      <Parameter Name="kv_trangthai" Mode="In" Type="String" />
+      <Parameter Name="kv_ghichu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhuVuc_Xoa">
+      <Parameter Name="kv_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LayIDKeTiep" ReturnType="Collection(CafeDataBaseModel1.LayIDKeTiep_Result)" />
+    <FunctionImport Name="NhanVien_CapNhatNhanVienCoTaiKhoan">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_Load" ReturnType="Collection(CafeDataBaseModel1.NhanVien_Load_Result)" />
+    <FunctionImport Name="NhanVien_LoadNhanVienTheoMa" ReturnType="Collection(CafeDataBaseModel1.NhanVien_LoadNhanVienTheoMa_Result)">
+      <Parameter Name="manv" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_LoadNVChuaCoTaiKhoan" ReturnType="Collection(CafeDataBaseModel1.NhanVien_LoadNVChuaCoTaiKhoan_Result)" />
+    <FunctionImport Name="NhanVien_Sua">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="nv_ten" Mode="In" Type="String" />
+      <Parameter Name="nv_diachi" Mode="In" Type="String" />
+      <Parameter Name="nv_sdt" Mode="In" Type="String" />
+      <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+      <Parameter Name="nv_trangthai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_Them">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="nv_ten" Mode="In" Type="String" />
+      <Parameter Name="nv_diachi" Mode="In" Type="String" />
+      <Parameter Name="nv_sdt" Mode="In" Type="String" />
+      <Parameter Name="nv_taikhoan" Mode="In" Type="Int32" />
+      <Parameter Name="nv_trangthai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_TimIDKeTiep" />
+    <FunctionImport Name="NhanVien_Xoa">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TaiKhoan_LayQuyenTruyCap" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_LayQuyenTruyCap_Result)">
+      <Parameter Name="tk_ma" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TaiKhoan_Load" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_Load_Result)" />
+    <FunctionImport Name="TaiKhoan_Load_nv_id" ReturnType="Collection(CafeDataBaseModel1.TaiKhoan_Load_nv_id_Result)">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TaiKhoan_Sua">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+      <Parameter Name="tk_quyen" Mode="In" Type="Int32" />
+      <Parameter Name="tk_trangthai" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TaiKhoan_Them">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+      <Parameter Name="tk_matkhau" Mode="In" Type="String" />
+      <Parameter Name="tk_quyen" Mode="In" Type="Int32" />
+      <Parameter Name="tk_trangthai" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TaiKhoan_Xoa">
+      <Parameter Name="nv_id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ThucUong_Load" ReturnType="Collection(CafeDataBaseModel1.ThucUong_Load_Result)" />
+    <FunctionImport Name="ThucUong_Load_IDDanhMuc" ReturnType="Collection(CafeDataBaseModel1.ThucUong_Load_IDDanhMuc_Result)">
+      <Parameter Name="dm_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ThucUong_Sua">
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+      <Parameter Name="tu_ten" Mode="In" Type="String" />
+      <Parameter Name="tu_gia" Mode="In" Type="Int32" />
+      <Parameter Name="tu_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="dm_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ThucUong_Them">
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+      <Parameter Name="tu_ten" Mode="In" Type="String" />
+      <Parameter Name="tu_gia" Mode="In" Type="Int32" />
+      <Parameter Name="tu_trangthai" Mode="In" Type="Int32" />
+      <Parameter Name="dm_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ThucUong_Xoa">
+      <Parameter Name="tu_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TimIDKeTiep">
+      <Parameter Name="table" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Ban_KiemTraTenBanTrung_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ban_Load_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ban_Load_BanTrangThaiCoKhach_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+    <Property Type="Int32" Name="ban_xoa" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ban_Load_KhuVuc_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+    <Property Type="Int32" Name="ban_xoa" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Ban_Load_TrangThai_Result">
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ban_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ban_trangthai" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CTHD_KiemTraThucUongCoTrongCTHD_Result">
+    <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="tu_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CTHD_Load_DonGia_TinhThanhTien_Result">
+    <Property Type="Int32" Name="tu_id" Nullable="false" />
+    <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+    <Property Type="Int32" Name="tu_gia" Nullable="false" />
+    <Property Type="Int32" Name="ThanhTien" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="CTHD_Load_IDHoaDon_Result">
+    <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="tu_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="DanhMuc_Load_Result">
+    <Property Type="Int32" Name="dm_id" Nullable="false" />
+    <Property Type="String" Name="dm_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="dm_trangthai" Nullable="true" />
+    <Property Type="String" Name="dm_ghichu" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_In_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="tu_gia" Nullable="false" />
+    <Property Type="Int32" Name="cthd_soluong" Nullable="false" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_InBaoCaoTheoTuyChon_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_LayHoaDonTheoMaBan_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_Load_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_Load_IDBan_TrangThaiHD_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_ThongKeTheoNgayLap_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_ThongKeTheoNhanVien_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result">
+    <Property Type="String" Name="hd_id" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="hd_ngaylap" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="hd_trangthai" Nullable="false" />
+    <Property Type="Int32" Name="hd_phuthu" Nullable="true" />
+    <Property Type="Int32" Name="hd_giamgia" Nullable="true" />
+    <Property Type="Int32" Name="hd_tongtien" Nullable="false" />
+    <Property Type="String" Name="ban_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="KhucVuc_Load_Result">
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+    <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="kv_trangthai" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="kv_ghichu" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="KhuVuc_LoadTheoTrangThai_Result">
+    <Property Type="Int32" Name="kv_id" Nullable="false" />
+    <Property Type="String" Name="kv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="kv_trangthai" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="kv_ghichu" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="LayIDKeTiep_Result">
+    <Property Type="String" Name="ban_id" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="hd_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="nv_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="id" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="NhanVien_Load_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="NhanVien_LoadNhanVienTheoMa_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+    <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+    <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="NhanVien_LoadNVChuaCoTaiKhoan_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="nv_ten" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="nv_diachi" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="nv_sdt" Nullable="true" MaxLength="11" />
+    <Property Type="Int32" Name="nv_taikhoan" Nullable="true" />
+    <Property Type="String" Name="nv_trangthai" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="TaiKhoan_LayQuyenTruyCap_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+    <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="TaiKhoan_Load_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+    <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="TaiKhoan_Load_nv_id_Result">
+    <Property Type="String" Name="nv_id" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="tk_matkhau" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="tk_quyen" Nullable="false" />
+    <Property Type="Int32" Name="tk_trangthai" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ThucUong_Load_Result">
+    <Property Type="Int32" Name="tu_id" Nullable="false" />
+    <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="tu_gia" Nullable="false" />
+    <Property Type="Int32" Name="tu_trangthai" Nullable="true" />
+    <Property Type="Int32" Name="dm_id" Nullable="false" />
+    <Property Type="Int32" Name="dm_id1" Nullable="false" />
+    <Property Type="String" Name="dm_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="dm_trangthai" Nullable="true" />
+    <Property Type="String" Name="dm_ghichu" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="ThucUong_Load_IDDanhMuc_Result">
+    <Property Type="Int32" Name="tu_id" Nullable="false" />
+    <Property Type="String" Name="tu_ten" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="tu_gia" Nullable="false" />
+    <Property Type="Int32" Name="tu_trangthai" Nullable="true" />
+    <Property Type="Int32" Name="dm_id" Nullable="false" />
+  </ComplexType>
+</Schema>

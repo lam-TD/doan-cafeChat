@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CafeDataBaseModel1StoreContainer" CdmEntityContainer="CafeDataBaseEntities1">
+    <EntitySetMapping Name="Bans">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.Ban">
+        <MappingFragment StoreEntitySet="Ban">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaTrucs">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.CaTruc">
+        <MappingFragment StoreEntitySet="CaTruc">
+          <ScalarProperty Name="ct_id" ColumnName="ct_id" />
+          <ScalarProperty Name="ct_ngaytruc" ColumnName="ct_ngaytruc" />
+          <ScalarProperty Name="ct_buoitruc" ColumnName="ct_buoitruc" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHDs">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.CTHD">
+        <MappingFragment StoreEntitySet="CTHD">
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhMucs">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.DanhMuc">
+        <MappingFragment StoreEntitySet="DanhMuc">
+          <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+          <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+          <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+          <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDons">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhuVucs">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.KhuVuc">
+        <MappingFragment StoreEntitySet="KhuVuc">
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+          <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+          <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanViens">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+          <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThucUongs">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.ThucUong">
+        <MappingFragment StoreEntitySet="ThucUong">
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+          <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoans">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+          <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+          <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDon_InBaoCao">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InBaoCao">
+        <MappingFragment StoreEntitySet="HoaDon_InBaoCao">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDon_InThongKe">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InThongKe">
+        <MappingFragment StoreEntitySet="HoaDon_InThongKe">
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDon_InThongKe2">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InThongKe2">
+        <MappingFragment StoreEntitySet="HoaDon_InThongKe2">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDon_ThongKeMaHD">
+      <EntityTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeMaHD">
+        <MappingFragment StoreEntitySet="HoaDon_ThongKeMaHD">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Ban_CapNhatTrangThaiBan" FunctionName="CafeDataBaseModel1.Store.Ban_CapNhatTrangThaiBan" />
+    <FunctionImportMapping FunctionImportName="Ban_KiemTraTenBanTrung" FunctionName="CafeDataBaseModel1.Store.Ban_KiemTraTenBanTrung">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_KiemTraTenBanTrung_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_KiemTraTrangThai_TheoIdBan" FunctionName="CafeDataBaseModel1.Store.Ban_KiemTraTrangThai_TheoIdBan" />
+    <FunctionImportMapping FunctionImportName="Ban_Load" FunctionName="CafeDataBaseModel1.Store.Ban_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_Load_BanTrangThaiCoKhach" FunctionName="CafeDataBaseModel1.Store.Ban_Load_BanTrangThaiCoKhach">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_BanTrangThaiCoKhach_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_Load_KhuVuc" FunctionName="CafeDataBaseModel1.Store.Ban_Load_KhuVuc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_KhuVuc_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach" FunctionName="CafeDataBaseModel1.Store.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_LoaiTru1BanTrung_TrangThaiCoKhach_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="ban_xoa" ColumnName="ban_xoa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_Load_TrangThai" FunctionName="CafeDataBaseModel1.Store.Ban_Load_TrangThai">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.Ban_Load_TrangThai_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="ban_ten" ColumnName="ban_ten" />
+          <ScalarProperty Name="ban_trangthai" ColumnName="ban_trangthai" />
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Ban_Sua" FunctionName="CafeDataBaseModel1.Store.Ban_Sua" />
+    <FunctionImportMapping FunctionImportName="Ban_Them" FunctionName="CafeDataBaseModel1.Store.Ban_Them" />
+    <FunctionImportMapping FunctionImportName="Ban_TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.Ban_TimIDKeTiep" />
+    <FunctionImportMapping FunctionImportName="Ban_Xoa" FunctionName="CafeDataBaseModel1.Store.Ban_Xoa" />
+    <FunctionImportMapping FunctionImportName="CTHD_HuyBan" FunctionName="CafeDataBaseModel1.Store.CTHD_HuyBan" />
+    <FunctionImportMapping FunctionImportName="CTHD_KiemTraThucUongCoTrongCTHD" FunctionName="CafeDataBaseModel1.Store.CTHD_KiemTraThucUongCoTrongCTHD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_KiemTraThucUongCoTrongCTHD_Result">
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CTHD_Load_DonGia_TinhThanhTien" FunctionName="CafeDataBaseModel1.Store.CTHD_Load_DonGia_TinhThanhTien">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_Load_DonGia_TinhThanhTien_Result">
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CTHD_Load_IDHoaDon" FunctionName="CafeDataBaseModel1.Store.CTHD_Load_IDHoaDon">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.CTHD_Load_IDHoaDon_Result">
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CTHD_Sua" FunctionName="CafeDataBaseModel1.Store.CTHD_Sua" />
+    <FunctionImportMapping FunctionImportName="CTHD_Them" FunctionName="CafeDataBaseModel1.Store.CTHD_Them" />
+    <FunctionImportMapping FunctionImportName="CTHD_Xoa" FunctionName="CafeDataBaseModel1.Store.CTHD_Xoa" />
+    <FunctionImportMapping FunctionImportName="DanhMuc_Load" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.DanhMuc_Load_Result">
+          <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+          <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+          <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+          <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DanhMuc_Sua" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Sua" />
+    <FunctionImportMapping FunctionImportName="DanhMuc_Them" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Them" />
+    <FunctionImportMapping FunctionImportName="DanhMuc_Xoa" FunctionName="CafeDataBaseModel1.Store.DanhMuc_Xoa" />
+    <FunctionImportMapping FunctionImportName="HoaDon_DoiBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_DoiBan" />
+    <FunctionImportMapping FunctionImportName="HoaDon_HuyBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_HuyBan" />
+    <FunctionImportMapping FunctionImportName="HoaDon_In" FunctionName="CafeDataBaseModel1.Store.HoaDon_In">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_In_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="cthd_soluong" ColumnName="cthd_soluong" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_InBaoCaoTheoTuyChon" FunctionName="CafeDataBaseModel1.Store.HoaDon_InBaoCaoTheoTuyChon">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_InBaoCaoTheoTuyChon_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_LayHoaDonTheoMaBan" FunctionName="CafeDataBaseModel1.Store.HoaDon_LayHoaDonTheoMaBan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_LayHoaDonTheoMaBan_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_Load" FunctionName="CafeDataBaseModel1.Store.HoaDon_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_Load_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_Load_IDBan_TrangThaiHD" FunctionName="CafeDataBaseModel1.Store.HoaDon_Load_IDBan_TrangThaiHD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_Load_IDBan_TrangThaiHD_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_Sua" FunctionName="CafeDataBaseModel1.Store.HoaDon_Sua" />
+    <FunctionImportMapping FunctionImportName="HoaDon_Them" FunctionName="CafeDataBaseModel1.Store.HoaDon_Them" />
+    <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNgayLap" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNgayLap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNgayLap_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNhanVien" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNhanVien">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVien_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_ThongKeTheoNhanVienTheoNgayLap" FunctionName="CafeDataBaseModel1.Store.HoaDon_ThongKeTheoNhanVienTheoNgayLap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.HoaDon_ThongKeTheoNhanVienTheoNgayLap_Result">
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="hd_ngaylap" ColumnName="hd_ngaylap" />
+          <ScalarProperty Name="hd_trangthai" ColumnName="hd_trangthai" />
+          <ScalarProperty Name="hd_phuthu" ColumnName="hd_phuthu" />
+          <ScalarProperty Name="hd_giamgia" ColumnName="hd_giamgia" />
+          <ScalarProperty Name="hd_tongtien" ColumnName="hd_tongtien" />
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_Xoa" FunctionName="CafeDataBaseModel1.Store.HoaDon_Xoa" />
+    <FunctionImportMapping FunctionImportName="KhucVuc_Load" FunctionName="CafeDataBaseModel1.Store.KhucVuc_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.KhucVuc_Load_Result">
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+          <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+          <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="KhuVuc_LoadTheoTrangThai" FunctionName="CafeDataBaseModel1.Store.KhuVuc_LoadTheoTrangThai">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.KhuVuc_LoadTheoTrangThai_Result">
+          <ScalarProperty Name="kv_id" ColumnName="kv_id" />
+          <ScalarProperty Name="kv_ten" ColumnName="kv_ten" />
+          <ScalarProperty Name="kv_trangthai" ColumnName="kv_trangthai" />
+          <ScalarProperty Name="kv_ghichu" ColumnName="kv_ghichu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="KhuVuc_Sua" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Sua" />
+    <FunctionImportMapping FunctionImportName="KhuVuc_Them" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Them" />
+    <FunctionImportMapping FunctionImportName="KhuVuc_Xoa" FunctionName="CafeDataBaseModel1.Store.KhuVuc_Xoa" />
+    <FunctionImportMapping FunctionImportName="LayIDKeTiep" FunctionName="CafeDataBaseModel1.Store.LayIDKeTiep">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.LayIDKeTiep_Result">
+          <ScalarProperty Name="ban_id" ColumnName="ban_id" />
+          <ScalarProperty Name="hd_id" ColumnName="hd_id" />
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NhanVien_CapNhatNhanVienCoTaiKhoan" FunctionName="CafeDataBaseModel1.Store.NhanVien_CapNhatNhanVienCoTaiKhoan" />
+    <FunctionImportMapping FunctionImportName="NhanVien_Load" FunctionName="CafeDataBaseModel1.Store.NhanVien_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_Load_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+          <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NhanVien_LoadNhanVienTheoMa" FunctionName="CafeDataBaseModel1.Store.NhanVien_LoadNhanVienTheoMa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_LoadNhanVienTheoMa_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+          <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NhanVien_LoadNVChuaCoTaiKhoan" FunctionName="CafeDataBaseModel1.Store.NhanVien_LoadNVChuaCoTaiKhoan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.NhanVien_LoadNVChuaCoTaiKhoan_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="nv_diachi" ColumnName="nv_diachi" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_taikhoan" ColumnName="nv_taikhoan" />
+          <ScalarProperty Name="nv_trangthai" ColumnName="nv_trangthai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NhanVien_Sua" FunctionName="CafeDataBaseModel1.Store.NhanVien_Sua" />
+    <FunctionImportMapping FunctionImportName="NhanVien_Them" FunctionName="CafeDataBaseModel1.Store.NhanVien_Them" />
+    <FunctionImportMapping FunctionImportName="NhanVien_TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.NhanVien_TimIDKeTiep" />
+    <FunctionImportMapping FunctionImportName="NhanVien_Xoa" FunctionName="CafeDataBaseModel1.Store.NhanVien_Xoa" />
+    <FunctionImportMapping FunctionImportName="TaiKhoan_LayQuyenTruyCap" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_LayQuyenTruyCap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_LayQuyenTruyCap_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+          <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+          <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TaiKhoan_Load" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_Load_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+          <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+          <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TaiKhoan_Load_nv_id" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Load_nv_id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.TaiKhoan_Load_nv_id_Result">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="tk_matkhau" ColumnName="tk_matkhau" />
+          <ScalarProperty Name="tk_quyen" ColumnName="tk_quyen" />
+          <ScalarProperty Name="tk_trangthai" ColumnName="tk_trangthai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TaiKhoan_Sua" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Sua" />
+    <FunctionImportMapping FunctionImportName="TaiKhoan_Them" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Them" />
+    <FunctionImportMapping FunctionImportName="TaiKhoan_Xoa" FunctionName="CafeDataBaseModel1.Store.TaiKhoan_Xoa" />
+    <FunctionImportMapping FunctionImportName="ThucUong_Load" FunctionName="CafeDataBaseModel1.Store.ThucUong_Load">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.ThucUong_Load_Result">
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+          <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+          <ScalarProperty Name="dm_id1" ColumnName="dm_id1" />
+          <ScalarProperty Name="dm_ten" ColumnName="dm_ten" />
+          <ScalarProperty Name="dm_trangthai" ColumnName="dm_trangthai" />
+          <ScalarProperty Name="dm_ghichu" ColumnName="dm_ghichu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ThucUong_Load_IDDanhMuc" FunctionName="CafeDataBaseModel1.Store.ThucUong_Load_IDDanhMuc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CafeDataBaseModel1.ThucUong_Load_IDDanhMuc_Result">
+          <ScalarProperty Name="tu_id" ColumnName="tu_id" />
+          <ScalarProperty Name="tu_ten" ColumnName="tu_ten" />
+          <ScalarProperty Name="tu_gia" ColumnName="tu_gia" />
+          <ScalarProperty Name="tu_trangthai" ColumnName="tu_trangthai" />
+          <ScalarProperty Name="dm_id" ColumnName="dm_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ThucUong_Sua" FunctionName="CafeDataBaseModel1.Store.ThucUong_Sua" />
+    <FunctionImportMapping FunctionImportName="ThucUong_Them" FunctionName="CafeDataBaseModel1.Store.ThucUong_Them" />
+    <FunctionImportMapping FunctionImportName="ThucUong_Xoa" FunctionName="CafeDataBaseModel1.Store.ThucUong_Xoa" />
+    <FunctionImportMapping FunctionImportName="TimIDKeTiep" FunctionName="CafeDataBaseModel1.Store.TimIDKeTiep" />
+  </EntityContainerMapping>
+</Mapping>

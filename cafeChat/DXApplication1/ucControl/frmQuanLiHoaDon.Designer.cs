@@ -184,7 +184,7 @@
             // 
             // btncapnhattranthaiHD
             // 
-            this.btncapnhattranthaiHD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.btncapnhattranthaiHD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btncapnhattranthaiHD.ImageOptions.Image")));
             this.btncapnhattranthaiHD.Location = new System.Drawing.Point(358, 139);
             this.btncapnhattranthaiHD.Name = "btncapnhattranthaiHD";
             this.btncapnhattranthaiHD.Size = new System.Drawing.Size(122, 22);
@@ -293,6 +293,7 @@
             this.btnIn.StyleController = this.layoutControl1;
             this.btnIn.TabIndex = 15;
             this.btnIn.Text = "In";
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // cbloaithongke
             // 

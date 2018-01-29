@@ -644,7 +644,7 @@ namespace DXApplication1
                 {
                     if (BanBUS.Ban_CapNhatTrangThaiBan(hd.Ban_id,"Trống"))
                     {
-                        DialogResult dialogResult = XtraMessageBox.Show("Bạn có chắc chắn muốn xóa thức uống vừa chọn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dialogResult = XtraMessageBox.Show("Bạn có muốn In Hóa Đơn", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
                             XtraReport2 In_HoaDon = new XtraReport2();

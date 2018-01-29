@@ -220,6 +220,12 @@
     <Compile Include="HoaDon_ThongKeTheoNhanVien_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="InBaoCao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InBaoCao.Designer.cs">
+      <DependentUpon>InBaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhucVuc_Load_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -395,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCon\FrmThuNgan.resx">
       <DependentUpon>FrmThuNgan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InBaoCao.resx">
+      <DependentUpon>InBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

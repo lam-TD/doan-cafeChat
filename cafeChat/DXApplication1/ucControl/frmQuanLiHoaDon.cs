@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BUS;
+using DAL;
 using DTO;
+using DevExpress.XtraReports.UI;
+
 namespace DXApplication1.ucControl
 {
     public partial class frmQuanLiHoaDon : DevExpress.XtraEditors.XtraUserControl
@@ -158,6 +161,16 @@ namespace DXApplication1.ucControl
                 }
             }
             catch (Exception) { XtraMessageBox.Show("Lỗi không cập nhật được!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            Connect conn = new Connect();
+            DateTime tungay = dateTuNgay.Value;
+            DateTime denngay = dateDenNgay.Value;
+            InBaoCao bc = new InBaoCao();
+            bc.DataSource = conn.getTable("EXEC HoaDon_InBaoCaoTheoTuyChon '"+ tungay +"','"+ denngay +"'");
+            bc.ShowPreviewDialog();
         }
     }
 }
