@@ -91,6 +91,7 @@ namespace DXApplication1
                 cbBan.Text = bt.Text;
                 try
                 {
+                    if (txttrangthaiban.Text == "Đặt trước") { btnhuyban.Enabled = true; }
                     DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, bt.Tag.ToString());
                     txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
                     gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
@@ -117,6 +118,10 @@ namespace DXApplication1
 
         void treelist_ThemDanhMuc()
         {
+            TreeNode all = new TreeNode();
+            all.Text = "Tất cả";
+            all.Tag = "Tất cả";
+            treedanhmuc.Nodes.Add(all);
             List<DanhMucDTO> dm = DanhMucBUS.DanhMuc_List();
             foreach (DanhMucDTO item in dm)
             {
@@ -161,8 +166,10 @@ namespace DXApplication1
                 dt = ThucUongBUS.ThucUong_Load();
             else if (type == 2)
                 dt = ThucUongBUS.ThucUong_TimKiem(tukhoa);
-            else
+            else if (type == 3)
                 dt = ThucUongBUS.ThucUong_Load_IDDanhMuc(iddanhmuc);
+            else
+                dt = ThucUongBUS.ThucUong_Load();
             int i = 0;
             foreach (DataRow itemTU in dt.Rows)
             {
@@ -332,11 +339,14 @@ namespace DXApplication1
             dateTimeGioLapHD.Value = DateTime.Now;
             XetThuocTinhChoCacButton(false,false,false);
             txtPhuThu_txtGiamGia_txtTienNhan_Xet_Watermark();
+            txtmanhanvien.Text = MaNhanVien;
         }
 
         private void treedanhmuc_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            listview_ThucUong_Load(3, int.Parse(e.Node.Tag.ToString()),"");
+            if (e.Node.Tag.ToString() == "Tất cả")
+            { listview_ThucUong_Load(4, 0, ""); }
+            else { listview_ThucUong_Load(3, int.Parse(e.Node.Tag.ToString()), ""); }
         }
 
         private void cbBan_SelectedIndexChanged(object sender, EventArgs e)
@@ -354,7 +364,7 @@ namespace DXApplication1
                     XetThuocTinhChoCacButton(true,true,true);
                 }
                 else{ XetThuocTinhChoCacButton(false, true,false); }
-                    
+                if(txttrangthaiban.Text == "Đặt trước") { btnhuyban.Enabled = true; }    
                 txttrangthaiban.Text = trangthaiBan;                                         
                 txtThanhTien_txtTongCong_Load();
             }

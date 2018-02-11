@@ -54,7 +54,7 @@ namespace DXApplication1.ucControl
                     BanDTO b = new BanDTO();
                     b.Ban_id = BanBUS.Ban_TimMaBanKeTiep();
                     b.Ban_ten = txtten.Text;
-                    b.Ban_trangthai = cbtrang_thai.SelectedItem.ToString();
+                    b.Ban_trangthai = "Trống";
                     b.Kv_id = int.Parse(cbkhu_vuc.SelectedValue.ToString());
                     b.Ban_xoa = 0;
                     if (BanBUS.Ban_ThemSuaXoa(b, 1))
