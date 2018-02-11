@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmThuNgan));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
@@ -126,6 +126,8 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.contextMenuStrip_Table = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.datbanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -205,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            this.contextMenuStrip_Table.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -887,9 +890,9 @@
             // btn_XoaChiTietHD
             // 
             this.btn_XoaChiTietHD.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.btn_XoaChiTietHD.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(editorButtonImageOptions1, DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(editorButtonImageOptions2, DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, null)});
             this.btn_XoaChiTietHD.Name = "btn_XoaChiTietHD";
             this.btn_XoaChiTietHD.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.btn_XoaChiTietHD.Click += new System.EventHandler(this.btn_XoaChiTietHD_Click);
@@ -1303,6 +1306,21 @@
             this.layoutControlGroup6.Name = "layoutControlGroup6";
             this.layoutControlGroup6.Size = new System.Drawing.Size(192, 185);
             // 
+            // contextMenuStrip_Table
+            // 
+            this.contextMenuStrip_Table.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datbanToolStripMenuItem});
+            this.contextMenuStrip_Table.Name = "contextMenuStrip_Table";
+            this.contextMenuStrip_Table.Size = new System.Drawing.Size(153, 48);
+            // 
+            // datbanToolStripMenuItem
+            // 
+            this.datbanToolStripMenuItem.Image = global::DXApplication1.Properties.Resources.if_order_59488;
+            this.datbanToolStripMenuItem.Name = "datbanToolStripMenuItem";
+            this.datbanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.datbanToolStripMenuItem.Text = "Đặt bàn";
+            this.datbanToolStripMenuItem.Click += new System.EventHandler(this.datbanToolStripMenuItem_Click);
+            // 
             // FrmThuNgan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1392,6 +1410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            this.contextMenuStrip_Table.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1493,5 +1512,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit numsoluongGridview;
         private DevExpress.XtraEditors.TextEdit txtmanhanvien;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Table;
+        private System.Windows.Forms.ToolStripMenuItem datbanToolStripMenuItem;
     }
 }

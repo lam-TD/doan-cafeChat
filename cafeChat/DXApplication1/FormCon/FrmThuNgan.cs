@@ -26,6 +26,7 @@ namespace DXApplication1
 
 
         #region XU LY
+        public static string maban;
         public static string MaNhanVien = "NV0001";
         public static int MaThucUong;
         public static string tenban;
@@ -84,13 +85,12 @@ namespace DXApplication1
         {
             Button bt = (Button)sender; //lấy button đang được click
             //tagtext = ((Button)sender).Text;
-
+            string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(bt.Tag.ToString());
             if (e.Button == MouseButtons.Left)
             {
                 cbBan.Text = bt.Text;
                 try
                 {
-                    string trangthaiBan = BanBUS.Ban_KiemTra_TrangThai_TheoIDBan(bt.Tag.ToString());
                     DataTable dt = HoaDonBUS.HoaDon_XacDinh_BanCoHDHayChua(trangthaiBan, bt.Tag.ToString());
                     txtmahd.Text = dt.Rows[0]["hd_id"].ToString();
                     gridCTHD_Load(dt.Rows[0]["hd_id"].ToString()); // load danh sach thức uống trong chi tiết HD
@@ -103,10 +103,16 @@ namespace DXApplication1
                 }
             }
             else
+            {
                 if (e.Button == MouseButtons.Right)
                 {
-                    //contextMenuStrip_Table.Show(bt, e.Location);
+                    if (trangthaiBan == "Trống")
+                    {
+                        contextMenuStrip_Table.Show(bt, e.Location);
+                        maban = bt.Tag.ToString();
+                    }
                 }
+            }
         }
 
         void treelist_ThemDanhMuc()
@@ -385,12 +391,16 @@ namespace DXApplication1
                 cthd.Tu_id = MaThucUong;   // lấy mã thức uống lưu vào CTHD
                 cthd.Hd_ma = txtmahd.Text; // lấy mã hóa đơn lưu vào CTHD
                 cthd.Cthd_soluong = int.Parse(numsoluong.Value.ToString()); // lấy số lượng thức uống lưu vào CTHD
-                // kiểm tra trạng thái của Bàn và mã Hóa Đơn
-                // nếu Bàn trống thì thêm Hoa Don trước -> thêm CTHD
-                // Bàn có khách thì chỉ thêm mới cthd -> kiểm tra thức uống thêm vào đã có trong CTHD hay chưa
-                //-> nếu có thì cập nhật lại số lượng theo mã HD và mã Thức uống
-                //-> nếu chưa thì thêm mới CTHD 
-                switch (txttrangthaiban.Text)
+                                                                            // kiểm tra trạng thái của Bàn và mã Hóa Đơn
+                                                                            // nếu Bàn trống thì thêm Hoa Don trước -> thêm CTHD
+                                                                            // Bàn có khách thì chỉ thêm mới cthd -> kiểm tra thức uống thêm vào đã có trong CTHD hay chưa
+                                                                            //-> nếu có thì cập nhật lại số lượng theo mã HD và mã Thức uống
+                                                                            //-> nếu chưa thì thêm mới CTHD
+                string trangthaiban = "";
+                if (txttrangthaiban.Text == "Trống" || txttrangthaiban.Text == "Đặt trước")
+                { trangthaiban = "Trống"; }
+                else { trangthaiban = "Có khách"; }
+                switch (trangthaiban)
                 {
                     case "Trống":
                         HoaDonDTO hd = new HoaDonDTO();
@@ -671,6 +681,19 @@ namespace DXApplication1
                 listview_ThucUong_Load(1, 0, "");
             else
                 listview_ThucUong_Load(2, 0, txttimthucuong.Text);
+        }
+
+        private void datbanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BanDTO ban = new BanDTO();
+            ban.Ban_id = maban;
+            if (DialogResult.Yes == XtraMessageBox.Show("Bạn có chắc chắn muốn đặt trước bàn" + maban,"Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question))
+            {
+                if (BanBUS.Ban_CapNhatTrangThaiBan(maban, "Đặt trước")) { XtraMessageBox.Show("Bàn" + maban + "đã được đặt"); }
+                else { XtraMessageBox.Show("Lỗi không đặt trước được!"); }
+                Tao_Ban();
+            }
+            
         }
     }
 }
