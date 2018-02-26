@@ -180,8 +180,8 @@ namespace DXApplication1.ucControl
         private void btnIn_Click(object sender, EventArgs e)
         {
             Connect conn = new Connect();
-            DateTime tungay = dateTuNgay.Value;
-            DateTime denngay = dateDenNgay.Value;
+            string tungay = dateTuNgay.Value.ToString("MM/dd/yyyy");
+            string denngay = dateDenNgay.Value.ToString("MM/dd/yyyy");
             InBaoCao bc = new InBaoCao();
             bc.DataSource = conn.getTable("EXEC HoaDon_InBaoCaoTheoTuyChon '"+ tungay +"','"+ denngay +"'");
             bc.ShowPreviewDialog();
