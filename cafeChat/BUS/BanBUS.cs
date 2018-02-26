@@ -19,6 +19,11 @@ namespace BUS
             return dt;
         }
 
+        public static DataTable Ban_Load_TrangThai_Xoa()
+        {
+            return conn.getTable("EXEC Ban_Load_TrangThai_DaXoa");
+        }
+
         public static List<BanDTO> Ban_List()
         {
             DataTable dt = Ban_Load();
@@ -106,7 +111,7 @@ namespace BUS
 
         public static bool Ban_KiemTraBanTrungTen(string tenban)
         {
-            DataTable dt = conn.getTable("EXEC Ban_KiemTraTenBanTrung N'Bàn 1'");
+            DataTable dt = conn.getTable("EXEC Ban_KiemTraTenBanTrung N'"+tenban+"'");
             if (dt.Rows.Count > 0)
                 return true;
             else return false;

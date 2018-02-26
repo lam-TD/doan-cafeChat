@@ -557,6 +557,19 @@ BEGIN
 END
 EXEC Ban_Load
 
+-- Load Ban da Xoa
+CREATE PROC Ban_Load_TrangThai_DaXoa
+AS
+BEGIN
+	SELECT
+		Ban.ban_id,Ban.ban_ten,Ban.ban_trangthai,kv.kv_ten,kv.kv_id
+	FROM
+		Ban INNER JOIN KhuVuc AS kv ON kv.kv_id = Ban.kv_id
+	WHERE ban_trangthai = N'Xóa'
+END
+
+EXEC Ban_Load_TrangThai_DaXoa
+
 -- Load Ban theo Khu Vuc
 CREATE PROC Ban_Load_KhuVuc
 @kv_id INT
