@@ -38,7 +38,7 @@ namespace DXApplication1.ucControl
             cbdanhmuc.DataSource = DanhMucBUS.DanhMuc_Load();
             cbdanhmuc.DisplayMember = "dm_ten";
             cbdanhmuc.ValueMember = "dm_id";
-            cbdanhmuc.SelectedIndex = -1;
+            cbdanhmuc.SelectedIndex = 0;
 
         }
 
@@ -138,6 +138,7 @@ namespace DXApplication1.ucControl
         {
             ThucUong_Load();
             cbDanhMuc_Load();
+            cbtrangthai.SelectedIndex = 0;
         }
     }
 }
